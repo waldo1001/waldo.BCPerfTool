@@ -1,5 +1,11 @@
 {
     "name": "iFacto",
     "description": "iFacto App Ruleset",
-    "rules": []
+    "rules": [
+        {
+            "id": "AS0084",
+            "action": "None",
+            "justification": "Number Range"
+        }
+    ]
 }

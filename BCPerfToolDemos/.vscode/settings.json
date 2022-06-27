@@ -2,8 +2,7 @@
     "al.enableCodeAnalysis": true,
     "al.codeAnalyzers": [
         "${CodeCop}",
-        "${PerTenantExtensionCop}",
-        "${AppSourceCop}"
+        "${PerTenantExtensionCop}"
     ],
     "al.ruleSetPath": "./.codeAnalysis/app.ruleset.json",
     "CRS.OnSaveAlFileAction": "Rename",
