@@ -1,8 +1,13 @@
-{
-    "folders": [
-        {
-            "path": ".AL-Go"
-        }
-    ],
-    "settings": {}
+﻿{
+    "folders":  [
+                    {
+                        "path":  ".AL-Go"
+                    },
+                    {
+                        "path":  "BCPerfTool"
+                    }
+                ],
+    "settings":  {
+
+                 }
 }
