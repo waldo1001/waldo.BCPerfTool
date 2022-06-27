@@ -5,6 +5,9 @@
                     },
                     {
                         "path":  "BCPerfTool"
+                    },
+                    {
+                        "path":  "BCPerfToolDemos"
                     }
                 ],
     "settings":  {
