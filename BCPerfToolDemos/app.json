@@ -11,7 +11,14 @@
     "url": "https://www.waldo.be",
     "contextSensitiveHelpUrl": "https://www.waldo.be",
     "logo": "img/icon.png",
-    "dependencies": [],
+    "dependencies": [
+        {
+            "id": "b52c1c11-0820-4457-9835-05a613a9fb80",
+            "name": "BCPerfTool",
+            "publisher": "BCPerfTool",
+            "version": "1.0.0.0"
+        }
+    ],
     "screenshots": [],
     "platform": "1.0.0.0",
     "application": "19.0.0.0",

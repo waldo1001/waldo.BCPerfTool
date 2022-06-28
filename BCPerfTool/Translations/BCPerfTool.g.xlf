@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="BCPerfTool">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 837832807 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Group WPT - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 837832807 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Group WPT - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1969505455 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Header WPT - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1969505455 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Header WPT - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1969505455 - Field 1663794414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Group Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Header WPT - Field Group Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4271669608 - Field 893385458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Codeunit ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Line WPT - Field Codeunit ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4271669608 - Field 2967582120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Codeunit Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Line WPT - Field Codeunit Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4271669608 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Line WPT - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4271669608 - Field 695351456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table PerfTool Line WPT - Field PerfTool Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2958593587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lookup Codeunits</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lookup Codeunits WPT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2958593587 - Control 3641927271 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the test codeunit.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lookup Codeunits WPT - Control ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2958593587 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the test codeunit.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lookup Codeunits WPT - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2958593587 - Action 580853590 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show or hide all.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lookup Codeunits WPT - Action ShowAll - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2958593587 - Action 580853590 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show/Hide All</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lookup Codeunits WPT - Action ShowAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1675259978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PerfTool Groups WPT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Groups WPT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1675259978 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Groups WPT - Control Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1675259978 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Groups WPT - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 964953988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PerfTool Suite SubPage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suite SubPage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 964953988 - Control 893385458 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Codeunit ID field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suite SubPage - Control Codeunit ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 964953988 - Control 2967582120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Codeunit Name field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suite SubPage - Control Codeunit Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 964953988 - Control 3320823955 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Line No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suite SubPage - Control Line No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 964953988 - Control 695351456 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suite SubPage - Control PerfTool Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 235237817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PerfTool Suites</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suites WPT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 235237817 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suites WPT - Control Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 235237817 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suites WPT - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 235237817 - Control 1663794414 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Group Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page PerfTool Suites WPT - Control Group Code - Property ToolTip</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

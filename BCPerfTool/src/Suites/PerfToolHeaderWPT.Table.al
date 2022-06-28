@@ -13,8 +13,14 @@ table 62101 "PerfTool Header WPT"
         {
             Caption = 'Description';
             DataClassification = CustomerContent;
-
         }
+        field(3; "Group Code"; Code[20])
+        {
+            Caption = 'Group Code';
+            DataClassification = CustomerContent;
+            TableRelation = "PerfTool Group WPT".Code;
+        }
+
     }
 
     keys
@@ -23,5 +29,5 @@ table 62101 "PerfTool Header WPT"
         {
             Clustered = true;
         }
-    }    
+    }
 }
