@@ -12,6 +12,6 @@
     "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
     "CRS.RenameWithGit": false,
     "editor.formatOnSave": true,
-    "CRS.ExtensionObjectNamePattern": "<BaseNameShort> Ext WLD",
-    "CRS.ObjectNameSuffix": " WLD"
+    "CRS.ExtensionObjectNamePattern": "<BaseNameShort> Ext WPT",
+    "CRS.ObjectNameSuffix": " WPT"
 }

@@ -9,6 +9,7 @@
     "EULA": "https://www.waldo.be",
     "help": "https://www.waldo.be",
     "url": "https://www.waldo.be",
+    "contextSensitiveHelpUrl": "https://www.waldo.be",
     "logo": "img/icon.png",
     "dependencies": [],
     "screenshots": [],
