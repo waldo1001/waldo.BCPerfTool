@@ -2,7 +2,8 @@ page 62103 "PerfTool Suite SubPage WPT"
 {
     Caption = 'PerfTool Suite SubPage';
     PageType = ListPart;
-    SourceTable = "PerfTool Line WPT";
+    SourceTable = "PerfTool Suite Line WPT";
+    AutoSplitKey = true;
 
     layout
     {
@@ -14,6 +15,8 @@ page 62103 "PerfTool Suite SubPage WPT"
                 {
                     ToolTip = 'Specifies the value of the Line No. field.';
                     ApplicationArea = All;
+                    Visible = false;
+                    Editable = false;
                 }
                 field("Codeunit ID"; Rec."Codeunit ID")
                 {

@@ -1,4 +1,4 @@
-table 62100 "PerfTool Line WPT"
+table 62100 "PerfTool Suite Line WPT"
 {
     DataClassification = SystemMetadata;
 

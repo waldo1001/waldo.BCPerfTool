@@ -48,7 +48,7 @@ page 62100 "Lookup Codeunits WPT"
                     if ShowAllCodeunits then
                         Rec.SetRange(TableNo)
                     else
-                        Rec.SetRange(TableNo, Database::"PerfTool Line WPT");
+                        Rec.SetRange(TableNo, Database::"PerfTool Suite Line WPT");
                     CurrPage.Update(false);
                 end;
             }

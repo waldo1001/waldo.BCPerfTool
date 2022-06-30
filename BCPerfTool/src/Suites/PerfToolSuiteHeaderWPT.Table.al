@@ -1,4 +1,4 @@
-table 62101 "PerfTool Header WPT"
+table 62101 "PerfTool Suite Header WPT"
 {
     DataClassification = SystemMetadata;
 

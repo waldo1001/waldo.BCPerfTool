@@ -9,8 +9,10 @@ codeunit 62201 "Install Demos WPT"
     end;
 
     local procedure FillSuite()
+    var
+        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        //TODO: Implement Code
+        CreatePerfToolDataLibraryWPT.CreateSuite()
     end;
 
     local procedure FillData()
