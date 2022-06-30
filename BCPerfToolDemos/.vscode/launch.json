@@ -16,7 +16,9 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10,
-            "tenant": "default"
+            "tenant": "default",
+            "startupObjectId": 62102,
+            "startupObjectType": "Page"
         }
     ]
 }

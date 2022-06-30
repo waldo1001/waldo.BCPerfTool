@@ -7,3 +7,4 @@ rad.json
 .alcache/
 .altemplates/
 cache_*
+*.g.xlf

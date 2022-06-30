@@ -1,9 +1,9 @@
-page 62103 "PerfTool Suite SubPage"
+page 62103 "PerfTool Suite SubPage WPT"
 {
     Caption = 'PerfTool Suite SubPage';
     PageType = ListPart;
     SourceTable = "PerfTool Line WPT";
-    
+
     layout
     {
         area(content)
