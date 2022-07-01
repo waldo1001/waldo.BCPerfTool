@@ -18,12 +18,12 @@ page 62103 "PerfTool Suite SubPage WPT"
                     Visible = false;
                     Editable = false;
                 }
-                field("Codeunit Name"; Rec."Codeunit Name")
+                field("Object Name"; Rec."Object Name")
                 {
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
                 }
-                field("Codeunit ID"; Rec."Codeunit ID")
+                field("Codeunit ID"; Rec."Object ID")
                 {
                     ToolTip = 'Specifies the value of the Codeunit ID field.';
                     ApplicationArea = All;
@@ -41,22 +41,37 @@ page 62103 "PerfTool Suite SubPage WPT"
     {
         area(Processing)
         {
-            action(Start)
+            action("Run")
             {
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
-                Caption = 'Start';
+                Caption = 'Run';
                 Image = Start;
-                ToolTip = 'Starts the codeunit';
+                ToolTip = 'Runs the codeunit';
                 Scope = Repeater;
 
                 trigger OnAction()
                 begin
-                    Rec.Start();
+                    Rec.Run();
                 end;
             }
+            action(LogEntries)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Caption = 'Log';
+                Image = Entries;
+                ToolTip = 'Shows the log';
+                Scope = Repeater;
+                RunObject = page "PerfTool Log Entries WPT";
+                RunPageLink = Identifier = field(SystemId);
+                RunPageView = sorting(Id) order(descending);
+            }
         }
+
     }
 }

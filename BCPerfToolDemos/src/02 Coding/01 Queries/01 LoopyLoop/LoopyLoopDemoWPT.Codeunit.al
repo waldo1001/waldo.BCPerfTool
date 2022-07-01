@@ -1,5 +1,5 @@
 #pragma warning disable
-codeunit 62202 "LoopyLoop Demo WLD WPT"
+codeunit 62202 "LoopyLoop Demo WPT"
 {
     trigger OnRun()
     var
@@ -27,21 +27,4 @@ codeunit 62202 "LoopyLoop Demo WLD WPT"
                     until SalesInvoiceHeader.Next() < 1;
             until Customer.Next() < 1;
     end;
-
-    #region LoopWithQuery
-    // procedure LoopWithQuery()
-    // var
-    //     NestedLoopWLD: Query "NestedLoop WLD";
-    // begin
-    //     SelectLatestVersion();
-
-    //     NestedLoopWLD.Open();
-
-    //     while NestedLoopWLD.Read() do begin
-    //         //do something
-    //     end;
-
-    //     NestedLoopWLD.Close();
-    // end;
-    #endregion LoopWithQuery
 }

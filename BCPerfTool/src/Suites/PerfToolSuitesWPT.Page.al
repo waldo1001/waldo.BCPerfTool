@@ -45,6 +45,18 @@ page 62102 "PerfTool Suites WPT"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
+                Image = Group;
+            }
+            action(LogEntries)
+            {
+                Caption = 'Log Entries';
+                ToolTip = 'Opens the log entries.';
+                ApplicationArea = All;
+                RunObject = page "PerfTool Log Entries WPT";
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Log;
             }
         }
     }

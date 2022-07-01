@@ -8,7 +8,7 @@ codeunit 62201 "Install Demos WPT"
         FillData();
     end;
 
-    local procedure FillSuite()
+    procedure FillSuite()
     var
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
@@ -19,7 +19,8 @@ codeunit 62201 "Install Demos WPT"
 
         CreatePerfToolDataLibraryWPT.CreateGroup('2.CODING', 'Coding 4 Performance', PerfToolGroupWPT);
         CreatePerfToolDataLibraryWPT.CreateSuite('1.QUERIES', 'Query Handling', PerfToolGroupWPT, PerfToolSuiteHeaderWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopyLoop Demo WLD WPT", PerfToolSuiteLineWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopyLoop Demo WPT", PerfToolSuiteLineWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopWithQuery WPT", PerfToolSuiteLineWPT);
     end;
 
     local procedure FillData()

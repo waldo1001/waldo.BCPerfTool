@@ -15,9 +15,16 @@ table 62100 "PerfTool Suite Line WPT"
             Caption = 'Line No.';
             DataClassification = CustomerContent;
         }
-        field(3; "Codeunit ID"; Integer)
+        field(7; "Object Type"; Option)
         {
-            Caption = 'Codeunit ID';
+            Caption = 'Object Type to Run';
+            InitValue = "Codeunit";
+            OptionCaption = ',Table,,Report,,Codeunit,,,Page,Query,';
+            OptionMembers = ,"Table",,"Report",,"Codeunit",,,"Page","Query",;
+        }
+        field(4; "Object ID"; Integer)
+        {
+            Caption = 'Object ID';
             TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = CONST(Codeunit));
             DataClassification = CustomerContent;
 
@@ -26,19 +33,21 @@ table 62100 "PerfTool Suite Line WPT"
                 CodeunitMetadata: Record "CodeUnit Metadata";
                 BCPTLookupRoles: Page "Lookup Codeunits WPT";
             begin
+                if "Object Type" <> "Object Type"::Codeunit then exit;
+
                 BCPTLookupRoles.LookupMode := true;
                 if BCPTLookupRoles.RunModal() = ACTION::LookupOK then begin
                     BCPTLookupRoles.GetRecord(CodeunitMetadata);
-                    Validate("Codeunit ID", CodeunitMetadata.ID);
+                    Validate("Object ID", CodeunitMetadata.ID);
                 end;
             end;
         }
-        field(4; "Codeunit Name"; Text[249])
+        field(5; "Object Name"; Text[249])
         {
-            Caption = 'Codeunit Name';
+            Caption = 'Object Name';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = CONST(Codeunit), "Object ID" = field("Codeunit ID")));
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
         }
 
     }
@@ -49,22 +58,15 @@ table 62100 "PerfTool Suite Line WPT"
         {
             Clustered = true;
         }
-        key(CU; "PerfTool Code", "Codeunit ID")
+        key(CU; "PerfTool Code", "Object ID")
         {
         }
     }
 
-    procedure Start()
+    procedure Run()
     var
-        PerfToolImplWPT: Codeunit "PerfTool Impl. WPT";
+        RunSuiteLineMethWPT: Codeunit "Run SuiteLine Meth WPT";
     begin
-        PerfToolImplWPT.Start(REc."Codeunit Name");
-    end;
-
-    procedure Stop()
-    var
-        PerfToolImplWPT: Codeunit "PerfTool Impl. WPT";
-    begin
-        PerfToolImplWPT.Stop();
+        RunSuiteLineMethWPT.Run(Rec);
     end;
 }
