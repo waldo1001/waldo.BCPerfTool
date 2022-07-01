@@ -13,12 +13,38 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         PerfToolGroupWPT.Insert(true);
     end;
 
-    procedure CreateSuite(SuiteCode: Code[20]; Description: Text[100]; PerfToolGroupWPT: Record "PerfTool Group WPT"; var PerfToolSuiteHeader: Record "PerfTool Suite Header WPT";)
+    procedure CreateSuite(SuiteCode: Code[10]; Description: Text[50]; PerfToolGroupWPT: Record "PerfTool Group WPT"; var PerfToolSuiteHeader: Record "PerfTool Suite Header WPT")
     begin
         PerfToolSuiteHeader.Init();
 
         if PerfToolSuiteHeader.Get(SuiteCode) then exit;
 
+        PerfToolSuiteHeader.Code := SuiteCode;
+        PerfToolSuiteHeader.Description := Description;
+        PerfToolSuiteHeader."Group Code" := PerfToolGroupWPT.Code;
+        PerfToolSuiteHeader.Insert(true);
+    end;
 
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; CodeunitId: Integer; var Line: Record "PerfTool Suite Line WPT")
+    var
+        LineNo: Integer;
+    begin
+        Line.Reset();
+        Line.SetRange("PerfTool Code", Header.Code);
+        Line.SetRange("Codeunit ID", CodeunitId);
+        if not line.IsEmpty then exit;
+
+        Line.SetRange("PerfTool Code", Header.Code);
+        if Line.FindLast() then
+            LineNo := Line."Line No." + 10000
+        else
+            LineNo := 10000;
+
+        Line.Init();
+
+        Line."PerfTool Code" := Header.Code;
+        Line."Line No." := LineNo;
+        Line."Codeunit ID" := CodeunitId;
+        Line.Insert(true);
     end;
 }

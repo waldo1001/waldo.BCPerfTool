@@ -6,6 +6,11 @@
             "id": "AS0084",
             "action": "None",
             "justification": "Number Range"
+        },
+        {
+            "id": "AA0072",
+            "action": "None",
+            "justification": "Variable naming - pointless"
         }
     ]
 }

@@ -49,6 +49,9 @@ table 62100 "PerfTool Suite Line WPT"
         {
             Clustered = true;
         }
+        key(CU; "PerfTool Code", "Codeunit ID")
+        {
+        }
     }
 
     procedure Start()
