@@ -1,6 +1,8 @@
 table 62102 "PerfTool Log Entry WPT"
 {
     DataClassification = CustomerContent;
+    LookupPageId = "PerfTool Log Entries WPT";
+    DrillDownPageId = "PerfTool Log Entries WPT";
 
     fields
     {

@@ -15,4 +15,9 @@ codeunit 62100 "PerfTool WPT"
     begin
         PerfToolImplWPT.Stop();
     end;
+
+    procedure Run(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer)
+    begin
+        PerfToolImplWPT.Run();
+    end;
 }

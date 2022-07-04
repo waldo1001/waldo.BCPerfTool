@@ -25,22 +25,8 @@ table 62100 "PerfTool Suite Line WPT"
         field(4; "Object ID"; Integer)
         {
             Caption = 'Object ID';
-            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = CONST(Codeunit));
+            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = field("Object Type"));
             DataClassification = CustomerContent;
-
-            trigger OnLookup()
-            var
-                CodeunitMetadata: Record "CodeUnit Metadata";
-                BCPTLookupRoles: Page "Lookup Codeunits WPT";
-            begin
-                if "Object Type" <> "Object Type"::Codeunit then exit;
-
-                BCPTLookupRoles.LookupMode := true;
-                if BCPTLookupRoles.RunModal() = ACTION::LookupOK then begin
-                    BCPTLookupRoles.GetRecord(CodeunitMetadata);
-                    Validate("Object ID", CodeunitMetadata.ID);
-                end;
-            end;
         }
         field(5; "Object Name"; Text[249])
         {
@@ -48,6 +34,11 @@ table 62100 "PerfTool Suite Line WPT"
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
+        }
+        field(10; SelectLatestVersion; Boolean)
+        {
+            Caption = 'SelectLatestVersion';
+            DataClassification = CustomerContent;
         }
 
     }
@@ -63,10 +54,10 @@ table 62100 "PerfTool Suite Line WPT"
         }
     }
 
-    procedure Run()
+    procedure Run(ShowResults: Boolean)
     var
         RunSuiteLineMethWPT: Codeunit "Run SuiteLine Meth WPT";
     begin
-        RunSuiteLineMethWPT.Run(Rec);
+        RunSuiteLineMethWPT.Run(Rec, ShowResults);
     end;
 }

@@ -39,5 +39,18 @@ codeunit 62101 "PerfTool Impl. WPT"
         PerfToolLogEntryWPT.Message := Message;
     end;
 
+    procedure RunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer) Result: Boolean
+    var
+        RunObjectWPT: Codeunit "RunObject WPT";
+    begin
+        PerfToolTriggersWPT.OnBeforeRunObject(Identifier, ObjType, ObjId);
 
+        Start(Identifier);
+
+        Result := RunObjectWPT.RunObject(ObjType, ObjId);
+
+        Stop();
+
+        PerfToolTriggersWPT.OnAfterRunObject(Identifier, ObjType, ObjId);
+    end;
 }

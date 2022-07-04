@@ -5,8 +5,6 @@ codeunit 62203 "LoopWithQuery WPT"
     var
         NestedLoopWLD: Query "NestedLoop WPT";
     begin
-        SelectLatestVersion();
-
         NestedLoopWLD.Open();
 
         while NestedLoopWLD.Read() do begin

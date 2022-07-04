@@ -30,6 +30,11 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
     end;
 
     procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; CodeunitId: Integer; var Line: Record "PerfTool Suite Line WPT")
+    begin
+        CreateSuiteLine(Header, CodeunitId, false, Line);
+    end;
+
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; CodeunitId: Integer; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
     var
         LineNo: Integer;
     begin
@@ -50,6 +55,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         Line."PerfTool Code" := Header.Code;
         Line."Line No." := LineNo;
         Line."Object ID" := CodeunitId;
+        line.SelectLatestVersion := SelectLatestVersion;
         Line.Insert(true);
 
         Commit();

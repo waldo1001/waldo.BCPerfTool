@@ -21,4 +21,14 @@ codeunit 62102 "PerfTool Triggers WPT"
     procedure OnAfterStop()
     begin
     end;
+
+    [IntegrationEvent(true, false)]
+    procedure OnBeforeRunObject(var Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer)
+    begin
+    end;
+
+    [IntegrationEvent(true, false)]
+    procedure OnAfterRunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer)
+    begin
+    end;
 }

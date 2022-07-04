@@ -33,5 +33,14 @@ page 62104 "PerfTool Suite WPT"
             }
 
         }
+        area(FactBoxes)
+        {
+            part(Log; "PerfTool Log FactBox WPT")
+            {
+                ApplicationArea = All;
+                Provider = SuiteLines;
+                SubPageLink = Identifier = field(SystemId);
+            }
+        }
     }
 }

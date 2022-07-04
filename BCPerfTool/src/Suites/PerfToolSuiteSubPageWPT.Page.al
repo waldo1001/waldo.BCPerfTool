@@ -23,9 +23,19 @@ page 62103 "PerfTool Suite SubPage WPT"
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
                 }
-                field("Codeunit ID"; Rec."Object ID")
+                field(SelectLatestVersion; Rec.SelectLatestVersion)
                 {
-                    ToolTip = 'Specifies the value of the Codeunit ID field.';
+                    ToolTip = 'Specifies if the cache should be used or not.';
+                    ApplicationArea = All;
+                }
+                field("Object Type"; Rec."Object Type")
+                {
+                    ToolTip = 'Specifies the value of the Object Type field.';
+                    ApplicationArea = All;
+                }
+                field("Object ID"; Rec."Object ID")
+                {
+                    ToolTip = 'Specifies the value of the Object ID field.';
                     ApplicationArea = All;
                 }
                 field("PerfTool Code"; Rec."PerfTool Code")
@@ -54,7 +64,8 @@ page 62103 "PerfTool Suite SubPage WPT"
 
                 trigger OnAction()
                 begin
-                    Rec.Run();
+                    Rec.Run(false);
+                    CurrPage.Update(false);
                 end;
             }
             action(LogEntries)

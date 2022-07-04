@@ -19,8 +19,8 @@ codeunit 62201 "Install Demos WPT"
 
         CreatePerfToolDataLibraryWPT.CreateGroup('2.CODING', 'Coding 4 Performance', PerfToolGroupWPT);
         CreatePerfToolDataLibraryWPT.CreateSuite('1.QUERIES', 'Query Handling', PerfToolGroupWPT, PerfToolSuiteHeaderWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopyLoop Demo WPT", PerfToolSuiteLineWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopWithQuery WPT", PerfToolSuiteLineWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopyLoop Demo WPT", true, PerfToolSuiteLineWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, codeunit::"LoopWithQuery WPT", true, PerfToolSuiteLineWPT);
     end;
 
     local procedure FillData()
