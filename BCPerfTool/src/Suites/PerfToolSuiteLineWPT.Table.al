@@ -54,10 +54,35 @@ table 62100 "PerfTool Suite Line WPT"
         }
     }
 
+    trigger OnDelete()
+    begin
+        ClearLog();
+    end;
+
     procedure Run(ShowResults: Boolean)
     var
         RunSuiteLineMethWPT: Codeunit "Run SuiteLine Meth WPT";
     begin
         RunSuiteLineMethWPT.Run(Rec, ShowResults);
     end;
+
+    procedure ClearLog()
+    var
+        PerfToolLogEntryWPT: Record "PerfTool Log Entry WPT";
+    begin
+        PerfToolLogEntryWPT.SetRange(Identifier, Rec.SystemId);
+        PerfToolLogEntryWPT.ClearFilteredRecords();
+    end;
+
+    procedure CurrentTag(): Text[249]
+    var
+        PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
+    begin
+        If not PerfToolSuiteHeaderWPT.get(Rec."PerfTool Code") then exit('');
+        if PerfToolSuiteHeaderWPT.CurrentTag <> '' then exit(PerfToolSuiteHeaderWPT.CurrentTag);
+        CalcFields("Object Name");
+        exit("Object Name");
+    end;
+
+
 }

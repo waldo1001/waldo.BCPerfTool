@@ -20,6 +20,11 @@ table 62101 "PerfTool Suite Header WPT"
             DataClassification = CustomerContent;
             TableRelation = "PerfTool Group WPT".Code;
         }
+        field(10; CurrentTag; Text[50])
+        {
+            Caption = 'Current Tag';
+            DataClassification = CustomerContent;
+        }
 
     }
 
@@ -30,4 +35,17 @@ table 62101 "PerfTool Suite Header WPT"
             Clustered = true;
         }
     }
+
+    trigger OnDelete()
+    begin
+        DeleteLines(Rec);
+    end;
+
+    local procedure DeleteLines(Rec: Record "PerfTool Suite Header WPT")
+    var
+        PerfToolSuiteLineWPT: Record "PerfTool Suite Line WPT";
+    begin
+        PerfToolSuiteLineWPT.SetRange("PerfTool Code", Rec.Code);
+        PerfToolSuiteLineWPT.DeleteAll(true);
+    end;
 }

@@ -3,7 +3,7 @@ codeunit 62102 "PerfTool Triggers WPT"
     Access = public;
 
     [IntegrationEvent(true, false)]
-    procedure OnBeforeStart(var Identifier: Guid)
+    procedure OnBeforeStart(var Identifier: Guid; var Tag: Text[249]; AlternativeKey: Text[250])
     begin
     end;
 

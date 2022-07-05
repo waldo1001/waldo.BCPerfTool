@@ -1,7 +1,7 @@
 page 62104 "PerfTool Suite WPT"
 {
     Caption = 'PerfTool Suite';
-    PageType = Document;
+    PageType = ListPlus;
     SourceTable = "PerfTool Suite Header WPT";
 
     layout
@@ -25,22 +25,54 @@ page 62104 "PerfTool Suite WPT"
                     ToolTip = 'Specifies the value of the Group Code field.';
                     ApplicationArea = All;
                 }
+                field(CurrentTag; Rec.CurrentTag)
+                {
+                    ToolTip = 'Specifies the value of the Current Tag field.';
+                    ApplicationArea = All;
+                }
             }
-            part(SuiteLines; "PerfTool Suite SubPage WPT")
+            group(Lines)
             {
-                ApplicationArea = All;
-                SubPageLink = "PerfTool Code" = Field(Code);
-            }
+                group(Left)
+                {
+                    ShowCaption = false;
 
-        }
-        area(FactBoxes)
-        {
-            part(Log; "PerfTool Log FactBox WPT")
-            {
-                ApplicationArea = All;
-                Provider = SuiteLines;
-                SubPageLink = Identifier = field(SystemId);
+                    part(SuiteLines; "PerfTool Suite SubPage WPT")
+                    {
+                        ApplicationArea = All;
+                        SubPageLink = "PerfTool Code" = Field(Code);
+                    }
+                }
+                group(Right)
+                {
+                    ShowCaption = false;
+
+                    part(Logs1; "PerfTool Log SubPage WPT")
+                    {
+                        Caption = 'Logs';
+                        ApplicationArea = All;
+                        Provider = SuiteLines;
+                        SubPageLink = Identifier = field(SystemId);
+                    }
+                    part(Logs2; "PerfTool Log SubPage WPT")
+                    {
+                        Caption = 'All Logs';
+                        ApplicationArea = All;
+                        SubPageLink = AlternativeKey = field(Code);
+                    }
+                }
+
             }
         }
+
+        // area(FactBoxes)
+        // {
+        //     part(Log; "PerfTool Log FactBox WPT")
+        //     {
+        //         ApplicationArea = All;
+        //         Provider = SuiteLines;
+        //         SubPageLink = Identifier = field(SystemId);
+        //     }
+        // }
     }
 }

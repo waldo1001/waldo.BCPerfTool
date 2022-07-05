@@ -1,6 +1,6 @@
 page 62103 "PerfTool Suite SubPage WPT"
 {
-    Caption = 'PerfTool Suite SubPage';
+    Caption = 'PerfTool Suite Lines';
     PageType = ListPart;
     SourceTable = "PerfTool Suite Line WPT";
     AutoSplitKey = true;
@@ -11,6 +11,7 @@ page 62103 "PerfTool Suite SubPage WPT"
         {
             repeater(General)
             {
+
                 field("Line No."; Rec."Line No.")
                 {
                     ToolTip = 'Specifies the value of the Line No. field.';
@@ -22,6 +23,19 @@ page 62103 "PerfTool Suite SubPage WPT"
                 {
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
+                }
+                field(RunFld; RunLbl)
+                {
+                    Caption = 'Run';
+                    ToolTip = 'Runs the object';
+                    ApplicationArea = All;
+                    Editable = false;
+                    Width = 1;
+
+                    trigger OnDrillDown()
+                    begin
+                        Rec.Run(False);
+                    end;
                 }
                 field(SelectLatestVersion; Rec.SelectLatestVersion)
                 {
@@ -82,7 +96,25 @@ page 62103 "PerfTool Suite SubPage WPT"
                 RunPageLink = Identifier = field(SystemId);
                 RunPageView = sorting(Id) order(descending);
             }
+            action(ClearLogEntries)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Caption = 'Clear Log';
+                Image = Delete;
+                ToolTip = 'Clears the log for this line';
+                Scope = Repeater;
+
+                trigger OnAction()
+                begin
+                    Rec.ClearLog();
+                end;
+            }
         }
 
     }
+    var
+        RunLbl: Label '▶️';
 }

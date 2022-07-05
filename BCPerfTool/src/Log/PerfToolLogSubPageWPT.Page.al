@@ -1,6 +1,6 @@
-page 62106 "PerfTool Log FactBox WPT"
+page 62106 "PerfTool Log SubPage WPT"
 {
-    Caption = 'PerfTool Log FactBox';
+    Caption = 'PerfTool Log';
     PageType = ListPart;
     SourceTable = "PerfTool Log Entry WPT";
     SourceTableView = sorting(Id) order(descending);
@@ -18,22 +18,24 @@ page 62106 "PerfTool Log FactBox WPT"
                 {
                     ToolTip = 'Specifies the value of the SQL Rows Read field.';
                     ApplicationArea = All;
+                    Width = 1;
                 }
                 field(SqlStatementsExecuted; Rec.SqlStatementsExecuted)
                 {
                     ToolTip = 'Specifies the value of the Sql Statements Executed field.';
                     ApplicationArea = All;
+                    Width = 1;
                 }
                 field(TestDuration; Rec.TestDuration)
                 {
                     ToolTip = 'Specifies the value of the Duration field.';
                     ApplicationArea = All;
+                    Width = 10;
                 }
                 field(StartTime; Rec.StartTime)
                 {
                     ToolTip = 'Specifies the value of the StartTime field.';
                     ApplicationArea = All;
-                    Visible = false;
                 }
                 field(StopTime; Rec.StopTime)
                 {
@@ -59,6 +61,12 @@ page 62106 "PerfTool Log FactBox WPT"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(Tag; Rec.Tag)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Tag field.';
+                }
+
             }
         }
     }
@@ -85,6 +93,21 @@ page 62106 "PerfTool Log FactBox WPT"
                     PerfToolLogEntryWPT.CopyFilters(Rec);
 
                     Page.Run(0, PerfToolLogEntryWPT);
+                end;
+            }
+            action("Clear")
+            {
+                Caption = 'Clear';
+                ToolTip = 'Clears the log entries.';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Delete;
+
+                trigger OnAction()
+                begin
+                    Rec.ClearFilteredRecords();
                 end;
             }
         }

@@ -54,6 +54,17 @@ table 62102 "PerfTool Log Entry WPT"
             Caption = 'App Insights Event Id';
             DataClassification = CustomerContent;
         }
+        field(50; Tag; Text[249])
+        {
+            Caption = 'Tag';
+            DataClassification = CustomerContent;
+        }
+        field(60; AlternativeKey; Text[250])
+        {
+            Caption = 'Altrnative Key';
+            DataClassification = CustomerContent;
+        }
+
 
     }
     keys
@@ -64,6 +75,8 @@ table 62102 "PerfTool Log Entry WPT"
         }
         key(Identifier; Identifier) { }
         key(Time; StartTime) { }
+        key(Tag; Tag) { }
+        key(AlternativeKey; AlternativeKey) { }
     }
 
     procedure LogToAppInsights()
@@ -71,5 +84,10 @@ table 62102 "PerfTool Log Entry WPT"
         PerfToolLogAppInsMethWPT: Codeunit "PerfTool LogAppIns Meth WPT";
     begin
         PerfToolLogAppInsMethWPT.LogAppInsights(Rec);
+    end;
+
+    procedure ClearFilteredRecords()
+    begin
+        DeleteAll(true);
     end;
 }

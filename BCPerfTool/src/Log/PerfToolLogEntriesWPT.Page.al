@@ -65,4 +65,25 @@ page 62105 "PerfTool Log Entries WPT"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Clear")
+            {
+                Caption = 'Clear';
+                ToolTip = 'Clears the log entries.';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Delete;
+
+                trigger OnAction()
+                begin
+                    Rec.ClearFilteredRecords();
+                end;
+            }
+        }
+    }
 }
