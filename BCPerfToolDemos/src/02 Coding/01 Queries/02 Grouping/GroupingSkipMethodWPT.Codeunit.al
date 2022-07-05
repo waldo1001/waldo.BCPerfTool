@@ -25,5 +25,6 @@ codeunit 62209 "Grouping - Skip Method WPT"
             JustSomeTable.SetRange("Color"); //reset color filter
         until JustSomeTable.Next() = 0;
 
+        page.Run(page::"GroupingResult List WPT");
     end;
 }

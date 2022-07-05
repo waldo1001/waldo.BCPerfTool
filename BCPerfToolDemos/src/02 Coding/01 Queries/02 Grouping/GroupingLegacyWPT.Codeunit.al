@@ -38,6 +38,8 @@ codeunit 62207 "Grouping - Legacy WPT"
                 GroupingResult.insert();
             until TempGroupingResult.next() = 0;
 
+        page.Run(page::"GroupingResult List WPT");
+
     end;
 
     local procedure InsertTempGroupingResult(var TempGroupingResult: Record "GroupingResult WPT" temporary; Color: Code[10]; Qty: Decimal; Cnt: Integer)

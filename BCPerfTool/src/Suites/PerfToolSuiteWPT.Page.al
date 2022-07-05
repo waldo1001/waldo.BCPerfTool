@@ -65,14 +65,33 @@ page 62104 "PerfTool Suite WPT"
             }
         }
 
-        // area(FactBoxes)
-        // {
-        //     part(Log; "PerfTool Log FactBox WPT")
-        //     {
-        //         ApplicationArea = All;
-        //         Provider = SuiteLines;
-        //         SubPageLink = Identifier = field(SystemId);
-        //     }
-        // }
+    }
+    actions
+    {
+        area(Navigation)
+        {
+            action("Active Sessions")
+            {
+                Caption = 'Active Sessions';
+                ToolTip = 'Shows the current active sessions';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = List;
+                RunObject = page "Active Sessions WPT";
+            }
+            action("Scheduled Tasks")
+            {
+                Caption = 'Scheduled Tasks';
+                ToolTip = 'Shows the current Scheduled Tasks';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = TaskList;
+                RunObject = page "Scheduled Tasks WPT";
+            }
+        }
     }
 }

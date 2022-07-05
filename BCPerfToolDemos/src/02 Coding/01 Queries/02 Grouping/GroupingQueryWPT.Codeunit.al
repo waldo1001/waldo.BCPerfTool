@@ -19,5 +19,6 @@ codeunit 62208 "Grouping - Query WPT"
 
         GroupingJustSomeTable.Close();
 
+        page.Run(page::"GroupingResult List WPT");
     end;
 }
