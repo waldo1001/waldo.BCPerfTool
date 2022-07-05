@@ -4,7 +4,7 @@ table 62100 "PerfTool Suite Line WPT"
 
     fields
     {
-        field(1; "PerfTool Code"; Code[10])
+        field(1; "PerfTool Code"; Code[20])
         {
             Caption = 'Code';
             DataClassification = CustomerContent;
@@ -79,10 +79,13 @@ table 62100 "PerfTool Suite Line WPT"
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
     begin
         If not PerfToolSuiteHeaderWPT.get(Rec."PerfTool Code") then exit('');
-        if PerfToolSuiteHeaderWPT.CurrentTag <> '' then exit(PerfToolSuiteHeaderWPT.CurrentTag);
+
         CalcFields("Object Name");
+
+        if PerfToolSuiteHeaderWPT.CurrentTag <> '' then
+            exit(PerfToolSuiteHeaderWPT.CurrentTag + ' - ' + copystr("Object Name", 1, 196));
+
         exit("Object Name");
     end;
-
 
 }

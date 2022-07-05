@@ -6,6 +6,7 @@ page 62102 "PerfTool Suites WPT"
     SourceTable = "PerfTool Suite Header WPT";
     UsageCategory = Lists;
     CardPageId = "PerfTool Suite WPT";
+    SourceTableView = sorting("Group Code", Code);
 
     layout
     {

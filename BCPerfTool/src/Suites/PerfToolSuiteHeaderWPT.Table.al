@@ -4,7 +4,7 @@ table 62101 "PerfTool Suite Header WPT"
 
     fields
     {
-        field(1; "Code"; Code[10])
+        field(1; "Code"; Code[20])
         {
             Caption = 'Code';
             DataClassification = CustomerContent;
@@ -34,6 +34,7 @@ table 62101 "PerfTool Suite Header WPT"
         {
             Clustered = true;
         }
+        key(Group; "Group Code") { }
     }
 
     trigger OnDelete()

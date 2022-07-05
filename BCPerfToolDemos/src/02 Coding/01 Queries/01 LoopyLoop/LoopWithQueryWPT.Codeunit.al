@@ -3,14 +3,14 @@ codeunit 62203 "LoopWithQuery WPT"
 {
     trigger OnRun()
     var
-        NestedLoopWLD: Query "NestedLoop WPT";
+        NestedLoopWPT: Query "NestedLoop WPT";
     begin
-        NestedLoopWLD.Open();
+        NestedLoopWPT.Open();
 
-        while NestedLoopWLD.Read() do begin
+        while NestedLoopWPT.Read() do begin
             //do something
         end;
 
-        NestedLoopWLD.Close();
+        NestedLoopWPT.Close();
     end;
 }

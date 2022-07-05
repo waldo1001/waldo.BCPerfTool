@@ -4,7 +4,7 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
     {
         addfirst(Processing)
         {
-            action("Import Demo Data WPT")
+            action("Reset Demos WPT")
             {
                 ApplicationArea = All;
                 Promoted = true;
@@ -16,9 +16,12 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
 
                 trigger OnAction()
                 var
-                    InstallDemosWPT: Codeunit "Install Demos WPT";
+                    ResetDemoDataWPT: Report "Reset Demo Data WPT";
+                    InstallSuitesWPT: Codeunit "Install Suites WPT";
                 begin
-                    InstallDemosWPT.FillSuite();
+                    InstallSuitesWPT.ResetAll();
+                    InstallSuitesWPT.FillSuite();
+                    ResetDemoDataWPT.RunModal();
                 end;
             }
         }

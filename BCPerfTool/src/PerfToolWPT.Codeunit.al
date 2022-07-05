@@ -20,4 +20,9 @@ codeunit 62100 "PerfTool WPT"
     begin
         PerfToolImplWPT.Run();
     end;
+
+    procedure IsStarted(): Boolean
+    begin
+        exit(PerfToolImplWPT.IsStarted());
+    end;
 }

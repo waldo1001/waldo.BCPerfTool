@@ -1,2 +1,2 @@
 TODO: 
-Clear log
+Run Profile and save to log

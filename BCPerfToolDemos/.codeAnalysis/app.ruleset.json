@@ -11,6 +11,11 @@
             "id": "AA0072",
             "action": "None",
             "justification": "Variable naming - pointless"
+        },
+        {
+            "id": "AA0217",
+            "action": "None",
+            "justification": "Use a text constant or label for format string in StrSubstNo - pointless"
         }
     ]
 }

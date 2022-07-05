@@ -6,6 +6,7 @@ codeunit 62101 "PerfTool Impl. WPT"
     var
         PerfToolLogEntryWPT: Record "PerfTool Log Entry WPT";
         PerfToolTriggersWPT: Codeunit "PerfTool Triggers WPT";
+        IsStartedBln: Boolean;
 
     procedure Start(Identifier: Guid)
     begin
@@ -20,6 +21,8 @@ codeunit 62101 "PerfTool Impl. WPT"
 
         PerfToolStartLogWPT.Start(Identifier, PerfToolLogEntryWPT, AppInsightsEventId, Tag, AlternativeKey);
 
+        IsStartedBln := true;
+
         PerfToolTriggersWPT.OnAfterStart(Identifier);
     end;
 
@@ -27,11 +30,20 @@ codeunit 62101 "PerfTool Impl. WPT"
     var
         PerfToolStopLogWPT: Codeunit "PerfTool Stop Log WPT";
     begin
+        if not IsStartedBln then exit;
+
         PerfToolTriggersWPT.OnBeforeStop();
 
         PerfToolStopLogWPT.Stop(PerfToolLogEntryWPT);
 
+        IsStartedBln := false;
+
         PerfToolTriggersWPT.OnAfterStop();
+    end;
+
+    procedure IsStarted(): Boolean
+    begin
+        exit(IsStartedBln);
     end;
 
     procedure SetMessage(Message: Text[2048])
@@ -51,7 +63,7 @@ codeunit 62101 "PerfTool Impl. WPT"
         If Success then
             SetMessage('Success')
         else
-            SetMessage(GetLastErrorText().Substring(1, 2040));
+            SetMessage(copystr(GetLastErrorText(), 1, 2040));
 
         Stop();
 

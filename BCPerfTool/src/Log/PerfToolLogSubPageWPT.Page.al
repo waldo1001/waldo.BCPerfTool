@@ -14,6 +14,13 @@ page 62106 "PerfTool Log SubPage WPT"
         {
             repeater(Entries)
             {
+                field(Id; Rec.Id)
+                {
+                    ToolTip = 'Specifies the value of the Id field.';
+                    ApplicationArea = All;
+                    Width = 1;
+                }
+
                 field(SqlRowsRead; Rec.SqlRowsRead)
                 {
                     ToolTip = 'Specifies the value of the SQL Rows Read field.';

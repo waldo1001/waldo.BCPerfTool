@@ -16,8 +16,8 @@ page 62103 "PerfTool Suite SubPage WPT"
                 {
                     ToolTip = 'Specifies the value of the Line No. field.';
                     ApplicationArea = All;
-                    Visible = false;
                     Editable = false;
+                    Visible = false;
                 }
                 field("Object Name"; Rec."Object Name")
                 {
@@ -35,6 +35,7 @@ page 62103 "PerfTool Suite SubPage WPT"
                     trigger OnDrillDown()
                     begin
                         Rec.Run(False);
+                        CurrPage.Update(false);
                     end;
                 }
                 field(SelectLatestVersion; Rec.SelectLatestVersion)
