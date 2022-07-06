@@ -23,6 +23,22 @@ page 62103 "PerfTool Suite SubPage WPT"
                 {
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
+
+                    trigger OnDrillDown()
+                    begin
+                        case Rec."Object Type" of
+                            Rec."Object Type"::Table:
+                                Hyperlink(GetUrl(CLIENTTYPE::Web, CompanyName, ObjectType::Table, Rec."Object ID"));
+                            Rec."Object Type"::Codeunit:
+                                Hyperlink(GetUrl(CLIENTTYPE::Web, CompanyName, ObjectType::Codeunit, Rec."Object ID"));
+                            Rec."Object Type"::Page:
+                                Hyperlink(GetUrl(CLIENTTYPE::Web, CompanyName, ObjectType::Page, Rec."Object ID"));
+                            Rec."Object Type"::Query:
+                                Hyperlink(GetUrl(CLIENTTYPE::Web, CompanyName, ObjectType::Query, Rec."Object ID"));
+                            Rec."Object Type"::Report:
+                                Hyperlink(GetUrl(CLIENTTYPE::Web, CompanyName, ObjectType::Report, Rec."Object ID"));
+                        end;
+                    end;
                 }
                 field(RunFld; RunLbl)
                 {
