@@ -53,6 +53,10 @@ table 62202 "Just Some Table WPT"
         {
             Caption = 'Country 3';
         }
+        field(20; DateCreated; Date)
+        {
+            Caption = 'Date Created';
+        }
     }
 
     keys
@@ -112,6 +116,7 @@ table 62202 "Just Some Table WPT"
         JustSomeTable.Country := GetRandomCountry();
         JustSomeTable."Country 2" := JustSomeTable.Country;
         JustSomeTable."Country 3" := JustSomeTable.Country;
+        JustSomeTable.DateCreated := CalcDate('<-10D>', WorkDate());
         JustSomeTable.Insert(false);
 
         InsertColorIfNecessary(JustSomeTable.Color);
