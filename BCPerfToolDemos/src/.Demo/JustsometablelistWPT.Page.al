@@ -42,6 +42,11 @@ page 62204 "Just some table list WPT"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Country field.';
                 }
+                field(DateCreated; Rec.DateCreated)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Date Created field.';
+                }
             }
         }
     }

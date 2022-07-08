@@ -34,6 +34,10 @@ codeunit 62201 "Install Suites WPT"
         Library.CreateSuiteLine(WPTSuite, WPTSuiteLine."Object Type"::Codeunit, Codeunit::"Grouping - Query WPT", false, WPTSuiteLine);
         Library.CreateSuiteLine(WPTSuite, WPTSuiteLine."Object Type"::Codeunit, Codeunit::"Grouping - Skip Method WPT", false, WPTSuiteLine);
 
+        Library.CreateSuite(WPTGroup, '99.RETENTION', 'Reetention Policies', WPTSuite);
+        Library.CreateSuiteLine(WPTSuite, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, WPTSuiteLine);
+
+
     end;
 
     procedure ResetAll()

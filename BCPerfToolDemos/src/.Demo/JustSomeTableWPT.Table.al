@@ -116,7 +116,10 @@ table 62202 "Just Some Table WPT"
         JustSomeTable.Country := GetRandomCountry();
         JustSomeTable."Country 2" := JustSomeTable.Country;
         JustSomeTable."Country 3" := JustSomeTable.Country;
-        JustSomeTable.DateCreated := CalcDate('<-10D>', WorkDate());
+        if Id < 5000 then
+            JustSomeTable.DateCreated := WorkDate()
+        else
+            JustSomeTable.DateCreated := CalcDate('<-10D>', WorkDate());
         JustSomeTable.Insert(false);
 
         InsertColorIfNecessary(JustSomeTable.Color);
