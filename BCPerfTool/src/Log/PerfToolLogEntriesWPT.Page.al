@@ -62,6 +62,11 @@ page 62105 "PerfTool Log Entries WPT"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(Tag; Rec.Tag)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Tag field.';
+                }
             }
         }
     }

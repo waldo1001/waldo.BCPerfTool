@@ -19,7 +19,7 @@ page 62103 "PerfTool Suite SubPage WPT"
                     Editable = false;
                     Visible = false;
                 }
-                field("Object Name"; Rec."Object Name")
+                field("Object Name"; Rec.GetObjectName())
                 {
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
@@ -75,6 +75,17 @@ page 62103 "PerfTool Suite SubPage WPT"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(PerfToolCodeunit; Rec.PerfToolCodeunit)
+                {
+                    ToolTip = 'Specifies the value of the PerfTool Codeunit field.';
+                    ApplicationArea = All;
+                }
+                field("Procedure Name"; Rec."Procedure Name")
+                {
+                    ToolTip = 'Specifies the value of the Procedure field.';
+                    ApplicationArea = All;
+                }
+
             }
         }
     }

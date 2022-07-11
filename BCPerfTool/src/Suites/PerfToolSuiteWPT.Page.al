@@ -68,6 +68,37 @@ page 62104 "PerfTool Suite WPT"
     }
     actions
     {
+        area(Processing)
+        {
+            action("Run All")
+            {
+                Caption = 'Run All';
+                ToolTip = 'Runs all lines once';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = List;
+                trigger OnAction()
+                begin
+                    Rec.RunAll();
+                end;
+            }
+            action("Run All 100 times")
+            {
+                Caption = 'Run All 100 times';
+                ToolTip = 'Runs all lines 100 times';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = List;
+                trigger OnAction()
+                begin
+                    Rec.RunAll(100);
+                end;
+            }
+        }
         area(Navigation)
         {
             action("Active Sessions")

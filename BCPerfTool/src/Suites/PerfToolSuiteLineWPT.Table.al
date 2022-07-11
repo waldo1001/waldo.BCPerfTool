@@ -19,8 +19,8 @@ table 62100 "PerfTool Suite Line WPT"
         {
             Caption = 'Object Type to Run';
             InitValue = "Codeunit";
-            OptionCaption = ',Table,,Report,,Codeunit,,,Page,Query,';
-            OptionMembers = ,"Table",,"Report",,"Codeunit",,,"Page","Query",;
+            OptionCaption = ',Table,,Report,,Codeunit,,,Page,Query,,PerfToolCodeunit';
+            OptionMembers = ,"Table",,"Report",,"Codeunit",,,"Page","Query",,PerfToolCodeunit;
         }
         field(4; "Object ID"; Integer)
         {
@@ -35,6 +35,48 @@ table 62100 "PerfTool Suite Line WPT"
             FieldClass = FlowField;
             CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
         }
+        field(6; PerfToolCodeunit; Enum "PerfToolCodeunit WPT")
+        {
+            Caption = 'PerfTool Codeunit';
+            DataClassification = CustomerContent;
+        }
+        field(8; "Procedure Name"; Text[30])
+        {
+            Caption = 'Procedure';
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
+                ProcDoesntExistErr: label 'Procedurename %1 Doesn''t exist', Comment = '%1 is the procedurename';
+            begin
+                PerfToolCodeunitWPT := Rec.PerfToolCodeunit;
+
+                If not PerfToolCodeunitWPT.GetProcedures().Contains(Rec."Procedure Name") then
+                    Error(ProcDoesntExistErr, Rec."Procedure Name")
+            end;
+
+            trigger OnLookup()
+            var
+                TempProcedureBufferWPT: Record "Procedure Buffer WPT" temporary;
+                PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
+                Procs: list of [Text[30]];
+                Proc: Text[30];
+            begin
+                PerfToolCodeunitWPT := Rec.PerfToolCodeunit;
+                Procs := PerfToolCodeunitWPT.GetProcedures();
+
+                foreach Proc in Procs do begin
+                    TempProcedureBufferWPT."Procedure" := Proc;
+                    TempProcedureBufferWPT.Insert();
+                end;
+
+                If page.RunModal(page::"Procedure Lookup WPT", TempProcedureBufferWPT) = Action::LookupOK then
+                    Rec.Validate("Procedure Name", TempProcedureBufferWPT."Procedure");
+            end;
+        }
+
+
         field(10; SelectLatestVersion; Boolean)
         {
             Caption = 'SelectLatestVersion';
@@ -83,9 +125,17 @@ table 62100 "PerfTool Suite Line WPT"
         CalcFields("Object Name");
 
         if PerfToolSuiteHeaderWPT.CurrentTag <> '' then
-            exit(PerfToolSuiteHeaderWPT.CurrentTag + ' - ' + copystr("Object Name", 1, 196));
+            exit(PerfToolSuiteHeaderWPT.CurrentTag + ' - ' + copystr(GetObjectName(), 1, 196));
 
-        exit("Object Name");
+        exit(GetObjectName());
+    end;
+
+    procedure GetObjectName(): Text
+    begin
+        if Rec."Object Type" = Rec."Object Type"::PerfToolCodeunit then
+            exit(Rec."Procedure Name")
+        else
+            exit(Rec."Object Name");
     end;
 
 }

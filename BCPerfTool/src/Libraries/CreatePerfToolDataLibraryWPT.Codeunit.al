@@ -29,12 +29,17 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         Commit();
     end;
 
-    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjectId: Integer; var Line: Record "PerfTool Suite Line WPT")
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjectId: Integer; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
     begin
-        CreateSuiteLine(Header, ObjType, ObjectId, false, Line);
+        CreateSuiteLine(Header, ObjType, ObjectId, enum::"PerfToolCodeunit WPT"::Default, '', false, Line);
     end;
 
-    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjId: Integer; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
+    begin
+        CreateSuiteLine(Header, ObjType, 0, PerfToolCodeunit, ProcedureName, SelectLatestVersion, Line);
+    end;
+
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjId: Integer; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
     var
         LineNo: Integer;
     begin
@@ -42,6 +47,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         Line.SetRange("PerfTool Code", Header.Code);
         Line.SetRange("Object Type", ObjType);
         Line.SetRange("Object ID", ObjId);
+        line.SetRange("Procedure Name", ProcedureName);
         if not line.IsEmpty then exit;
 
         Line.Reset();
@@ -57,6 +63,8 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         Line."Line No." := LineNo;
         line."Object Type" := ObjType;
         Line."Object ID" := ObjId;
+        line.PerfToolCodeunit := PerfToolCodeunit;
+        line."Procedure Name" := ProcedureName;
         line.SelectLatestVersion := SelectLatestVersion;
         Line.Insert(true);
 

@@ -7,4 +7,5 @@ enum 62100 "Perftool Object Types WPT"
     value(5; Codeunit) { }
     value(8; Page) { }
     value(9; Query) { }
+    value(11; PerftoolCodeunit) { }
 }

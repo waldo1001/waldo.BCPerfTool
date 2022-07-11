@@ -49,4 +49,18 @@ table 62101 "PerfTool Suite Header WPT"
         PerfToolSuiteLineWPT.SetRange("PerfTool Code", Rec.Code);
         PerfToolSuiteLineWPT.DeleteAll(true);
     end;
+
+    procedure RunAll()
+    var
+        RunAllSuiteLinesMethWPT: Codeunit "RunAllSuiteLines Meth WPT";
+    begin
+        RunAllSuiteLinesMethWPT.RunAll(Rec);
+    end;
+
+    procedure RunAll(NumberOfTimes: Integer)
+    var
+        RunAllSuiteLinesBatchMeth: Codeunit "RunAllSuiteLinesBatch Meth WPT";
+    begin
+        RunAllSuiteLinesBatchMeth.RunAll(Rec, NumberOfTimes);
+    end;
 }
