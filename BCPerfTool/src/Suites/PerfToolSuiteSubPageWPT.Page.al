@@ -21,6 +21,7 @@ page 62103 "PerfTool Suite SubPage WPT"
                 }
                 field("Object Name"; Rec.GetObjectName())
                 {
+                    Caption = 'Object Name';
                     ToolTip = 'Specifies the value of the Codeunit Name field.';
                     ApplicationArea = All;
 

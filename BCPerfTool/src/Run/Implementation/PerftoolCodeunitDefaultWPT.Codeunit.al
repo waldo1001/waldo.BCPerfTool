@@ -1,8 +1,8 @@
-codeunit 62118 "PerftooCodeunit - Default WPT" implements "PerfToolCodeunit WPT"
+codeunit 62118 "PerftoolCodeunit - Default WPT" implements "PerfToolCodeunit WPT"
 {
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
-        //Nothing to do
+        error('Nothing to execute - Probably the wrong implementation-codeunit attached!')
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

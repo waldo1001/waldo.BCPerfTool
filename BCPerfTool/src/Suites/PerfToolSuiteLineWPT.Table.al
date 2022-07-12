@@ -19,14 +19,20 @@ table 62100 "PerfTool Suite Line WPT"
         {
             Caption = 'Object Type to Run';
             InitValue = "Codeunit";
-            OptionCaption = ',Table,,Report,,Codeunit,,,Page,Query,,PerfToolCodeunit';
-            OptionMembers = ,"Table",,"Report",,"Codeunit",,,"Page","Query",,PerfToolCodeunit;
+            OptionCaption = ',Table,,Report,,Codeunit,,,Page,Query,';
+            OptionMembers = ,"Table",,"Report",,"Codeunit",,,"Page","Query",;
         }
         field(4; "Object ID"; Integer)
         {
             Caption = 'Object ID';
             TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = field("Object Type"));
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                if not Rec.HasInterfaceImplementation() then
+                    "Procedure Name" := 'OnRun';
+            end;
         }
         field(5; "Object Name"; Text[249])
         {
@@ -50,6 +56,8 @@ table 62100 "PerfTool Suite Line WPT"
                 PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
                 ProcDoesntExistErr: label 'Procedurename %1 Doesn''t exist', Comment = '%1 is the procedurename';
             begin
+                if not Rec.HasInterfaceImplementation() then exit;
+
                 PerfToolCodeunitWPT := Rec.PerfToolCodeunit;
 
                 If not PerfToolCodeunitWPT.GetProcedures().Contains(Rec."Procedure Name") then
@@ -63,6 +71,8 @@ table 62100 "PerfTool Suite Line WPT"
                 Procs: list of [Text[30]];
                 Proc: Text[30];
             begin
+                if not Rec.HasInterfaceImplementation() then exit;
+
                 PerfToolCodeunitWPT := Rec.PerfToolCodeunit;
                 Procs := PerfToolCodeunitWPT.GetProcedures();
 
@@ -130,12 +140,17 @@ table 62100 "PerfTool Suite Line WPT"
         exit(GetObjectName());
     end;
 
-    procedure GetObjectName(): Text
+    procedure GetObjectName(): Text[30]
     begin
-        if Rec."Object Type" = Rec."Object Type"::PerfToolCodeunit then
+        if Rec.HasInterfaceImplementation() then
             exit(Rec."Procedure Name")
         else
-            exit(Rec."Object Name");
+            exit(CopyStr(Rec."Object Name", 1, 30));
+    end;
+
+    procedure HasInterfaceImplementation(): Boolean
+    begin
+        exit(Enum::"PerfToolCodeunit WPT".Ordinals().Contains("Object ID"));
     end;
 
 }

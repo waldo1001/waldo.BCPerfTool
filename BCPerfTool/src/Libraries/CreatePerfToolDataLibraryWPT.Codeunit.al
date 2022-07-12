@@ -13,6 +13,8 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         PerfToolGroupWPT.Insert(true);
 
         Commit();
+
+        OnAfterInsertSuiteGroup(PerfToolGroupWPT);
     end;
 
     procedure CreateSuite(PerfToolGroupWPT: Record "PerfTool Group WPT"; SuiteCode: Code[20]; Description: Text[50]; var PerfToolSuiteHeader: Record "PerfTool Suite Header WPT")
@@ -27,6 +29,8 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         PerfToolSuiteHeader.Insert(true);
 
         Commit();
+
+        OnAfterInsertSuiteHeader(PerfToolGroupWPT, PerfToolSuiteHeader);
     end;
 
     procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjectId: Integer; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
@@ -37,6 +41,18 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
     procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
     begin
         CreateSuiteLine(Header, ObjType, 0, PerfToolCodeunit, ProcedureName, SelectLatestVersion, Line);
+    end;
+
+    procedure CreateSuiteLines(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
+    var
+        PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
+        ProcedureName: Text[30];
+    begin
+        PerfToolCodeunitWPT := PerfToolCodeunit;
+
+        foreach ProcedureName in perftoolcodeunitwpt.GetProcedures() do
+            CreateSuiteLine(Header, ObjType, PerfToolCodeunit.AsInteger(), PerfToolCodeunit, ProcedureName, SelectLatestVersion, Line);
+
     end;
 
     procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjId: Integer; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; var Line: Record "PerfTool Suite Line WPT")
@@ -59,15 +75,33 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
 
         Line.Init();
 
-        Line."PerfTool Code" := Header.Code;
-        Line."Line No." := LineNo;
-        line."Object Type" := ObjType;
-        Line."Object ID" := ObjId;
-        line.PerfToolCodeunit := PerfToolCodeunit;
-        line."Procedure Name" := ProcedureName;
-        line.SelectLatestVersion := SelectLatestVersion;
+        Line.validate("PerfTool Code", Header.Code);
+        Line.validate("Line No.", LineNo);
+        line.validate("Object Type", ObjType);
+        Line.validate("Object ID", ObjId);
+        line.validate(PerfToolCodeunit, PerfToolCodeunit);
+        line.validate("Procedure Name", ProcedureName);
+        line.validate(SelectLatestVersion, SelectLatestVersion);
+
         Line.Insert(true);
 
         Commit();
+
+        OnAfterInsertSuiteLine(Header, Line);
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure OnAfterInsertSuiteGroup(var PerfToolGroupWPT: Record "PerfTool Group WPT")
+    begin
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure OnAfterInsertSuiteHeader(PerfToolGroupWPT: Record "PerfTool Group WPT"; var PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT")
+    begin
+    end;
+
+    [IntegrationEvent(true, false)]
+    local procedure OnAfterInsertSuiteLine(PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT"; var PerfToolSuiteLineWPT: Record "PerfTool Suite Line WPT")
+    begin
     end;
 }

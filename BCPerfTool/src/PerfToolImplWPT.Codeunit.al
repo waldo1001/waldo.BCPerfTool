@@ -51,7 +51,7 @@ codeunit 62101 "PerfTool Impl. WPT"
         PerfToolLogEntryWPT.Message := Message;
     end;
 
-    procedure RunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; Tag: Text[249]; AlternativeKey: Text[250]) Success: Boolean
+    procedure RunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text; Tag: Text[249]; AlternativeKey: Text[250]) Success: Boolean
     var
         RunObjectWPT: Codeunit "RunObject WPT";
     begin
@@ -59,7 +59,7 @@ codeunit 62101 "PerfTool Impl. WPT"
 
         Start(Identifier, '', Tag, AlternativeKey);
 
-        Success := RunObjectWPT.RunObject(ObjType, ObjId);
+        Success := RunObjectWPT.RunObject(ObjType, ObjId, ProcedureName);
         If Success then
             SetMessage('Success')
         else
@@ -68,25 +68,5 @@ codeunit 62101 "PerfTool Impl. WPT"
         Stop();
 
         PerfToolTriggersWPT.OnAfterRunObject(Identifier, ObjType, ObjId);
-    end;
-
-    procedure RunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; PerftoolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text; Tag: Text[249]; AlternativeKey: Text[250]) Success: Boolean
-    var
-        PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
-    begin
-        PerfToolTriggersWPT.OnBeforeRunObject(Identifier, ObjType, PerftoolCodeunit.AsInteger());
-
-        Start(Identifier, '', Tag, AlternativeKey);
-
-        PerfToolCodeunitWPT := PerftoolCodeunit;
-        Success := PerfToolCodeunitWPT.Run(ProcedureName);
-        If Success then
-            SetMessage('Success')
-        else
-            SetMessage(copystr(GetLastErrorText(), 1, 2040));
-
-        Stop();
-
-        PerfToolTriggersWPT.OnAfterRunObject(Identifier, ObjType, PerftoolCodeunit.AsInteger());
     end;
 }

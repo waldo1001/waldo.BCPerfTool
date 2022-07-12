@@ -1,18 +1,19 @@
 codeunit 62109 "RunObject WPT"
 {
-    internal procedure RunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer) Result: Boolean
+    internal procedure RunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text) Result: Boolean
     var
         IsHandled: Boolean;
     begin
-        OnBeforeRunObject(ObjType, ObjId, Result, IsHandled);
+        OnBeforeRunObject(ObjType, ObjId, ProcedureName, Result, IsHandled);
 
-        DoRunObject(ObjType, ObjId, Result, IsHandled);
+        DoRunObject(ObjType, ObjId, ProcedureName, Result, IsHandled);
 
-        OnAfterRunObject(ObjType, ObjId, Result);
+        OnAfterRunObject(ObjType, ObjId, ProcedureName, Result);
     end;
 
-    local procedure DoRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; var Result: Boolean; IsHandled: Boolean)
+    local procedure DoRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text; var Result: Boolean; IsHandled: Boolean)
     var
+        RunPerfToolCodeunitWPT: Codeunit "RunPerfToolCodeunit WPT";
         TempBlob: Codeunit "Temp Blob";
         RecRef: RecordRef;
         OutStr: OutStream;
@@ -25,7 +26,10 @@ codeunit 62109 "RunObject WPT"
 
         case ObjType of
             Enum::"Perftool Object Types WPT"::Codeunit:
-                Result := Codeunit.Run(objid);
+                if enum::"PerfToolCodeunit WPT".Ordinals().Contains(ObjId) then
+                    RunPerfToolCodeunitWPT.RunObject(enum::"PerfToolCodeunit WPT".FromInteger(ObjId), ProcedureName)
+                else
+                    Result := Codeunit.Run(objid);
             Enum::"Perftool Object Types WPT"::Page:
                 page.RunModal(ObjId);
             Enum::"Perftool Object Types WPT"::Query:
@@ -51,12 +55,12 @@ codeunit 62109 "RunObject WPT"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; var Result: boolean; var IsHandled: Boolean);
+    local procedure OnBeforeRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text; var Result: boolean; var IsHandled: Boolean);
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; var Result: boolean);
+    local procedure OnAfterRunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text; var Result: boolean);
     begin
     end;
 }
