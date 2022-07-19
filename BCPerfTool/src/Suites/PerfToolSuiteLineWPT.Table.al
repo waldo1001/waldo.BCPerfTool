@@ -144,8 +144,10 @@ table 62100 "PerfTool Suite Line WPT"
     begin
         if Rec.HasInterfaceImplementation() then
             exit(Rec."Procedure Name")
-        else
+        else begin
+            Rec.CalcFields("Object Name");
             exit(CopyStr(Rec."Object Name", 1, 30));
+        end;
     end;
 
     procedure HasInterfaceImplementation(): Boolean

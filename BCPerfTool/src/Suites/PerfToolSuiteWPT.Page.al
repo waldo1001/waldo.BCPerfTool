@@ -42,6 +42,7 @@ page 62104 "PerfTool Suite WPT"
                         ApplicationArea = All;
                         SubPageLink = "PerfTool Code" = Field(Code);
                     }
+
                 }
                 group(Right)
                 {
@@ -61,7 +62,21 @@ page 62104 "PerfTool Suite WPT"
                         SubPageLink = AlternativeKey = field(Code);
                     }
                 }
-
+            }
+            Group(Graphs)
+            {
+                part(Chart; "DetailsPerLine Chart WPT")
+                {
+                    Caption = 'Details per line';
+                    ApplicationArea = All;
+                    Provider = SuiteLines;
+                    SubPageLink = "PerfTool Code" = field("PerfTool Code"), "Line No." = field("Line No.");
+                }
+                part(Chart2; "AveragePerLine Chart WPT")
+                {
+                    Caption = 'Averages';
+                    ApplicationArea = All;
+                }
             }
         }
 
@@ -125,4 +140,8 @@ page 62104 "PerfTool Suite WPT"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.Chart2.Page.SetViewMode(Rec);
+    end;
 }
