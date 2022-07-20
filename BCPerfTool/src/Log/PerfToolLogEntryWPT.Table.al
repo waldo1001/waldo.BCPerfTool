@@ -64,6 +64,11 @@ table 62102 "PerfTool Log Entry WPT"
             Caption = 'Altrnative Key';
             DataClassification = CustomerContent;
         }
+        field(70; ProfilingData; Blob)
+        {
+            Caption = 'Profiling Data';
+            DataClassification = CustomerContent;
+        }
 
 
     }
