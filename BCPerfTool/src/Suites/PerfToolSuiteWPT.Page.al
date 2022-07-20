@@ -120,7 +120,7 @@ page 62104 "PerfTool Suite WPT"
                     Rec.RunAll();
                 end;
             }
-            action("Run All 100 times")
+            action("Run Batch")
             {
                 Caption = 'Run Batch';
                 ToolTip = 'Runs all lines x times (Batch Count)';

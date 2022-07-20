@@ -13,13 +13,14 @@ codeunit 62111 "RunAllSuiteLinesBatch Meth WPT"
 
     local procedure DoRunAll(var Header: Record "PerfTool Suite Header WPT"; NumberOfTimes: Integer; IsHandled: Boolean);
     var
-        i: Integer;
         Dlg: Dialog;
+        i: Integer;
+        DialogTxt: Label 'Suite: #1 \ Number #2 from #3', Comment = '#1 = Suite; #2 = current position; #3 = Total count.';
     begin
         if IsHandled then
             exit;
 
-        Dlg.Open('Number #1 from #2', i, NumberOfTimes);
+        Dlg.Open(DialogTxt, Header.Code, i, NumberOfTimes);
 
         for i := 1 to NumberOfTimes do begin
             dlg.Update();

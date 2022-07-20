@@ -70,4 +70,12 @@ table 62101 "PerfTool Suite Header WPT"
     begin
         RunAllSuiteLinesBatchMeth.RunAll(Rec, NumberOfTimes);
     end;
+
+    procedure RunAllBatchesOnSuites()
+    var
+        RunAllBatchesOnSuitesMethWPT: Codeunit "RunAllBatchesOnSuites Meth WPT";
+    begin
+        RunAllBatchesOnSuitesMethWPT.RunAllBatchesOnSuites();
+    end;
+
 }

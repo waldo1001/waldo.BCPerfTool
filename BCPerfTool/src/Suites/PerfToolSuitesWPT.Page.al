@@ -60,5 +60,22 @@ page 62102 "PerfTool Suites WPT"
                 Image = Log;
             }
         }
+        area(Processing)
+        {
+            action("Run All Batches")
+            {
+                Caption = 'Run All Batches';
+                ToolTip = 'Runs all lines for all Suites x times (Batch Count)';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = List;
+                trigger OnAction()
+                begin
+                    Rec.RunAllBatchesOnSuites();
+                end;
+            }
+        }
     }
 }
