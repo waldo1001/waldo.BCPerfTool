@@ -30,6 +30,12 @@ page 62104 "PerfTool Suite WPT"
                     ToolTip = 'Specifies the value of the Current Tag field.';
                     ApplicationArea = All;
                 }
+                field(BatchCount; Rec.BatchCount)
+                {
+                    ToolTip = 'Specifies how many times to run all lines when running the batch.';
+                    ApplicationArea = All;
+                }
+
             }
             group(Lines)
             {
@@ -65,17 +71,32 @@ page 62104 "PerfTool Suite WPT"
             }
             Group(Graphs)
             {
-                part(Chart; "DetailsPerLine Chart WPT")
+                group(Left2)
                 {
-                    Caption = 'Details per line';
-                    ApplicationArea = All;
-                    Provider = SuiteLines;
-                    SubPageLink = "PerfTool Code" = field("PerfTool Code"), "Line No." = field("Line No.");
+                    ShowCaption = false;
+
+                    part(SuiteLines2; "PerfTool Suite SubPage WPT")
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                        SubPageLink = "PerfTool Code" = Field(Code);
+                    }
+
                 }
-                part(Chart2; "AveragePerLine Chart WPT")
+                group(Right2)
                 {
-                    Caption = 'Averages';
-                    ApplicationArea = All;
+                    part(Chart; "DetailsPerLine Chart WPT")
+                    {
+                        Caption = 'Details per line';
+                        ApplicationArea = All;
+                        Provider = SuiteLines2;
+                        SubPageLink = "PerfTool Code" = field("PerfTool Code"), "Line No." = field("Line No.");
+                    }
+                    part(Chart2; "AveragePerLine Chart WPT")
+                    {
+                        Caption = 'Averages';
+                        ApplicationArea = All;
+                    }
                 }
             }
         }
@@ -87,7 +108,7 @@ page 62104 "PerfTool Suite WPT"
         {
             action("Run All")
             {
-                Caption = 'Run All';
+                Caption = 'Run Once';
                 ToolTip = 'Runs all lines once';
                 ApplicationArea = All;
                 Promoted = true;
@@ -101,8 +122,8 @@ page 62104 "PerfTool Suite WPT"
             }
             action("Run All 100 times")
             {
-                Caption = 'Run All 100 times';
-                ToolTip = 'Runs all lines 100 times';
+                Caption = 'Run Batch';
+                ToolTip = 'Runs all lines x times (Batch Count)';
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedIsBig = true;
@@ -110,7 +131,7 @@ page 62104 "PerfTool Suite WPT"
                 Image = List;
                 trigger OnAction()
                 begin
-                    Rec.RunAll(100);
+                    Rec.RunAll(Rec.BatchCount);
                 end;
             }
         }

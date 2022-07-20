@@ -25,6 +25,13 @@ table 62101 "PerfTool Suite Header WPT"
             Caption = 'Current Tag';
             DataClassification = CustomerContent;
         }
+        field(20; BatchCount; Integer)
+        {
+            Caption = 'Batch Count';
+            DataClassification = CustomerContent;
+            InitValue = 100;
+        }
+
 
     }
 

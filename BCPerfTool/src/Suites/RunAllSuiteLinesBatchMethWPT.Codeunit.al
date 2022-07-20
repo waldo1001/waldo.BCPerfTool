@@ -19,13 +19,12 @@ codeunit 62111 "RunAllSuiteLinesBatch Meth WPT"
         if IsHandled then
             exit;
 
-
         Dlg.Open('Number #1 from #2', i, NumberOfTimes);
 
-        for i := 0 to NumberOfTimes do begin
+        for i := 1 to NumberOfTimes do begin
+            dlg.Update();
             Header.RunAll();
             Commit();
-            dlg.Update();
         end;
 
         dlg.Close();
