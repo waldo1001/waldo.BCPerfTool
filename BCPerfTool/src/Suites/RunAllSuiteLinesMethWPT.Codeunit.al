@@ -19,6 +19,8 @@ codeunit 62110 "RunAllSuiteLines Meth WPT"
             exit;
 
         PerfToolSuiteLineWPT.SetRange("PerfTool Code", Header.Code);
+        PerfToolSuiteLineWPT.SetFilter("Object Type", '<>%1', PerfToolSuiteLineWPT."Object Type"::Page); //Pages should not be run in Batch (because of the RunModal)
+
         if PerfToolSuiteLineWPT.FindSet() then
             repeat
                 PerfToolSuiteLineWPT.Run(false);
