@@ -8,6 +8,8 @@ codeunit 62124 "PerfTool Profiler Subs WPT"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Start Log WPT", 'OnAfterStart', '', false, false)]
     local procedure OnAfterStart(Identifier: Guid; var Log: Record "PerfTool Log Entry WPT"; AppInsightsEventId: Text[50]; Tag: Text[249]; AlternativeKey: Text[250]);
     begin
+        if Session.CurrentExecutionMode = ExecutionMode::Debug then exit;
+
         if SamplingPerformanceProfiler.IsRecordingInProgress() then SamplingPerformanceProfiler.Stop();
 
         SamplingPerformanceProfiler.Start();
@@ -18,6 +20,8 @@ codeunit 62124 "PerfTool Profiler Subs WPT"
     var
         OutStr: OutStream;
     begin
+        if Session.CurrentExecutionMode = ExecutionMode::Debug then exit;
+
         if not SamplingPerformanceProfiler.IsRecordingInProgress() then exit;
 
         SamplingPerformanceProfiler.Stop();
