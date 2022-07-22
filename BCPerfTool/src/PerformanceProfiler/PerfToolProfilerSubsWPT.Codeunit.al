@@ -16,9 +16,7 @@ codeunit 62124 "PerfTool Profiler Subs WPT"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Stop Log WPT", 'OnAfterStop', '', false, false)]
     local procedure OnAfterStop(var Log: Record "PerfTool Log Entry WPT");
     var
-        InStr: InStream;
         OutStr: OutStream;
-        ToFile: Text;
     begin
         if not SamplingPerformanceProfiler.IsRecordingInProgress() then exit;
 
@@ -27,12 +25,6 @@ codeunit 62124 "PerfTool Profiler Subs WPT"
         Log.ProfilingData.CreateOutStream(OutStr);
         CopyStream(OutStr, SamplingPerformanceProfiler.GetData());
         Log.Modify();
-
-        Message('Logged!');
-
-
-        // ToFile := 'test.alcpuprofile';
-        // DownloadFromStream(SamplingPerformanceProfiler.GetData(), '', '', '', ToFile);
     end;
 
 }
