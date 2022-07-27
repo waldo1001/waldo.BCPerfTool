@@ -114,6 +114,19 @@ page 62105 "PerfTool Log Entries WPT"
                     DownloadFromStream(InStr, '', '', '', ToFile);
                 end;
             }
+            action(GetFlames)
+            {
+                Caption = 'Show Flamegraph';
+                Description = 'Uploads .alcpuprofile to webservice and get SVG back.';
+                ApplicationArea = All;
+                Image = GanttChart;
+                Enabled = IsDownloadEnabled;
+                Promoted = true;
+                PromotedCategory = Process;
+                ToolTip = 'Shows the FlameChart action.';
+                RunObject = page "FlameGraph WPT";
+                RunPageLink = Id = field(Id);
+            }
         }
     }
     var

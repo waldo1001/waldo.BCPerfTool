@@ -95,4 +95,11 @@ table 62102 "PerfTool Log Entry WPT"
     begin
         DeleteAll(true);
     end;
+
+    Procedure GetFlameGraph(): Text
+    var
+        GetFlameGraphMethWPT: Codeunit "GetFlameGraph Meth WPT";
+    begin
+        exit(GetFlameGraphMethWPT.GetFlameGraph(Rec));
+    end;
 }
