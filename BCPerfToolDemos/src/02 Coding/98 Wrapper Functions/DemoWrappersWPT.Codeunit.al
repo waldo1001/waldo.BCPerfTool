@@ -103,6 +103,6 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
         sender.CreateSuite(PerfToolGroupWPT, '98.WRAPPERS', 'Wrapper functions', PerfToolSuiteHeaderWPT);
-        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, WPTSuiteLine);
+        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, false, WPTSuiteLine);
     end;
 }

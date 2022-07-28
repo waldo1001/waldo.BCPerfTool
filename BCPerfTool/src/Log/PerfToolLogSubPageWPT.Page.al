@@ -73,6 +73,12 @@ page 62106 "PerfTool Log SubPage WPT"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Tag field.';
                 }
+                field(IsProfileAvailable; IsProfileAvailable)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Has Profile';
+                    ToolTip = 'Specifies if a Profile is available.';
+                }
 
             }
         }
@@ -81,6 +87,37 @@ page 62106 "PerfTool Log SubPage WPT"
     {
         area(Processing)
         {
+            action(DownloadProfile)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
+                Image = Download;
+                Enabled = IsProfileAvailable;
+                Caption = 'Download Profile';
+                ToolTip = 'Download the performance profile file of the recording performed.';
+                Scope = Repeater;
+
+                trigger OnAction()
+                begin
+                    rec.DownloadProfile();
+                end;
+            }
+            action(GetFlames)
+            {
+                Caption = 'Show Flamegraph';
+                Description = 'Uploads .alcpuprofile to webservice and get SVG back.';
+                ApplicationArea = All;
+                Image = GanttChart;
+                Enabled = IsProfileAvailable;
+                Promoted = true;
+                PromotedCategory = Process;
+                ToolTip = 'Shows the FlameChart action.';
+                Scope = Repeater;
+                RunObject = page "FlameGraph WPT";
+                RunPageLink = Id = field(Id);
+            }
             action(LogEntries)
             {
                 Caption = 'Log Entries';
@@ -116,7 +153,16 @@ page 62106 "PerfTool Log SubPage WPT"
                 begin
                     Rec.ClearFilteredRecords();
                 end;
+
             }
         }
     }
+    var
+        [InDataSet]
+        IsProfileAvailable: Boolean;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        IsProfileAvailable := Rec.ProfilingData.HasValue;
+    end;
 }

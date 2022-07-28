@@ -93,6 +93,12 @@ table 62100 "PerfTool Suite Line WPT"
             DataClassification = CustomerContent;
         }
 
+        field(20; "Run Performance Analyzer"; Boolean)
+        {
+            Caption = 'Run Performance Analyzer';
+            DataClassification = CustomerContent;
+        }
+
     }
 
     keys

@@ -69,4 +69,11 @@ codeunit 62101 "PerfTool Impl. WPT"
 
         PerfToolTriggersWPT.OnAfterRunObject(Identifier, ObjType, ObjId);
     end;
+
+    procedure SetRunPerformanceProfilerActive(SetActive: Boolean)
+    var
+        PerfToolProfilerSubsWPT: Codeunit "PerfTool Profiler Subs WPT";
+    begin
+        PerfToolProfilerSubsWPT.SetRunPerformanceProfilerActive(SetActive);
+    end;
 }

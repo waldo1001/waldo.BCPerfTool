@@ -70,7 +70,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
         sender.CreateSuite(PerfToolGroupWPT, '1.QUERIES', 'Query Handling', PerfToolSuiteHeaderWPT);
-        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, WPTSuiteLine);
+        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);
     end;
 
 }

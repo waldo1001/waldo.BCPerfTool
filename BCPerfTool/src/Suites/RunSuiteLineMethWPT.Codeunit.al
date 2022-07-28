@@ -21,6 +21,8 @@ codeunit 62108 "Run SuiteLine Meth WPT"
         if SuiteLine.SelectLatestVersion then
             SelectLatestVersion();
 
+        PerfToolImplWPT.SetRunPerformanceProfilerActive(SuiteLine."Run Performance Analyzer");
+
         PerfToolImplWPT.RunObject(SuiteLine.SystemId, enum::"Perftool Object Types WPT".FromInteger(SuiteLine."Object Type"), SuiteLine."Object ID", suiteline."Procedure Name", SuiteLine.CurrentTag(), SuiteLine."PerfTool Code");
 
         if ShowResults then

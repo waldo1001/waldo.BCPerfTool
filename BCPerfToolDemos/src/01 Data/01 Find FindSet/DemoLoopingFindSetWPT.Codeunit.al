@@ -9,7 +9,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT"
         if PerfToolGroupWPT.Code <> '1.DATA' then exit;
 
         Sender.CreateSuite(PerfToolGroupWPT, '1. Looping', 'Find, Findset, ..', PerfToolSuiteHeaderWPT);
-        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Table, database::"Just Some Table WPT", true, WPTSuiteLine);
+        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Table, database::"Just Some Table WPT", true, true, WPTSuiteLine);
 
     end;
 }

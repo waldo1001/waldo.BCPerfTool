@@ -101,17 +101,8 @@ page 62105 "PerfTool Log Entries WPT"
                 ToolTip = 'Download the performance profile file of the recording performed.';
 
                 trigger OnAction()
-                var
-                    ToFile: Text;
-                    InStr: InStream;
                 begin
-                    if not Confirm(PrivacyNoticeMsg) then
-                        exit;
-
-                    ToFile := StrSubstNo(ProfileFileNameTxt, Rec.AppInsightsEventId) + ProfileFileExtensionTxt;
-                    Rec.calcfields(ProfilingData);
-                    Rec.ProfilingData.CreateInStream(InStr);
-                    DownloadFromStream(InStr, '', '', '', ToFile);
+                    rec.DownloadProfile();
                 end;
             }
             action(GetFlames)
@@ -132,9 +123,6 @@ page 62105 "PerfTool Log Entries WPT"
     var
         [InDataSet]
         IsDownloadEnabled: Boolean;
-        PrivacyNoticeMsg: Label 'The file might contain sensitive data, so be sure to handle it securely and according to privacy requirements. Do you want to continue?';
-        ProfileFileNameTxt: Label 'PerformanceProfile_%1', Locked = true;
-        ProfileFileExtensionTxt: Label '.alcpuprofile', Locked = true;
 
     trigger OnAfterGetCurrRecord()
     begin

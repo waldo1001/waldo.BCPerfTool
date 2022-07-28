@@ -9,7 +9,7 @@ codeunit 62222 "Demo - Retention WPT"
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
         sender.CreateSuite(PerfToolGroupWPT, '99.RETENTION', 'Reetention Policies', PerfToolSuiteHeaderWPT);
-        sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, WPTSuiteLine);
+        sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, false, WPTSuiteLine);
     end;
 
 }

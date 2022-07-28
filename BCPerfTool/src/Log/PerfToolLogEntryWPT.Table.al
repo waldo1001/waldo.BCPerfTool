@@ -96,6 +96,13 @@ table 62102 "PerfTool Log Entry WPT"
         DeleteAll(true);
     end;
 
+    procedure DownloadProfile()
+    var
+        DownloadProfileWPT: Codeunit "DownloadProfile Meth WPT";
+    begin
+        DownloadProfileWPT.DownloadProfile(Rec);
+    end;
+
     Procedure GetFlameGraph(): Text
     var
         GetFlameGraphMethWPT: Codeunit "GetFlameGraph Meth WPT";

@@ -60,6 +60,12 @@ page 62103 "PerfTool Suite SubPage WPT"
                     ToolTip = 'Specifies if the cache should be used or not.';
                     ApplicationArea = All;
                 }
+                field("Run Performance Analyzer"; Rec."Run Performance Analyzer")
+                {
+                    ToolTip = 'Specifies if the performance analyzer should run or not.';
+                    ApplicationArea = All;
+                    Width = 5;
+                }
                 field("Object Type"; Rec."Object Type")
                 {
                     ToolTip = 'Specifies the value of the Object Type field.';

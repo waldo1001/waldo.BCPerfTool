@@ -30,8 +30,8 @@ codeunit 62206 "Demo - SIFT WPT"
         if PerfToolGroupWPT.Code <> '1.DATA' then exit;
 
         Sender.CreateSuite(PerfToolGroupWPT, '2. Flowfields', 'FlowFields', PerfToolSuiteHeaderWPT);
-        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors WPT", true, WPTSuiteLine);
-        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Countries WPT", true, WPTSuiteLine);
+        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors WPT", true, true, WPTSuiteLine);
+        Sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Countries WPT", true, true, WPTSuiteLine);
 
     end;
 }
