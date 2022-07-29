@@ -98,6 +98,25 @@ table 62100 "PerfTool Suite Line WPT"
             Caption = 'Run Performance Analyzer';
             DataClassification = CustomerContent;
         }
+        field(30; "Avg. noOfSqlStatements"; Integer)
+        {
+            Caption = 'Avg. No. of SQL Statements';
+            FieldClass = FlowField;
+            CalcFormula = average("PerfTool Log Entry WPT".SqlStatementsExecuted where(Identifier = field(SystemId)));
+        }
+        field(31; "Avg. noOfSqlRowsRead"; Integer)
+        {
+            Caption = 'Avg. No. Of Sql Rows Read';
+            FieldClass = FlowField;
+            CalcFormula = average("PerfTool Log Entry WPT".SqlRowsRead where(Identifier = field(SystemId)));
+        }
+        field(32; "Avg. Duration"; Duration)
+        {
+            Caption = 'Avg. Duraction';
+            FieldClass = FlowField;
+            CalcFormula = average("PerfTool Log Entry WPT".TestDuration where(Identifier = field(SystemId)));
+        }
+
 
     }
 

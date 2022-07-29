@@ -78,7 +78,10 @@ table 62102 "PerfTool Log Entry WPT"
         {
             Clustered = true;
         }
-        key(Identifier; Identifier) { }
+        key(Identifier; Identifier)
+        {
+            SumIndexFields = SqlStatementsExecuted, SqlRowsRead;
+        }
         key(Time; StartTime) { }
         key(Tag; Tag) { }
         key(AlternativeKey; AlternativeKey) { }

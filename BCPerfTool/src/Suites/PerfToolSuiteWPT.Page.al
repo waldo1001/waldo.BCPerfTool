@@ -85,6 +85,7 @@ page 62104 "PerfTool Suite WPT"
                 }
                 group(Right2)
                 {
+                    ShowCaption = false;
                     part(Chart; "DetailsPerLine Chart WPT")
                     {
                         Caption = 'Details per line';

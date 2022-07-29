@@ -92,6 +92,22 @@ page 62103 "PerfTool Suite SubPage WPT"
                     ToolTip = 'Specifies the value of the Procedure field.';
                     ApplicationArea = All;
                 }
+                field("Avg. noOfSqlStatements"; Rec."Avg. noOfSqlStatements")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Avg. No. of SQL Statements field.';
+                }
+                field("Avg. noOfSqlRowsRead"; Rec."Avg. noOfSqlRowsRead")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Avg. No. Of Sql Rows Read field.';
+                }
+                field("Avg. Duration"; Rec."Avg. Duration")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Avg. Duraction field.';
+                }
+
 
             }
         }
