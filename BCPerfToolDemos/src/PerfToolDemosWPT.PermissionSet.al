@@ -7,5 +7,6 @@ permissionset 62201 "PerfTool Demos WPT"
         tabledata "Just Some Table WPT" = RIMD,
         tabledata "Just Some Colors WPT" = RIMD,
         tabledata "GroupingResult WPT" = RIMD,
-        tabledata "EmptyTable WPT" = RIMD;
+        tabledata "EmptyTable WPT" = RIMD,
+        tabledata "Just Some Cue Table WPT" = RIMD;
 }
