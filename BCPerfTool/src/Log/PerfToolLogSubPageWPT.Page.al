@@ -25,19 +25,19 @@ page 62106 "PerfTool Log SubPage WPT"
                 {
                     ToolTip = 'Specifies the value of the SQL Rows Read field.';
                     ApplicationArea = All;
-                    Width = 1;
+                    Width = 6;
                 }
                 field(SqlStatementsExecuted; Rec.SqlStatementsExecuted)
                 {
                     ToolTip = 'Specifies the value of the Sql Statements Executed field.';
                     ApplicationArea = All;
-                    Width = 1;
+                    Width = 6;
                 }
                 field(TestDuration; Rec.TestDuration)
                 {
                     ToolTip = 'Specifies the value of the Duration field.';
                     ApplicationArea = All;
-                    Width = 10;
+                    Width = 6;
                 }
                 field(StartTime; Rec.StartTime)
                 {
