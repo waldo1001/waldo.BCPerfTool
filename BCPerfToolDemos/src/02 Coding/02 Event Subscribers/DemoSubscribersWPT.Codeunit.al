@@ -15,7 +15,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     procedure ModifyAllFullEvents();
     var
         JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: codeunit "Subscribers WPT";
+        DemoSubs: codeunit "Subs OnModify WPT";
     begin
         // Enable events in subscriber-codeunit
         BindSubscription(DemoSubs);
@@ -30,7 +30,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     procedure LoopAllAlwaysBound()
     var
         JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: Codeunit "Subscribers WPT";
+        DemoSubs: Codeunit "Subs SingleInst WPT";
     begin
         BindSubscription(DemoSubs);
 
@@ -49,7 +49,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     procedure LoopAllJITBinding()
     var
         JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: Codeunit "Subscribers WPT";
+        DemoSubs: Codeunit "Subs SingleInst WPT";
     begin
 
         JustSomeTable.SetFilter("Entry No.", '<%1', 50000); //Just to limit the amount of records we would change
@@ -67,6 +67,44 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion LoopAllJITBinding
 
+    //#region NoSingleInstSubscribers
+    local procedure NoSingleInstSubscribers()
+    var
+        JustSomeTable: Record "Just Some Table WPT";
+        DemoSubs: Codeunit "Subs SingleInst WPT";
+    begin
+        BindSubscription(DemoSubs);
+
+        JustSomeTable.SetFilter("Entry No.", '<%1', 5000); //Just to limit the amount of records we would change
+        if JustSomeTable.FindSet() then
+            repeat
+                JustSomeTable.Validate("Message 2", format(Random(1000)));
+
+            until JustSomeTable.Next() < 1;
+
+        UnbindSubscription(DemoSubs);
+    end;
+    //#endregion NoSingleInstSubscribers
+
+    //#region SingleInstSubscribers
+    local procedure SingleInstSubscribers()
+    var
+        JustSomeTable: Record "Just Some Table WPT";
+        DemoSubs: Codeunit "Subs NoSingleInst WPT";
+    begin
+        BindSubscription(DemoSubs);
+
+        JustSomeTable.SetFilter("Entry No.", '<%1', 5000); //Just to limit the amount of records we would change
+        if JustSomeTable.FindSet() then
+            repeat
+                JustSomeTable.Validate("Message 2", format(Random(1000)));
+
+            until JustSomeTable.Next() < 1;
+
+        UnbindSubscription(DemoSubs);
+    end;
+    //#endregion SingleInstSubscribers
+
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -78,6 +116,10 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
                 LoopAllAlwaysBound();
             GetProcedures().Get(4):
                 LoopAllJITBinding();
+            GetProcedures().Get(5):
+                NoSingleInstSubscribers();
+            GetProcedures().Get(6):
+                SingleInstSubscribers();
         end;
     end;
 
@@ -87,6 +129,8 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         Result.Add('ModifyAll - FullEvents');
         Result.Add('LoopAll - Always Bound');
         Result.Add('LoopAll - JIT Binding');
+        Result.Add('No Single Inst Subscribers');
+        Result.Add('Single Inst Subscribers');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]

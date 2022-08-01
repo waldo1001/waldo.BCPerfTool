@@ -1,6 +1,8 @@
 #pragma warning disable
 codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
 {
+    // First Add a few TableExtensions, then the rest!
+
     //#region FindSetNoPartialrecords
     local procedure FindSetNoPartialrecords()
     var
