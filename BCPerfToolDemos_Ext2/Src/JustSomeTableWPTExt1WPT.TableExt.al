@@ -18,7 +18,7 @@ tableextension 62306 "JustSomeTableWPT Ext1 WPT" extends "Just Some Table WPT"
         {
             DataClassification = CustomerContent;
         }
-        field(623010; "Field10 WPT"; Blob)
+        field(62310; "Field10 WPT"; Blob)
         {
             DataClassification = CustomerContent;
         }
