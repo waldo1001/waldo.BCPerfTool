@@ -5,11 +5,11 @@ codeunit 62120 "DetailsPerLine Helper WPT"
     var
         DurationTxt: Label 'Average Duration (milliseconds)';
 
-    procedure UpdateData(var BusinessChartBuffer: Record "Business Chart Buffer"; var SuiteLine: Record "PerfTool Suite Line WPT")
+    procedure UpdateData(var BusinessChartBuffer: Record "Business Chart Buffer"; var SuiteLine: Record "PerfTool Suite Line WPT"; ChartMeasure: enum "PerfTool Chart Measures WPT")
     var
         Log: Query "DetailsPerLine WPT";
         i: Integer;
-        DurationInt: Integer;
+        MeasureValue: Integer;
         ObjName: Text;
     begin
         BusinessChartBuffer.Initialize();
@@ -23,10 +23,19 @@ codeunit 62120 "DetailsPerLine Helper WPT"
 
         i := 0;
         while log.Read() do begin
-            DurationInt := Log.TestDuration;
+            MeasureValue := Log.TestDuration;
+
+            case ChartMeasure of
+                enum::"PerfTool Chart Measures WPT"::Duration:
+                    MeasureValue := log.TestDuration;
+                enum::"PerfTool Chart Measures WPT"::NoOfSQLReads:
+                    MeasureValue := log.SqlRowsRead;
+                enum::"PerfTool Chart Measures WPT"::NoOfSQLStatements:
+                    MeasureValue := log.SqlStatementsExecuted;
+            end;
 
             BusinessChartBuffer.AddColumn(i);
-            BusinessChartBuffer.SetValue(ObjName, i, DurationInt);
+            BusinessChartBuffer.SetValue(ObjName, i, MeasureValue);
 
             i += 1;
         end;

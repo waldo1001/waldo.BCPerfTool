@@ -96,6 +96,7 @@ page 62104 "PerfTool Suite WPT"
                     part(Chart2; "AveragePerLine Chart WPT")
                     {
                         Caption = 'Averages';
+                        Editable = true;
                         ApplicationArea = All;
                     }
                 }
