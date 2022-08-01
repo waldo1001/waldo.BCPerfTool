@@ -1,5 +1,5 @@
 ﻿{
-    "id": "e2a35da9-56f9-4890-bb85-eacb3dd6e29d",
+    "id": "f1949d8d-87c0-432c-803e-f43313962a4b",
     "name": "BCPerfToolDemos_Ext1",
     "publisher": "waldo",
     "version": "1.0.0.0",
@@ -23,8 +23,8 @@
     "application": "19.0.0.0",
     "idRanges": [
         {
-            "from": 62301,
-            "to": 62305
+            "from": 62316,
+            "to": 62320
         }
     ],
     "resourceExposurePolicy": {
