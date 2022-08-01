@@ -1,17 +1,22 @@
-{
-    "folders": [
-        {
-            "path": ".AL-Go"
-        },
-        {
-            "path": ".github"
-        },
-        {
-            "path": "BCPerfTool"
-        },
-        {
-            "path": "BCPerfToolDemos"
-        }
-    ],
-    "settings": {}
+﻿{
+    "folders":  [
+                    {
+                        "path":  ".AL-Go"
+                    },
+                    {
+                        "path":  ".github"
+                    },
+                    {
+                        "path":  "BCPerfTool"
+                    },
+                    {
+                        "path":  "BCPerfToolDemos"
+                    },
+                    {
+                        "path":  "BCPerfToolDemos_Ext1"
+                    }
+                ],
+    "settings":  {
+
+                 }
 }
