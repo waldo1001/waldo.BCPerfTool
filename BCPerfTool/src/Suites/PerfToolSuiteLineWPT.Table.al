@@ -98,13 +98,13 @@ table 62100 "PerfTool Suite Line WPT"
             Caption = 'Run Performance Analyzer';
             DataClassification = CustomerContent;
         }
-        field(30; "Avg. noOfSqlStatements"; Integer)
+        field(30; "Avg. noOfSqlStatements"; BigInteger)
         {
             Caption = 'Avg. No. of SQL Statements';
             FieldClass = FlowField;
             CalcFormula = average("PerfTool Log Entry WPT".SqlStatementsExecuted where(Identifier = field(SystemId)));
         }
-        field(31; "Avg. noOfSqlRowsRead"; Integer)
+        field(31; "Avg. noOfSqlRowsRead"; BigInteger)
         {
             Caption = 'Avg. No. Of Sql Rows Read';
             FieldClass = FlowField;
@@ -116,6 +116,12 @@ table 62100 "PerfTool Suite Line WPT"
             FieldClass = FlowField;
             CalcFormula = average("PerfTool Log Entry WPT".TestDuration where(Identifier = field(SystemId)));
         }
+        field(40; DisableFromBatch; Boolean)
+        {
+            Caption = 'Disable From Batch';
+            DataClassification = CustomerContent;
+        }
+
 
 
     }

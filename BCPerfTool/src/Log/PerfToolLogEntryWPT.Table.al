@@ -39,12 +39,12 @@ table 62102 "PerfTool Log Entry WPT"
             Caption = 'Duration';
             DataClassification = CustomerContent;
         }
-        Field(30; SqlRowsRead; Integer)
+        Field(30; SqlRowsRead; BigInteger)
         {
             Caption = 'SQL Rows Read';
             DataClassification = CustomerContent;
         }
-        Field(31; SqlStatementsExecuted; Integer)
+        Field(31; SqlStatementsExecuted; BigInteger)
         {
             Caption = 'Sql Statements Executed';
             DataClassification = CustomerContent;

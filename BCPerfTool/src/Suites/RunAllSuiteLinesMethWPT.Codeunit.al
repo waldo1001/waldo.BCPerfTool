@@ -20,11 +20,13 @@ codeunit 62110 "RunAllSuiteLines Meth WPT"
 
         PerfToolSuiteLineWPT.SetRange("PerfTool Code", Header.Code);
         PerfToolSuiteLineWPT.SetFilter("Object Type", '<>%1', PerfToolSuiteLineWPT."Object Type"::Page); //Pages should not be run in Batch (because of the RunModal)
+        PerfToolSuiteLineWPT.SetRange(DisableFromBatch, false);
 
         if PerfToolSuiteLineWPT.FindSet() then
             repeat
                 PerfToolSuiteLineWPT.Run(false);
                 Commit();
+                sleep(1); //needed for very fast tasks, where I got instable execution of "SelectLatestVersion"
             until PerfToolSuiteLineWPT.Next() < 1;
     end;
 
