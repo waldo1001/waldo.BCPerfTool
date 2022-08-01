@@ -1,0 +1,21 @@
+{
+    "name": "iFacto",
+    "description": "iFacto App Ruleset",
+    "rules": [
+        {
+            "id": "AS0084",
+            "action": "None",
+            "justification": "Number Range"
+        },
+        {
+            "id": "AS0092",
+            "action": "None",
+            "justification": "applicationInsightsConnectionString"
+        },
+        {
+            "id": "AA0072",
+            "action": "None",
+            "justification": "Variable naming - pointless"
+        }
+    ]
+}

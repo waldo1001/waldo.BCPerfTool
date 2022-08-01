@@ -23,6 +23,15 @@
         },
         {
             "path": "BCPerfToolDemos_Ext4"
+        },
+        {
+            "path": "BCPerfToolDemos_Ext5"
+        },
+        {
+            "path": "BCPerfToolDemos_Ext6"
+        },
+        {
+            "path": "BCPerfToolDemos_Ext7"
         }
     ],
     "settings": {}

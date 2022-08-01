@@ -1,24 +1,51 @@
+#pragma warning disable
 codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
 {
     //#region FindSetNoPartialrecords
     local procedure FindSetNoPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        NumberOfRecords: Integer;
+        i: Integer;
     begin
-
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 10000 then exit;
+        until JustSomeTableWPT.Next() < 1;
     end;
-
     //#endregion FindSetNoPartialrecords
+
+    //#region FindSetWithPartialrecords
+    local procedure FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        NumberOfRecords: Integer;
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 10000 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    //#endregion FindSetWithPartialrecords
 
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
             GetProcedures().Get(1):
                 FindSetNoPartialrecords();
+            GetProcedures().Get(2):
+                FindSetWithPartialrecords();
         end;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];
     begin
         Result.Add('FindSetNoPartialrecords');
+        Result.Add('FindSetWithPartialrecords');
     end;
 
 
