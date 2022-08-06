@@ -60,8 +60,8 @@ table 62100 "PerfTool Suite Line WPT"
 
                 PerfToolCodeunitWPT := Rec.PerfToolCodeunit;
 
-                If not PerfToolCodeunitWPT.GetProcedures().Contains(Rec."Procedure Name") then
-                    Error(ProcDoesntExistErr, Rec."Procedure Name")
+                // If not PerfToolCodeunitWPT.GetProcedures().Contains(Rec."Procedure Name") then
+                //     Error(ProcDoesntExistErr, Rec."Procedure Name")
             end;
 
             trigger OnLookup()
