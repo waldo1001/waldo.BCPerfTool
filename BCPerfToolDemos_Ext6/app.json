@@ -1,0 +1,35 @@
+﻿{
+    "id": "fe569321-5813-4771-8065-dad02f4d1080",
+    "name": "BCPerfToolDemos_Ext6",
+    "publisher": "waldo",
+    "version": "1.0.0.0",
+    "brief": "",
+    "description": "",
+    "privacyStatement": "",
+    "EULA": "",
+    "help": "",
+    "url": "",
+    "logo": "",
+    "dependencies": [
+        {
+            "id": "2c48589d-7b44-4cdf-b5f3-d918316affce",
+            "name": "BCPerfToolDemos",
+            "publisher": "waldo",
+            "version": "1.0.0.0"
+        }
+    ],
+    "screenshots": [],
+    "platform": "1.0.0.0",
+    "application": "19.0.0.0",
+    "idRanges": [
+        {
+            "from": 62336,
+            "to": 62340
+        }
+    ],
+    "resourceExposurePolicy": {
+        "allowDebugging": true,
+        "allowDownloadingSource": false,
+        "includeSourceInSymbolFile": false
+    }
+}

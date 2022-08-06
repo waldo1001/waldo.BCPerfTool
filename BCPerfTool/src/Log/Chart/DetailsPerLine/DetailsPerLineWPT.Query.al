@@ -18,6 +18,8 @@ query 62101 "DetailsPerLine WPT"
                 DataItemLink = Identifier = PerfTool_Suite_Line_WPT.SystemId;
 
                 column(TestDuration; TestDuration) { }
+                column(SqlStatementsExecuted; SqlStatementsExecuted) { }
+                column(SqlRowsRead; SqlRowsRead) { }
             }
         }
 

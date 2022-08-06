@@ -55,6 +55,11 @@ page 62103 "PerfTool Suite SubPage WPT"
                         CurrPage.Update(false);
                     end;
                 }
+                field(DisableFromBatch; Rec.DisableFromBatch)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Disable From Batch field.';
+                }
                 field(SelectLatestVersion; Rec.SelectLatestVersion)
                 {
                     ToolTip = 'Specifies if the cache should be used or not.';

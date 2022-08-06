@@ -26,6 +26,16 @@ query 62100 "AveragePerLine WPT"
                         Caption = 'Average Test Duration';
                         Method = Average;
                     }
+                    column(AvgSQLReads; SqlRowsRead)
+                    {
+                        Caption = 'Average SQL Reads';
+                        Method = Average;
+                    }
+                    column(AvgSqlStatementsExecuted; SqlStatementsExecuted)
+                    {
+                        Caption = 'Average SQL Statements Executed';
+                        Method = Average;
+                    }
                 }
             }
         }
