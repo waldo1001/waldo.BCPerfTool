@@ -21,3 +21,4 @@ Is the overhead of subscribers allocation/deallocation really that big?
 
 TableExtensions
 TODO: thoroughly test the impact of installing the next, and uninstalling (if any).
+Prepare demo with 0, 2, 4, 6 and 7 table extensions
