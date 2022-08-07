@@ -32,6 +32,9 @@
         },
         {
             "path": "BCPerfToolDemos_Ext7"
+        },
+        {
+            "path": "BCPerfToolDemos_Scripts"
         }
     ],
     "settings": {}
