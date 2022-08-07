@@ -16,7 +16,5 @@ function PublishExtensionApp($AppName){
     Publish-BcContainerApp -containerName bccurrent -credential $ContainerCredential -ignoreIfAppExists -appFile "C:\_Source\Community\waldo.BCPerfTool\$($AppName)\waldo_$($AppName)_1.0.0.0.app" -skipVerification -sync ForceSync -useDevEndpoint
 }
 
-PublishExtensionApp -AppName 'BCPerfToolDemos_Ext4'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext5'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext6'
-PublishExtensionApp -AppName 'BCPerfToolDemos_Ext7'
