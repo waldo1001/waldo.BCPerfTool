@@ -1,3 +1,4 @@
+#pragma warning disable AA0005
 codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 {
     //#region ModifyAllNoEvents
@@ -105,6 +106,20 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion SingleInstSubscribers
 
+    [BusinessEvent(true)]
+    local procedure OnAfterDoingSomethingElse()
+    begin
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Subscribers WPT", 'OnAfterDoingSomethingElse', '', false, false)]
+    local procedure EmptySubscriber()
+    begin
+    end;
+    //#endregion
+
+    var
+        i: integer;
+
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -141,7 +156,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     begin
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.SUBSCRIBERS', 'Subscribers', PerfToolSuiteHeaderWPT);
+        sender.CreateSuite(PerfToolGroupWPT, '2.b Subscribers', 'Subscribers', PerfToolSuiteHeaderWPT);
 
         sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Subscribers, false, true, WPTSuiteLine);
     end;

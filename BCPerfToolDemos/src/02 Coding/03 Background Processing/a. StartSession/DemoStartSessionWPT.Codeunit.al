@@ -90,7 +90,7 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
     begin
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.a BG-StartSession', 'Background - StartSession', PerfToolSuiteHeaderWPT);
+        sender.CreateSuite(PerfToolGroupWPT, '3.a BG-StartSession', 'Background - StartSession', PerfToolSuiteHeaderWPT);
 
         sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::StartSession, false, true, WPTSuiteLine);
     end;

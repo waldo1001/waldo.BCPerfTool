@@ -30,7 +30,7 @@ codeunit 62234 "Demo - PageBackGroundTasks WPT"
     begin
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.D BG-PageBGTasks', 'Background - Page Background Tasks', PerfToolSuiteHeaderWPT);
+        sender.CreateSuite(PerfToolGroupWPT, '3.d BG-PageBGTasks', 'Background - Page Background Tasks', PerfToolSuiteHeaderWPT);
 
         sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Page Without BackgroundTsk WPT", true, false, WPTSuiteLine);
         sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Page With BackgroundTask WPT", true, false, WPTSuiteLine);

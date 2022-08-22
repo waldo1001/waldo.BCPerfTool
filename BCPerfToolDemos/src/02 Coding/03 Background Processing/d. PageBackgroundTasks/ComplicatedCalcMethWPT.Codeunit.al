@@ -7,7 +7,7 @@ codeunit 62233 "Complicated Calc Meth WPT"
     begin
         page.GetBackgroundParameters().get('Color', Color);
 
-        Result.Add('ComplicatedCalculationResult', Format(ComplicatedCalculation(Color)));
+        Result.Add('ComplicatedCalculationResult', Format(ComplicatedCalculation(CopyStr(Color, 1, 10))));
 
         Page.SetBackgroundTaskResult(Result);
     end;

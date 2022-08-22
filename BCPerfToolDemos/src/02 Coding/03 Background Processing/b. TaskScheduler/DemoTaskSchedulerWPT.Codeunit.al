@@ -64,7 +64,7 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
     begin
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.b BG-TaskScheduler', 'Background - TaskScheduler', PerfToolSuiteHeaderWPT);
+        sender.CreateSuite(PerfToolGroupWPT, '3.b BG-TaskScheduler', 'Background - TaskScheduler', PerfToolSuiteHeaderWPT);
 
         sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::TaskScheduler, false, true, WPTSuiteLine);
     end;

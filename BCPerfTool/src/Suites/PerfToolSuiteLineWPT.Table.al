@@ -54,7 +54,7 @@ table 62100 "PerfTool Suite Line WPT"
             trigger OnValidate()
             var
                 PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
-                ProcDoesntExistErr: label 'Procedurename %1 Doesn''t exist', Comment = '%1 is the procedurename';
+            // ProcDoesntExistErr: label 'Procedurename %1 Doesn''t exist', Comment = '%1 is the procedurename';
             begin
                 if not Rec.HasInterfaceImplementation() then exit;
 

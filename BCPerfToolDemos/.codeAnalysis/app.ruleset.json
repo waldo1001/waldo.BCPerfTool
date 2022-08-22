@@ -16,6 +16,11 @@
             "id": "AA0217",
             "action": "None",
             "justification": "Use a text constant or label for format string in StrSubstNo - pointless"
+        },
+        {
+            "id": "AA0005",
+            "action": "None",
+            "justification": "Use of BEGIN..END to enclose compound statements - pointless for demos"
         }
     ]
 }

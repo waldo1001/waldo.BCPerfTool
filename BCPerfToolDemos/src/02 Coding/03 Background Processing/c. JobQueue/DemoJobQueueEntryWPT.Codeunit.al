@@ -35,7 +35,7 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
     begin
         if PerfToolGroupWPT.Code <> '2.CODING' then exit;
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.c BG-JobQueue', 'Background - JobQueue', PerfToolSuiteHeaderWPT);
+        sender.CreateSuite(PerfToolGroupWPT, '3.c BG-JobQueue', 'Background - JobQueue', PerfToolSuiteHeaderWPT);
 
         sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::JobQueueEntry, false, true, WPTSuiteLine);
     end;
