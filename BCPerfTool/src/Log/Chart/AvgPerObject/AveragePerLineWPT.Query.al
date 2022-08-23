@@ -20,6 +20,7 @@ query 62100 "AveragePerLine WPT"
                 dataitem(PerfTool_Log_Entry_WPT; "PerfTool Log Entry WPT")
                 {
                     DataItemLink = Identifier = PerfTool_Suite_Line_WPT.SystemId;
+                    SqlJoinType = RightOuterJoin;
 
                     column(AvgTestDuration; TestDuration)
                     {

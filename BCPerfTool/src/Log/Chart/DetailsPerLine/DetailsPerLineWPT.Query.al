@@ -16,6 +16,7 @@ query 62101 "DetailsPerLine WPT"
             dataitem(PerfTool_Log_Entry_WPT; "PerfTool Log Entry WPT")
             {
                 DataItemLink = Identifier = PerfTool_Suite_Line_WPT.SystemId;
+                SqlJoinType = RightOuterJoin;
 
                 column(TestDuration; TestDuration) { }
                 column(SqlStatementsExecuted; SqlStatementsExecuted) { }
