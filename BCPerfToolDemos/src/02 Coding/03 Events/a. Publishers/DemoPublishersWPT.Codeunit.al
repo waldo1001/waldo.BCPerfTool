@@ -85,16 +85,20 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
         Result.Add('PublishersWithSubscrSingleInst');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup(var Sender: Codeunit "Create PerfToolDataLibrary WPT"; var PerfToolGroupWPT: Record "PerfTool Group WPT");
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    local procedure OnAfterInsertSuiteGroup();
+
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
         WPTSuiteLine: Record "PerfTool Suite Line WPT";
+        PerfToolGroupWPT: Record "PerfTool Group WPT";
+        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        if PerfToolGroupWPT.Code <> '2.CODING' then exit;
+        CreatePerfToolDataLibraryWPT.CreateGroup('3.Events', 'Events', PerfToolGroupWPT);
 
-        sender.CreateSuite(PerfToolGroupWPT, '2.a Publishers', 'Publishers', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Publishers', 'Publishers', PerfToolSuiteHeaderWPT);
 
-        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Publishers, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Publishers, true, false, WPTSuiteLine);
     end;
 }

@@ -61,16 +61,20 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Loop With Query');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup(var Sender: Codeunit "Create PerfToolDataLibrary WPT"; var PerfToolGroupWPT: Record "PerfTool Group WPT");
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    local procedure OnAfterInsertSuiteGroup();
+
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
         WPTSuiteLine: Record "PerfTool Suite Line WPT";
+        PerfToolGroupWPT: Record "PerfTool Group WPT";
+        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        if PerfToolGroupWPT.Code <> '2.CODING' then exit;
+        CreatePerfToolDataLibraryWPT.CreateGroup('2.QUERIES', 'Queries', PerfToolGroupWPT);
 
-        sender.CreateSuite(PerfToolGroupWPT, '1.QUERIES', 'Query Handling', PerfToolSuiteHeaderWPT);
-        sender.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1.Looping', 'Looping', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);
     end;
 
 }

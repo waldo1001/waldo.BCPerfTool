@@ -29,5 +29,7 @@ For example, I will have a customer PTE where they'll collate information into t
 So, I know there are partners out there that don't use TableType temporary and should.  For a talk, I'd make a routine that generates 1k, 5k, 25k records into a real table and a temporary, and just show the comparison between the two.  I'd probably also show a slide showing the read difference if doing a basic looping operation through them.
 TODO: Subscribers
 
-MARS
+
+
+????MARS
 https://www.yammer.com/dynamicsnavdev/#/threads/show?threadId=1824174540636160

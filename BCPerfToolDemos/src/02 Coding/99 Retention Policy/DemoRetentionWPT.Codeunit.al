@@ -1,15 +1,19 @@
 codeunit 62222 "Demo - Retention WPT"
 {
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup(var Sender: Codeunit "Create PerfToolDataLibrary WPT"; var PerfToolGroupWPT: Record "PerfTool Group WPT");
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    local procedure OnAfterInsertSuiteGroup();
+
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
         WPTSuiteLine: Record "PerfTool Suite Line WPT";
+        PerfToolGroupWPT: Record "PerfTool Group WPT";
+        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        if PerfToolGroupWPT.Code <> '2.CODING' then exit;
+        CreatePerfToolDataLibraryWPT.CreateGroup('99.RETENTION', 'Retention Policies', PerfToolGroupWPT);
 
-        sender.CreateSuite(PerfToolGroupWPT, '99.RETENTION', 'Reetention Policies', PerfToolSuiteHeaderWPT);
-        sender.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. RETENTION', 'Reetention Policies', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, false, WPTSuiteLine);
     end;
 
 }
