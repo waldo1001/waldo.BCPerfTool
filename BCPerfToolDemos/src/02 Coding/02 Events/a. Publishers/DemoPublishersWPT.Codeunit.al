@@ -4,7 +4,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     //#region NoPublishers
     local procedure NoPublishers()
     begin
-        for i := 0 to 1000000 do begin
+        for i := 0 to 100000 do begin
             //Do Something        
         end;
     end;
@@ -13,7 +13,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     //#region Publishers
     local procedure Publishers()
     begin
-        for i := 0 to 1000000 do begin
+        for i := 0 to 100000 do begin
             //Do Something and raise event
             OnAfterDoingSomething();
         end;
@@ -28,7 +28,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     //#region PublishersWithSubscriber
     local procedure PublishersWithSubscriber()
     begin
-        for i := 0 to 1000000 do begin
+        for i := 0 to 100000 do begin
             //Do Something and raise event
             OnAfterDoingSomethingElse();
         end;
@@ -48,7 +48,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     //#region PublishersWithSubscrSingleInst
     local procedure PublishersWithSubscrSingleInst()
     begin
-        for i := 0 to 1000000 do begin
+        for i := 0 to 100000 do begin
             //Do Something and raise event
             OnAfterDoingSomethingElse2();
         end;

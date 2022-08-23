@@ -5,7 +5,6 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     local procedure FindSetAndLoop40()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-        i: Integer;
     begin
         if JustSomeTableWPT.FindSet() then
             for i := 1 to 40 do
@@ -17,7 +16,6 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     local procedure FindMinAndLoop40()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-        i: Integer;
     begin
         if JustSomeTableWPT.Find('-') then
             for i := 1 to 40 do
@@ -29,7 +27,6 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     local procedure FindSetAndLoop100()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-        i: Integer;
     begin
         if JustSomeTableWPT.FindSet() then
             for i := 1 to 100 do
@@ -41,7 +38,6 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     local procedure FindMinAndLoop100()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-        i: Integer;
     begin
         if JustSomeTableWPT.Find('-') then
             for i := 1 to 100 do
@@ -49,7 +45,8 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindMinAndLoop100
 
-
+    var
+        i: integer;
 
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin

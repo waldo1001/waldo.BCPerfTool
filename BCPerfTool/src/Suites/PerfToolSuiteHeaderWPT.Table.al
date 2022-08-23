@@ -29,7 +29,7 @@ table 62101 "PerfTool Suite Header WPT"
         {
             Caption = 'Batch Count';
             DataClassification = CustomerContent;
-            InitValue = 100;
+            InitValue = 10;
         }
 
 
