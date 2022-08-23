@@ -68,57 +68,6 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion LoopAllJITBinding
 
-    //#region NoSingleInstSubscribers
-    local procedure NoSingleInstSubscribers()
-    var
-        JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: Codeunit "Subs SingleInst WPT";
-    begin
-        BindSubscription(DemoSubs);
-
-        JustSomeTable.SetFilter("Entry No.", '<%1', 5000); //Just to limit the amount of records we would change
-        if JustSomeTable.FindSet() then
-            repeat
-                JustSomeTable.Validate("Message 2", format(Random(1000)));
-
-            until JustSomeTable.Next() < 1;
-
-        UnbindSubscription(DemoSubs);
-    end;
-    //#endregion NoSingleInstSubscribers
-
-    //#region SingleInstSubscribers
-    local procedure SingleInstSubscribers()
-    var
-        JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: Codeunit "Subs NoSingleInst WPT";
-    begin
-        BindSubscription(DemoSubs);
-
-        JustSomeTable.SetFilter("Entry No.", '<%1', 5000); //Just to limit the amount of records we would change
-        if JustSomeTable.FindSet() then
-            repeat
-                JustSomeTable.Validate("Message 2", format(Random(1000)));
-
-            until JustSomeTable.Next() < 1;
-
-        UnbindSubscription(DemoSubs);
-    end;
-    //#endregion SingleInstSubscribers
-
-    [BusinessEvent(true)]
-    local procedure OnAfterDoingSomethingElse()
-    begin
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Subscribers WPT", 'OnAfterDoingSomethingElse', '', false, false)]
-    local procedure EmptySubscriber()
-    begin
-    end;
-    //#endregion
-
-    var
-        i: integer;
 
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -131,10 +80,6 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
                 LoopAllAlwaysBound();
             GetProcedures().Get(4):
                 LoopAllJITBinding();
-            GetProcedures().Get(5):
-                NoSingleInstSubscribers();
-            GetProcedures().Get(6):
-                SingleInstSubscribers();
         end;
     end;
 
@@ -144,8 +89,6 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         Result.Add('ModifyAll - FullEvents');
         Result.Add('LoopAll - Always Bound');
         Result.Add('LoopAll - JIT Binding');
-        Result.Add('No Single Inst Subscribers');
-        Result.Add('Single Inst Subscribers');
     end;
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
