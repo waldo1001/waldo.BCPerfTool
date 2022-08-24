@@ -86,18 +86,18 @@ page 62104 "PerfTool Suite WPT"
                 group(Right2)
                 {
                     ShowCaption = false;
-                    part(Chart; "DetailsPerLine Chart WPT")
+                    part(Chart1; "AveragePerLine Chart WPT")
+                    {
+                        Caption = 'Averages';
+                        Editable = true;
+                        ApplicationArea = All;
+                    }
+                    part(Chart2; "DetailsPerLine Chart WPT")
                     {
                         Caption = 'Details per line';
                         ApplicationArea = All;
                         Provider = SuiteLines2;
                         SubPageLink = "PerfTool Code" = field("PerfTool Code"), "Line No." = field("Line No.");
-                    }
-                    part(Chart2; "AveragePerLine Chart WPT")
-                    {
-                        Caption = 'Averages';
-                        Editable = true;
-                        ApplicationArea = All;
                     }
                 }
             }
@@ -165,6 +165,6 @@ page 62104 "PerfTool Suite WPT"
     }
     trigger OnAfterGetRecord()
     begin
-        CurrPage.Chart2.Page.SetViewMode(Rec);
+        CurrPage.Chart1.Page.SetViewMode(Rec);
     end;
 }
