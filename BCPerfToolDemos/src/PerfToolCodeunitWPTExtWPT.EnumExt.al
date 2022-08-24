@@ -13,4 +13,5 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62235; PartialRecords) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecords WPT"; }
     value(62203; TempTables) { Implementation = "PerfToolCodeunit WPT" = "Demo - Temp Tables WPT"; }
     value(62210; DataTypes) { Implementation = "PerfToolCodeunit WPT" = "Demo - DataTypes WLD WPT"; }
+    value(62214; RecRef) { Implementation = "PerfToolCodeunit WPT" = "Demo - RecRef vs Record WPT"; }
 }

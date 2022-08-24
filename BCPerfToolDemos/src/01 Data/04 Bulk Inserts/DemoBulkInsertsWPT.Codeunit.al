@@ -74,7 +74,6 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
-
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
         WPTSuiteLine: Record "PerfTool Suite Line WPT";
