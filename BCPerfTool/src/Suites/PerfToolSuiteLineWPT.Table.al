@@ -174,7 +174,7 @@ table 62100 "PerfTool Suite Line WPT"
 
     procedure GetObjectName(): Text[30]
     begin
-        if Rec.HasInterfaceImplementation() then
+        if Rec.HasInterfaceImplementation() and (Rec."Object Type" = Rec."Object Type"::Codeunit) then
             exit(Rec."Procedure Name")
         else begin
             Rec.CalcFields("Object Name");
