@@ -47,6 +47,8 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
                 Start40Tasks();
 
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

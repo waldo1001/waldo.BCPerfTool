@@ -75,6 +75,8 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(4):
                 PublishersWithSubscrSingleInst();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

@@ -77,6 +77,8 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
                 RecRefRecordWrite();
 
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

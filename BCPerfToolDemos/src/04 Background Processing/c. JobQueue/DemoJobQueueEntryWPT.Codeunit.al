@@ -19,6 +19,8 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
                 StartJobQueueEntry();
 
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

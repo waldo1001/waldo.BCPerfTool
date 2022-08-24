@@ -32,6 +32,8 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(2):
                 AutoCalcFields();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

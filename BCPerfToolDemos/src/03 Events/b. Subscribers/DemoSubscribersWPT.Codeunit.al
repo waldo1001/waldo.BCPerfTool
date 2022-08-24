@@ -81,6 +81,8 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(4):
                 LoopAllJITBinding();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

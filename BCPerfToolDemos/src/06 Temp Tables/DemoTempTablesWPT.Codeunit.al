@@ -71,6 +71,8 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(3):
                 TempTable();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

@@ -62,6 +62,8 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
                 NoBulkInsertsWithNumberSeq();
         end;
 
+        Result := true;
+
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

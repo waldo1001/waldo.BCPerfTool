@@ -60,6 +60,8 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(4):
                 FindMinAndLoop100();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

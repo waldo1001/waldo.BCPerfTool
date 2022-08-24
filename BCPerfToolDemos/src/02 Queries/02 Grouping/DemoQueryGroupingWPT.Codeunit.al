@@ -119,6 +119,8 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(3):
                 SkipMethod();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

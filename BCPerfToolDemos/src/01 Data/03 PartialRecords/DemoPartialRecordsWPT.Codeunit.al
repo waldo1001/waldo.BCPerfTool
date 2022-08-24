@@ -42,6 +42,8 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(2):
                 FindSetWithPartialrecords();
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];

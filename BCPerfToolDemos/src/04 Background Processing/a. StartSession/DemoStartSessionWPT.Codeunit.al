@@ -72,6 +72,8 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
                 Start40Sessions();
 
         end;
+
+        Result := true;
     end;
 
     procedure GetProcedures() Result: List of [Text[30]];
