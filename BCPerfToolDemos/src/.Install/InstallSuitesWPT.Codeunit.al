@@ -4,21 +4,12 @@ codeunit 62201 "Install Suites WPT"
 
     trigger OnInstallAppPerCompany()
     begin
-        // ResetAll();
         FillSuite();
     end;
 
     procedure FillSuite()
-    // var
-    //     WPTGroup: Record "PerfTool Group WPT";
-    //     Library: Codeunit "Create PerfToolDataLibrary WPT";
     begin
         OnInstallAppPerCompanyFillSuite();
-
-        // Library.CreateGroup('1.DATA', 'Data Access', WPTGroup);
-        // Library.CreateGroup('2.CODING', 'Coding 4 Performance', WPTGroup);
-
-        //The suites will be created in the demo-codeunits (by subscribing to "OnAfterInsertSuiteGroup")
     end;
 
     procedure ResetAll()
