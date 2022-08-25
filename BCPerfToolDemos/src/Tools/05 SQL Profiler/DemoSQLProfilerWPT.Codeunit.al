@@ -4,12 +4,12 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
     procedure SQLInfoFindMinRepeat()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-        ReadsBefore, StatementsBefore : biginteger;
+    // ReadsBefore, StatementsBefore : biginteger;
     begin
         SelectLatestVersion();
 
-        ReadsBefore := SessionInformation.SqlRowsRead();
-        StatementsBefore := SessionInformation.SqlStatementsExecuted();
+        // ReadsBefore := SessionInformation.SqlRowsRead();
+        // StatementsBefore := SessionInformation.SqlStatementsExecuted();
 
         JustSomeTableWPT.SetFilter("Entry No.", '<%1', 50000);
         if JustSomeTableWPT.Find('-') then

@@ -8,6 +8,7 @@ pageextension 62203 "CustomerList Ext WPT" extends "Customer List"
             {
                 ApplicationArea = All;
                 Caption = 'Totally Useless';
+                ToolTip = 'Specifies the value of the Totally Useless field.';
             }
         }
 

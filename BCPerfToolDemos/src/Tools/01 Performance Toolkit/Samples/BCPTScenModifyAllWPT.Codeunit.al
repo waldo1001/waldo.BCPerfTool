@@ -48,7 +48,7 @@ codeunit 62246 "BCPTScen - ModifyAll WPT" implements "BCPT Test Param. Provider"
         if StrPos(Params, ColorParamLbl) > 0 then begin
             Params := DelStr(Params, 1, StrLen(ColorParamLbl + '='));
             if Evaluate(ColorParam, Params) then
-                ValidateColor(Params);
+                ValidateColor(CopyStr(Params, 1, 10));
             exit;
         end;
         Error(ParamValidationErr, GetDefaultParameters());
