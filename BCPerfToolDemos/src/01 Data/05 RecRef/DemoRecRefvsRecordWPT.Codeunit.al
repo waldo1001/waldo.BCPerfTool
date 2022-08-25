@@ -102,5 +102,6 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '5. RecRef', 'RecRef vs Record', PerfToolSuiteHeaderWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::RecRef, true, false, WPTSuiteLine);
+
     end;
 }

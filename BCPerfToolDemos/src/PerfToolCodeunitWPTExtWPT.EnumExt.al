@@ -17,4 +17,6 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62215; CalcFields) { Implementation = "PerfToolCodeunit WPT" = "Demo - Calcfields WPT"; }
     value(62216; CodeunitSize) { Implementation = "PerfToolCodeunit WPT" = "Demo - Codeunit Size WPT"; }
     value(62225; LazyEvaluation) { Implementation = "PerfToolCodeunit WPT" = "Demo - Lazy Evaluation WPT"; }
+    value(62238; DeleteAll) { Implementation = "PerfToolCodeunit WPT" = "Demo - DeleteAll WPT"; }
+
 }
