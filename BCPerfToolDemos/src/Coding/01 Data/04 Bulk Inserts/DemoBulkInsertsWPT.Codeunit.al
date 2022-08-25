@@ -3,16 +3,16 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     #region BulkInserts
     procedure BulkInserts()
     var
-        TableWithNoAutoIncrementWLD: Record "Table WithNo AutoIncrement WPT";
+        TableWithNoAutoIncrementWPT: Record "Table WithNo AutoIncrement WPT";
         i: Integer;
     begin
-        TableWithNoAutoIncrementWLD.DeleteAll();
+        TableWithNoAutoIncrementWPT.DeleteAll();
 
         for i := 1 to 10000 do begin
-            TableWithNoAutoIncrementWLD.Init();
-            TableWithNoAutoIncrementWLD.Id := i;
-            TableWithNoAutoIncrementWLD.Description := 'Bulkinserts';
-            TableWithNoAutoIncrementWLD.Insert(true);
+            TableWithNoAutoIncrementWPT.Init();
+            TableWithNoAutoIncrementWPT.Id := i;
+            TableWithNoAutoIncrementWPT.Description := 'Bulkinserts';
+            TableWithNoAutoIncrementWPT.Insert(true);
         end;
     end;
     #endregion
@@ -20,16 +20,16 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     #region NoBulkInserts
     procedure NoBulkInserts()
     var
-        TableWithAutoIncrementWLD: Record "Table With AutoIncrement WPT";
+        TableWithAutoIncrementWPT: Record "Table With AutoIncrement WPT";
         i: Integer;
     begin
-        TableWithAutoIncrementWLD.DeleteAll();
+        TableWithAutoIncrementWPT.DeleteAll();
 
         for i := 1 to 10000 do begin
-            TableWithAutoIncrementWLD.Init();
-            TableWithAutoIncrementWLD.Id := 0; //Initialize AutoIncrement
-            TableWithAutoIncrementWLD.Description := 'NoBulkInserts';
-            TableWithAutoIncrementWLD.Insert(true);
+            TableWithAutoIncrementWPT.Init();
+            TableWithAutoIncrementWPT.Id := 0; //Initialize AutoIncrement
+            TableWithAutoIncrementWPT.Description := 'NoBulkInserts';
+            TableWithAutoIncrementWPT.Insert(true);
         end;
     end;
     #endregion
@@ -37,16 +37,16 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     #region NoBulkInsertsWithNumberSeq
     procedure NoBulkInsertsWithNumberSeq()
     var
-        TableWithNoAutoIncrementWLD: Record "Table WithNo AutoIncrement WPT";
+        TableWithNoAutoIncrementWPT: Record "Table WithNo AutoIncrement WPT";
         i: Integer;
     begin
-        TableWithNoAutoIncrementWLD.DeleteAll();
+        TableWithNoAutoIncrementWPT.DeleteAll();
 
         for i := 1 to 10000 do begin
-            TableWithNoAutoIncrementWLD.Init();
-            TableWithNoAutoIncrementWLD.Id := NumberSequence.Next('NoBulkInsertsWithNumberSeq');
-            TableWithNoAutoIncrementWLD.Description := 'NoBulkInsertsWithNumberSeq';
-            TableWithNoAutoIncrementWLD.Insert(true);
+            TableWithNoAutoIncrementWPT.Init();
+            TableWithNoAutoIncrementWPT.Id := NumberSequence.Next('NoBulkInsertsWithNumberSeq');
+            TableWithNoAutoIncrementWPT.Description := 'NoBulkInsertsWithNumberSeq';
+            TableWithNoAutoIncrementWPT.Insert(true);
         end;
     end;
     #endregion
@@ -66,7 +66,7 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
 
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('BulkInserts');
         Result.Add('NoBulkInserts');
@@ -82,7 +82,7 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('1.DATA', 'Data Access', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '4. Bulk Inserts', 'Bulk Inserts', PerfToolSuiteHeaderWPT);
 

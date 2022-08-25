@@ -86,7 +86,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('PrepDemoData');
         Result.Add('DeleteAllLocksTable');
@@ -101,7 +101,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('1.DATA', 'Data Access', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '6. DeleteAll', 'DeleteAll Locking Issue', PerfToolSuiteHeaderWPT);
 

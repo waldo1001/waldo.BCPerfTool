@@ -57,7 +57,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('Classic LoopyLoop');
         Result.Add('Loop With Query');
@@ -73,7 +73,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('2.QUERIES', 'Queries', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('02.QUERIES', 'Queries', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1.Looping', 'Looping', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);

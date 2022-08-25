@@ -94,7 +94,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('TempTableKeyValuePair');
         Result.Add('DictionaryKeyValuePair');
@@ -112,9 +112,9 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('8.DATATYPES', 'Data Types', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('08.DATATYPES', 'Data Types', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, 'b. TempTableDict', 'TempTable vs Dictionaries', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2. TEMPTABLEDICT', 'TempTable vs Dictionaries', PerfToolSuiteHeaderWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTempTable, true, false, WPTSuiteLine);
     end;

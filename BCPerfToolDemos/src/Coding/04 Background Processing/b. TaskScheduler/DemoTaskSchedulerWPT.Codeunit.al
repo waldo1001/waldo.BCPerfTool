@@ -19,11 +19,11 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
 
     procedure Start40Tasks()
     var
-        // EmptyTableWLD: Record "EmptyTable WLD";
+        // EmptyTableWPT: Record "EmptyTable WPT";
         TaskId: Guid;
         i: integer;
     begin
-        // EmptyTableWLD.DeleteAllAndCommit();
+        // EmptyTableWPT.DeleteAllAndCommit();
 
         if not TaskScheduler.CanCreateTask() then
             error('Can''t create task.');
@@ -51,7 +51,7 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('StartTask');
         Result.Add('Start40Tasks');
@@ -68,7 +68,7 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('4. Background', 'Background Processing', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('04.BACKGROUND', 'Background Processing', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2. BG-TaskScheduler', 'Background - TaskScheduler', PerfToolSuiteHeaderWPT);
 

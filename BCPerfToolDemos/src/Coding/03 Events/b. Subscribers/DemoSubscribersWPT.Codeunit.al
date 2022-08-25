@@ -85,7 +85,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('ModifyAll - NoEvents');
         Result.Add('ModifyAll - FullEvents');
@@ -103,7 +103,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('3.Events', 'Events', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('03.Events', 'Events', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2. Subscribers', 'Subscribers', PerfToolSuiteHeaderWPT);
 

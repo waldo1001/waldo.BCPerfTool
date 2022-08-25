@@ -34,7 +34,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('TextLoop');
         Result.Add('TextBuilderLoop');
@@ -50,9 +50,9 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('8.DATATYPES', 'Data Types', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('08.DATATYPES', 'Data Types', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, 'a. Text', 'Text vs Text Builder', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. TEXT', 'Text vs Text Builder', PerfToolSuiteHeaderWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTextBuilder, true, false, WPTSuiteLine);
     end;

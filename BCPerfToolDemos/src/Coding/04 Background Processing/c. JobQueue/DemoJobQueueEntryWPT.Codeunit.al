@@ -23,7 +23,7 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('StartJobQueueEntry');
     end;
@@ -39,7 +39,7 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('4. Background', 'Background Processing', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('04.BACKGROUND', 'Background Processing', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3. BG-JobQueue', 'Background - JobQueue', PerfToolSuiteHeaderWPT);
 

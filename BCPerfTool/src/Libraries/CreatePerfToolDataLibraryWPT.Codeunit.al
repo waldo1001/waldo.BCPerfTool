@@ -38,7 +38,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         CreateSuiteLine(Header, ObjType, ObjectId, enum::"PerfToolCodeunit WPT"::Default, '', SelectLatestVersion, RunPerformanceAnalyzer, Line);
     end;
 
-    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; RunPerformanceAnalyzer: Boolean; var Line: Record "PerfTool Suite Line WPT")
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[50]; SelectLatestVersion: Boolean; RunPerformanceAnalyzer: Boolean; var Line: Record "PerfTool Suite Line WPT")
     begin
         CreateSuiteLine(Header, ObjType, 0, PerfToolCodeunit, ProcedureName, SelectLatestVersion, RunPerformanceAnalyzer, Line);
     end;
@@ -46,7 +46,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
     procedure CreateSuiteLines(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; SelectLatestVersion: Boolean; RunPerformanceAnalyzer: Boolean; var Line: Record "PerfTool Suite Line WPT")
     var
         PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
-        ProcedureName: Text[30];
+        ProcedureName: Text[50];
     begin
         PerfToolCodeunitWPT := PerfToolCodeunit;
 
@@ -55,7 +55,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
 
     end;
 
-    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjId: Integer; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[30]; SelectLatestVersion: Boolean; RunPerformanceAnalyzer: Boolean; var Line: Record "PerfTool Suite Line WPT")
+    procedure CreateSuiteLine(Header: Record "PerfTool Suite Header WPT"; ObjType: Option; ObjId: Integer; PerfToolCodeunit: enum "PerfToolCodeunit WPT"; ProcedureName: Text[50]; SelectLatestVersion: Boolean; RunPerformanceAnalyzer: Boolean; var Line: Record "PerfTool Suite Line WPT")
     var
         LineNo: Integer;
     begin

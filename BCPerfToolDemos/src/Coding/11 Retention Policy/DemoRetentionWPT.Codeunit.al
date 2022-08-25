@@ -10,9 +10,9 @@ codeunit 62222 "Demo - Retention WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('99.RETENTION', 'Retention Policies', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('11.RETENTION', 'Retention Policies', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. RETENTION', 'Reetention Policies', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. RETENTION', 'Retention Policies', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Retention Policy Setup List", false, false, WPTSuiteLine);
     end;
 

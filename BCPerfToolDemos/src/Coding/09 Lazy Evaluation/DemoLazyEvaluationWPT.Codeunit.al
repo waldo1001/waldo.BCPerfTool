@@ -60,7 +60,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('NoLazyEvaluationAND');
         Result.Add('ManualLazyEvaluationAND');
@@ -68,7 +68,6 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Result.Add('ManualLazyEvaluationOR');
     end;
 
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
@@ -78,7 +77,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('9.LazyEvaluation', 'Lazy Evaluation', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('09.LazyEvaluation', 'Lazy Evaluation', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Lazy Evaluation', 'Lazy Evaluation', PerfToolSuiteHeaderWPT);
 

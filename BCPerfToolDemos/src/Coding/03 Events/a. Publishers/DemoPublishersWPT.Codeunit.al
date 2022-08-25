@@ -79,7 +79,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('No Publishers');
         Result.Add('Publishers');
@@ -97,7 +97,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('3.Events', 'Events', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('03.Events', 'Events', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Publishers', 'Publishers', PerfToolSuiteHeaderWPT);
 

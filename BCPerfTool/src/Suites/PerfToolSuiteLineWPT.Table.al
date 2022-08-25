@@ -47,7 +47,7 @@ table 62100 "PerfTool Suite Line WPT"
             Caption = 'PerfTool Codeunit';
             DataClassification = CustomerContent;
         }
-        field(8; "Procedure Name"; Text[30])
+        field(8; "Procedure Name"; Text[50])
         {
             Caption = 'Procedure';
             DataClassification = CustomerContent;
@@ -69,8 +69,8 @@ table 62100 "PerfTool Suite Line WPT"
             var
                 TempProcedureBufferWPT: Record "Procedure Buffer WPT" temporary;
                 PerfToolCodeunitWPT: Interface "PerfToolCodeunit WPT";
-                Procs: list of [Text[30]];
-                Proc: Text[30];
+                Procs: list of [Text[50]];
+                Proc: Text[50];
             begin
                 if not Rec.HasInterfaceImplementation() then exit;
 
@@ -172,7 +172,7 @@ table 62100 "PerfTool Suite Line WPT"
         exit(GetObjectName());
     end;
 
-    procedure GetObjectName(): Text[30]
+    procedure GetObjectName(): Text[50]
     begin
         if Rec.HasInterfaceImplementation() and (Rec."Object Type" = Rec."Object Type"::Codeunit) then
             exit(Rec."Procedure Name")

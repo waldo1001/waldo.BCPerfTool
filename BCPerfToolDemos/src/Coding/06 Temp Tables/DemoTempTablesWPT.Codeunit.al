@@ -75,7 +75,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
         Result := true;
     end;
 
-    procedure GetProcedures() Result: List of [Text[30]];
+    procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('NormalTable');
         Result.Add('NormalTableAsTemp');
@@ -92,7 +92,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('6.TEMPTABLES', '', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('06.TEMPTABLES', '', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Temp Tables', 'Temp Tables', PerfToolSuiteHeaderWPT);
 
