@@ -1,9 +1,10 @@
+#pragma warning disable
 codeunit 62218 "BigCodeunit WPT"
 {
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Codeunit Size WPT", 'OnAfterDoingSomethingElse', '', false, false)]
     local procedure MyProcedure()
     begin
-        // SomeFunction();
+        SomeFunction();
     end;
 
     local procedure SomeFunction()
@@ -3890,5 +3891,1612 @@ codeunit 62218 "BigCodeunit WPT"
     begin
         for i := 1 to 1000 do;
     end;
-
+    local procedure SomeFunction620()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction621()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction622()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction623()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction624()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction625()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction626()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction627()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction628()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction629()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction630()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction631()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction632()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction633()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction634()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction635()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction636()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction637()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction638()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction639()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction640()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction641()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction642()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction643()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction644()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction645()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction646()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction647()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction648()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction649()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction650()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction651()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction652()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction653()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction654()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction655()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction656()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction657()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction658()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction659()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction660()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction661()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction662()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction663()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction664()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction665()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction666()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction667()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction668()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction669()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction670()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction671()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction672()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction673()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction674()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction675()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction676()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction677()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction678()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction679()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction680()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction681()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction682()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction683()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction684()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction685()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction686()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction687()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction688()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction689()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction690()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction691()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction692()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction693()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction694()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction695()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction696()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction697()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction698()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction699()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction700()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction701()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction702()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction703()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction704()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction705()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction706()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction707()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction708()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction709()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction710()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction711()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction712()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction713()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction714()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction715()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction716()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction717()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction718()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction719()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction720()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction721()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction722()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction723()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction724()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction725()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction726()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction727()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction728()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction729()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction730()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction731()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction732()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction733()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction734()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction735()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction736()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction737()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction738()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction739()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction740()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction741()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction742()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction743()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction744()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction745()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction746()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction747()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction748()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction749()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction750()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction751()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction752()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction753()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction754()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction755()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction756()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction757()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction758()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction759()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction760()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction761()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction762()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction763()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction764()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction765()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction766()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction767()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction768()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction769()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction770()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction771()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction772()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction773()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction774()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction775()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction776()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction777()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction778()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction779()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction780()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction781()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction782()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction783()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction784()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction785()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction786()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction787()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction788()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction789()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction790()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction791()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction792()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction793()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction794()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction795()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction796()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction797()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction798()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction799()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction800()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction801()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction802()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction803()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction804()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction805()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction806()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction807()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction808()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction809()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction810()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction811()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction812()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction813()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction814()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction815()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction816()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction817()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction818()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction819()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction820()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction821()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction822()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction823()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction824()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction825()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction826()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction827()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction828()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction829()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction830()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction831()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction832()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction833()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction834()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction835()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction836()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction837()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction838()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction839()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction840()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction841()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction842()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction843()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction844()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction845()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction846()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction847()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction848()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction849()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction850()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction851()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction852()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction853()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction854()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction855()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction856()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction857()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction858()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction859()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction860()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction861()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction862()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction863()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction864()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction865()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction866()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction867()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction868()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction869()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction870()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction871()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction872()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction873()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction874()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction875()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction876()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction877()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction878()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction879()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction880()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction881()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction882()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction883()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction884()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction885()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction886()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
+    local procedure SomeFunction887()
+    var
+        i: Integer;
+    begin
+        for i := 1 to 1000 do;
+    end;
 }

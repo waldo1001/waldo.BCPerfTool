@@ -3,7 +3,7 @@ codeunit 62217 "SmallCodeunit WPT"
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Codeunit Size WPT", 'OnAfterDoingSomething', '', false, false)]
     local procedure MyProcedure()
     begin
-        // SomeFunction();
+        SomeFunction();
     end;
 
     local procedure SomeFunction()
