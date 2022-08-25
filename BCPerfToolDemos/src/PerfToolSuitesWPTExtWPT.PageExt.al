@@ -55,6 +55,10 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
             {
                 Filters = where("Group Code" = const('8.DATATYPES'));
             }
+            view(LazyEvaluatoin)
+            {
+                Filters = where("Group Code" = const('9.LazyEvaluation'));
+            }
             view(Wrappers)
             {
                 Filters = where("Group Code" = const('98.WRAPPERS'));

@@ -12,7 +12,8 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62226; FindSet) { Implementation = "PerfToolCodeunit WPT" = "Demo - Looping Find(Set) WPT"; }
     value(62235; PartialRecords) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecords WPT"; }
     value(62203; TempTables) { Implementation = "PerfToolCodeunit WPT" = "Demo - Temp Tables WPT"; }
-    value(62210; DataTypes) { Implementation = "PerfToolCodeunit WPT" = "Demo - DataTypes WLD WPT"; }
+    value(62210; DTTextBuilder) { Implementation = "PerfToolCodeunit WPT" = "Demo - TextBuilder WPT"; }
+    value(62240; DTTempTable) { Implementation = "PerfToolCodeunit WPT" = "Demo - TempTable Dict WPT"; }
     value(62214; RecRef) { Implementation = "PerfToolCodeunit WPT" = "Demo - RecRef vs Record WPT"; }
     value(62215; CalcFields) { Implementation = "PerfToolCodeunit WPT" = "Demo - Calcfields WPT"; }
     value(62216; CodeunitSize) { Implementation = "PerfToolCodeunit WPT" = "Demo - Codeunit Size WPT"; }

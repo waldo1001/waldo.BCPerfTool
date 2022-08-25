@@ -1,4 +1,4 @@
-codeunit 62210 "Demo - DataTypes WLD WPT" implements "PerfToolCodeunit WPT"
+codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
 {
     //#region TextLoop
     procedure TextLoop()
@@ -52,8 +52,8 @@ codeunit 62210 "Demo - DataTypes WLD WPT" implements "PerfToolCodeunit WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('8.DATATYPES', 'Data Types', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Text', 'Text & Text Builder', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, 'a. Text', 'Text vs Text Builder', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DataTypes, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTextBuilder, true, false, WPTSuiteLine);
     end;
 }
