@@ -104,6 +104,40 @@ page 62106 "PerfTool Log SubPage WPT"
                     rec.DownloadProfile();
                 end;
             }
+            action(DownloadFlameGraph)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
+                Image = Download;
+                Enabled = IsProfileAvailable;
+                Caption = 'Download FlameGraph';
+                ToolTip = 'Download the performance FlameGraph file of the recording performed.';
+                Scope = Repeater;
+
+                trigger OnAction()
+                begin
+                    rec.DownloadFlameGraphSvg();
+                end;
+            }
+            action(UploadToPeriscope)
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
+                Image = Download;
+                Enabled = IsProfileAvailable;
+                Caption = 'Upload To Periscope';
+                ToolTip = 'Upload the performance FlameGraph to Periscope for further analysis.';
+                Scope = Repeater;
+
+                trigger OnAction()
+                begin
+                    rec.UploadToPyroscope();
+                end;
+            }
             action(GetFlames)
             {
                 Caption = 'Show Flamegraph';

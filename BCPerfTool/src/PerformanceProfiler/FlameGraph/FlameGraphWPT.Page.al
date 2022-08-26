@@ -6,21 +6,23 @@ page 62112 "FlameGraph WPT"
     {
         area(Content)
         {
-            group(Viewer1)
-            {
-                usercontrol(FlamegraphAddIn; "FlamegraphControlAddIn WPT")
-                {
-                    ApplicationArea = All;
+            // group(Viewer1)
+            // {
+            //     usercontrol(FlamegraphAddIn; "FlamegraphControlAddIn WPT")
+            //     {
+            //         ApplicationArea = All;
 
-                    trigger ControlAddInReady()
-                    begin
-                        SetContent();
-                    end;
-                }
-            }
+            //         trigger ControlAddInReady()
+            //         begin
+            //             SetContent();
+            //         end;
+            //     }
+            // }
 
             group(Viewer2)
             {
+                ShowCaption = false;
+
                 usercontrol(SVG; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
                     ApplicationArea = All;
@@ -52,7 +54,7 @@ page 62112 "FlameGraph WPT"
                 begin
                     SetContent();
 
-                    Message(FlameGraphContent);
+                    // Message(FlameGraphContent);
                 end;
             }
         }
@@ -65,9 +67,9 @@ page 62112 "FlameGraph WPT"
 
     procedure SetContent()
     begin
-        FlameGraphContent := Rec.GetFlameGraph();
+        FlameGraphContent := Rec.GetFlameGraphSvg();
 
-        CurrPage.FlamegraphAddIn.SetContent(FlameGraphContent);
+        // CurrPage.FlamegraphAddIn.SetContent(FlameGraphContent);
         CurrPage.SVG.SetContent(FlameGraphContent);
     end;
 

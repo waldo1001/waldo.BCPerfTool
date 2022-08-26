@@ -1,20 +1,21 @@
 codeunit 62126 "GetFlameGraph Meth WPT"
 {
-    internal procedure GetFlameGraph(var Log: Record "PerfTool Log Entry WPT") Base64Encoded: Text
+    internal procedure GetFlameGraph(var Log: Record "PerfTool Log Entry WPT"; Svg: Boolean) Base64Encoded: Text
     var
         IsHandled: Boolean;
     begin
         OnBeforeGetFlameGraph(Log, Base64Encoded, IsHandled);
 
-        DoGetFlameGraph(Log, Base64Encoded, IsHandled);
+        DoGetFlameGraph(Log, Svg, Base64Encoded, IsHandled);
 
         OnAfterGetFlameGraph(Log, Base64Encoded);
     end;
 
-    local procedure DoGetFlameGraph(var Log: Record "PerfTool Log Entry WPT"; var Base64EncodedResult: Text; IsHandled: Boolean)
+    local procedure DoGetFlameGraph(var Log: Record "PerfTool Log Entry WPT"; Svg: Boolean; var Base64EncodedResult: Text; IsHandled: Boolean)
     var
         HTTP: HTTPClient;
         HttpContnt: HttpContent;
+        Headers: HttpHeaders;
         Response: HttpResponseMessage;
         InStr: InStream;
         AllContent: Text;
@@ -37,6 +38,13 @@ codeunit 62126 "GetFlameGraph Meth WPT"
         URL := 'http://blogapi.sshadows.dk/upload';
 
         HttpContnt.WriteFrom(AllContent);
+        HttpContnt.GetHeaders(Headers);
+        Headers.Add('color', 'aqua');
+        Headers.Add('filter', 'BCPerfTool');
+
+        if not Svg then
+            Headers.Add('onlyfolded', 'true');
+
         if Http.Post(URL, HttpContnt, Response) then
             case Response.HttpStatusCode of
                 200:

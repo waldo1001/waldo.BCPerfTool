@@ -106,10 +106,24 @@ table 62102 "PerfTool Log Entry WPT"
         DownloadProfileWPT.DownloadProfile(Rec);
     end;
 
-    Procedure GetFlameGraph(): Text
+    procedure DownloadFlameGraphSvg()
+    var
+        DownloadFlameGraphSvgMethWPT: Codeunit "DownloadFlameGraphSvg Meth WPT";
+    begin
+        DownloadFlameGraphSvgMethWPT.Download(Rec);
+    end;
+
+    procedure UploadToPyroscope()
+    var
+        UploadToPyroscopeMethWPT: Codeunit "UploadToPyroscope Meth WPT";
+    begin
+        UploadToPyroscopeMethWPT.UploadToPyroscope(Rec);
+    end;
+
+    Procedure GetFlameGraphSvg(): Text
     var
         GetFlameGraphMethWPT: Codeunit "GetFlameGraph Meth WPT";
     begin
-        exit(GetFlameGraphMethWPT.GetFlameGraph(Rec));
+        exit(GetFlameGraphMethWPT.GetFlameGraph(Rec, true));
     end;
 }

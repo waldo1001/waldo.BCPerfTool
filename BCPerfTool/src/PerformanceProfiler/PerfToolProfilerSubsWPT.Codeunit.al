@@ -39,6 +39,8 @@ codeunit 62124 "PerfTool Profiler Subs WPT"
         Log.ProfilingData.CreateOutStream(OutStr);
         CopyStream(OutStr, SamplingPerformanceProfiler.GetData());
         Log.Modify();
+
+        Log.UploadToPyroscope();
     end;
 
 }
