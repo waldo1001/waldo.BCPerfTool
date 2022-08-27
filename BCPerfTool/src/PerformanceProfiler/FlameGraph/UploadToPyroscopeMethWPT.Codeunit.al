@@ -66,6 +66,7 @@ codeunit 62128 "UploadToPyroscope Meth WPT"
 
     local procedure UploadToPyroscopeServer(var Log: Record "PerfTool Log Entry WPT"; payload: Text; Response: HttpResponseMessage)
     var
+        PerfToolSetupWPT: Record "PerfTool Setup WPT";
         Content: HttpContent;
         HTTP: HTTPClient;
         Name: Text;
@@ -73,13 +74,16 @@ codeunit 62128 "UploadToPyroscope Meth WPT"
         UntilUnix: Text;
         Url: Text;
     begin
+        PerfToolSetupWPT.GetRecordOnce();
+        PerfToolSetupWPT.TestField(FlameGraphServer);
+
         Content.WriteFrom(payload);
 
         Name := GetName(Log);
         FromUnix := format(log.StartTime, 0, 9);
         UntilUnix := format(log.StopTime, 0, 9);
 
-        url := CreateRequestUrl('192.168.1.220', 4040, Name, FromUnix, UntilUnix);
+        url := CreateRequestUrl(PerfToolSetupWPT.FlameGraphServer, 4040, Name, FromUnix, UntilUnix);
 
         if not HTTP.Post(Url, Content, Response) then
             NotifyFailure('An error occurred while uploading to pyroscope. Url:' + Url)

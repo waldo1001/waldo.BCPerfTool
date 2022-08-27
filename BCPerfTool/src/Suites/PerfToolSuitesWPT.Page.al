@@ -37,6 +37,17 @@ page 62102 "PerfTool Suites WPT"
     {
         area(Navigation)
         {
+            action(Setup)
+            {
+                Caption = 'Setup';
+                ToolTip = 'Opens the PerfTool Setup.';
+                ApplicationArea = All;
+                RunObject = page "PerfTool Setup WPT";
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Setup;
+            }
             action(Groups)
             {
                 Caption = 'Groups';

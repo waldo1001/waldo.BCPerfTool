@@ -1,17 +1,22 @@
 codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
 {
+    EventSubscriberInstance = Manual;
+
     #region OpenSalesInvoicePage
     procedure OpenSalesInvoicePage()
     var
         SalesHeader: Record "Sales Header";
         PageManagement: Codeunit "Page Management";
+        DemoFlameGraphWPT: Codeunit "Demo - FlameGraph WPT";
     begin
+        BindSubscription(DemoFlameGraphWPT);
+
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Invoice);
         SalesHeader.FindFirst();
 
-        Sleep(100);
-
         PageManagement.PageRunModal(SalesHeader);
+
+        UnbindSubscription(DemoFlameGraphWPT);
     end;
     #endregion
 
