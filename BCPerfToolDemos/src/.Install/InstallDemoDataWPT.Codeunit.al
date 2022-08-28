@@ -12,18 +12,37 @@ codeunit 62205 "Install Demo Data WPT"
         FillJustSomeCountries();
         EmptyTable();
         SetupNumberSequences();
-        InsertBigTable();
+        InsertBigTables();
     end;
 
-    procedure InsertBigTable()
+    local procedure InsertBigTables()
     var
-        JustSomeTable: Record "Just Some Table WPT";
-        i: integer;
+        JobQueueEntry: Record "Job Queue Entry";
+        SessionId: Integer;
+        RecId: Recordid;
     begin
-        if not JustSomeTable.IsEmpty then exit;
+        // SessionId := 0;
+        // StartSession(SessionId, Codeunit::"Install - Big Table WPT");
+        // SessionId := 0;
+        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 1 WPT");
+        // SessionId := 0;
+        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 2 WPT");
+        // SessionId := 0;
+        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 3 WPT");
+        // SessionId := 0;
+        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 4 WPT");
 
-        for i := 1 to 500000 do
-            JustSomeTable.Create(RandomText(random(50)), i);
+        // TaskScheduler.CreateTask(codeunit::"Install - Big Table WPT", 0, true);
+        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 1 WPT", 0, true);
+        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 2 WPT", 0, true);
+        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 3 WPT", 0, true);
+        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 4 WPT", 0, true);
+
+        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
+        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
+        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
+        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
+        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
     end;
 
     local procedure EmptyTable()
@@ -302,7 +321,7 @@ codeunit 62205 "Install Demo Data WPT"
             JustSomeCountry.Modify();
     end;
 
-    local procedure RandomText(Length: Integer): Text[2048]
+    procedure RandomText(Length: Integer): Text[2048]
     var
         GuidTxt: Text;
     begin
@@ -310,4 +329,6 @@ codeunit 62205 "Install Demo Data WPT"
             GuidTxt += LowerCase(DelChr(Format(CreateGuid()), '=', '{}-'));
         exit(CopyStr(GuidTxt, 1, 2048));
     end;
+
+
 }

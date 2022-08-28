@@ -1,4 +1,4 @@
-tableextension 62301 "JustSomeTableWPT Ext1 WPT" extends "Just Some Table WPT"
+tableextension 62302 "JustSomeExtTable1 Ext1 WPT" extends "Just Some Extended Table 1 WPT"
 {
     fields
     {

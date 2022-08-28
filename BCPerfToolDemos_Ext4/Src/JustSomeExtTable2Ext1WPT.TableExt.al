@@ -1,24 +1,24 @@
-tableextension 62326 "JustSomeTableWPT Ext1 WPT" extends "Just Some Table WPT"
+tableextension 62317 "JustSomeExtTable2 Ext1 WPT" extends "Just Some Extended Table 2 WPT"
 {
     fields
     {
-        field(62326; "Field26 WPT"; Integer)
+        field(62316; "Field16 WPT"; Integer)
         {
             DataClassification = CustomerContent;
         }
-        field(62327; "Field27 WPT"; Code[30])
+        field(62317; "Field17 WPT"; Code[30])
         {
             DataClassification = CustomerContent;
         }
-        field(62328; "Field28 WPT"; Text[250])
+        field(62318; "Field18 WPT"; Text[250])
         {
             DataClassification = CustomerContent;
         }
-        field(62329; "Field29 WPT"; DateTime)
+        field(62319; "Field19 WPT"; DateTime)
         {
             DataClassification = CustomerContent;
         }
-        field(62330; "Field30 WPT"; Blob)
+        field(62320; "Field20 WPT"; Blob)
         {
             DataClassification = CustomerContent;
         }

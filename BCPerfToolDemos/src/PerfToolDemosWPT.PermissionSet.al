@@ -5,6 +5,10 @@ permissionset 62201 "PerfTool Demos WPT"
     Permissions =
         tabledata "Just Some Country WPT" = RIMD,
         tabledata "Just Some Table WPT" = RIMD,
+        tabledata "Just Some Extended Table 1 WPT" = RIMD,
+        tabledata "Just Some Extended Table 2 WPT" = RIMD,
+        tabledata "Just Some Extended Table 3 WPT" = RIMD,
+        tabledata "Just Some Extended Table 4 WPT" = RIMD,
         tabledata "Just Some Colors WPT" = RIMD,
         tabledata "GroupingResult WPT" = RIMD,
         tabledata "EmptyTable WPT" = RIMD,
