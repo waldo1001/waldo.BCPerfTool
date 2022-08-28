@@ -51,6 +51,7 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -88,4 +89,5 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::BulkInserts, true, true, WPTSuiteLine);
     end;
+    #endregion
 }

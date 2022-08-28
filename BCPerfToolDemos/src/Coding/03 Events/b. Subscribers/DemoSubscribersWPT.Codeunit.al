@@ -1,7 +1,7 @@
 #pragma warning disable AA0005
 codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region ModifyAllNoEvents
+    #region ModifyAllNoEvents
     procedure ModifyAllNoEvents();
     var
         JustSomeTable: Record "Just Some Table WPT";
@@ -12,7 +12,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion ModifyAllNoEvents
 
-    //#region ModifyAllFullEvents
+    #region ModifyAllFullEvents
     procedure ModifyAllFullEvents();
     var
         JustSomeTable: Record "Just Some Table WPT";
@@ -27,7 +27,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion ModifyAllFullEvents
 
-    //#region LoopAllAlwaysBound
+    #region LoopAllAlwaysBound
     procedure LoopAllAlwaysBound()
     var
         JustSomeTable: Record "Just Some Table WPT";
@@ -46,7 +46,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion LoopAllAlwaysBound
 
-    //#region LoopAllJITBinding
+    #region LoopAllJITBinding
     procedure LoopAllJITBinding()
     var
         JustSomeTable: Record "Just Some Table WPT";
@@ -69,6 +69,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     //#endregion LoopAllJITBinding
 
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -109,4 +110,5 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Subscribers, false, true, WPTSuiteLine);
     end;
+    #endregion
 }

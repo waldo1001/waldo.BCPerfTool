@@ -1,6 +1,6 @@
 codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region CalcFieldsInLoop
+    #region CalcFieldsInLoop
     local procedure CalcFieldsInLoop()
     var
         JustSomeColorsWPT: Record "Just Some Country WPT";
@@ -12,7 +12,7 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion CalcFieldsInLoop
 
-    //#region AutoCalcFields
+    #region AutoCalcFields
     local procedure AutoCalcFields()
     var
         JustSomeColorsWPT: Record "Just Some Country WPT";
@@ -24,6 +24,7 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion AutoCalcFields
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -57,4 +58,5 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::CalcFields, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

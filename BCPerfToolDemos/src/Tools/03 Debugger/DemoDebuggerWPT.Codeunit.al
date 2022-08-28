@@ -68,6 +68,7 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
 
     #endregion LoopWithQuery
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -104,4 +105,5 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Debugger, true, false, WPTSuiteLine);
 
     end;
+    #endregion
 }

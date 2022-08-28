@@ -83,6 +83,7 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -125,4 +126,5 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LazyEvaluation, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

@@ -18,6 +18,7 @@ page 62113 "PerfTool Setup WPT"
                 field(FlameGraphServer; Rec.FlameGraphServer)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the FlameGraphServer field.';
                 }
             }
         }

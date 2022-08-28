@@ -3,7 +3,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
 {
     // First Add a few TableExtensions, then the rest!
 
-    //#region FindSetNoPartialrecords
+    #region FindSetNoPartialrecords
     local procedure FindSetNoPartialrecords()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -18,7 +18,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindSetNoPartialrecords
 
-    //#region FindSetWithPartialrecords
+    #region FindSetWithPartialrecords
     local procedure FindSetWithPartialrecords()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -34,6 +34,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindSetWithPartialrecords
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -67,4 +68,5 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3. PartialRecords', 'Partial Records', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::PartialRecords, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

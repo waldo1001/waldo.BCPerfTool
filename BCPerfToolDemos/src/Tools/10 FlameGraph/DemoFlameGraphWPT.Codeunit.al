@@ -20,6 +20,7 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -81,5 +82,6 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     begin
         sleep(100);
     end;
+    #endregion
 
 }

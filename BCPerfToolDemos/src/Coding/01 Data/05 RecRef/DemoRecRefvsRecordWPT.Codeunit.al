@@ -1,6 +1,6 @@
 codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region NormalRecordRead
+    #region NormalRecordRead
     local procedure NormalRecordRead()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -12,7 +12,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region RecRefRecordRead
+    #region RecRefRecordRead
     local procedure RecRefRecordRead()
     var
         RecRef: RecordRef;
@@ -28,7 +28,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region NormalRecordWrite
+    #region NormalRecordWrite
     local procedure NormalRecordWrite()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -42,7 +42,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region RecRefRecordWrite
+    #region RecRefRecordWrite
     local procedure RecRefRecordWrite()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -64,6 +64,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -104,4 +105,5 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::RecRef, true, false, WPTSuiteLine);
 
     end;
+    #endregion
 }

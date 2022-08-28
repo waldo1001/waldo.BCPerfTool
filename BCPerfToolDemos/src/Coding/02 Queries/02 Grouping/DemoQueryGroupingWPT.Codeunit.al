@@ -1,6 +1,6 @@
 codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region Legacy Loop
+    #region Legacy Loop
     local procedure ClassicLoopyLoop()
     var
         GroupingResult: Record "GroupingResult WPT";
@@ -54,7 +54,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
 
     //#endregion Legacy Loop
 
-    //#region Query Loop
+    #region Query Loop
     local procedure LoopWithQuery()
     var
         GroupingResult: Record "GroupingResult WPT";
@@ -79,7 +79,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
 
     //#endregion Query Loop
 
-    //#region Skip Method
+    #region Skip Method
     local procedure SkipMethod()
     var
         GroupingResult: Record "GroupingResult WPT";
@@ -109,6 +109,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion Skip Method
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -149,4 +150,5 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Query, query::"GroupingJustSomeTable WPT", false, false, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Grouping, false, false, WPTSuiteLine);
     end;
+    #endregion
 }

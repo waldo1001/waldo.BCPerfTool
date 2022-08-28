@@ -1,6 +1,6 @@
 codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region TempTableKeyValuePair
+    #region TempTableKeyValuePair
     procedure TempTableKeyValuePair()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -21,7 +21,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region DictionaryKeyValuePair
+    #region DictionaryKeyValuePair
     procedure DictionaryKeyValuePair()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -39,7 +39,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region TempTableCompleteRecord
+    #region TempTableCompleteRecord
     procedure TempTableCompleteRecord()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -59,7 +59,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region DictionaryCompleteRecord
+    #region DictionaryCompleteRecord
     procedure DictionaryCompleteRecord()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -78,6 +78,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -118,4 +119,5 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTempTable, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

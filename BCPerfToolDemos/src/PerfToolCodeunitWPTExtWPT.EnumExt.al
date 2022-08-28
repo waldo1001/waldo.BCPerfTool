@@ -21,5 +21,5 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62238; DeleteAll) { Implementation = "PerfToolCodeunit WPT" = "Demo - DeleteAll WPT"; }
     value(62249; Debugger) { Implementation = "PerfToolCodeunit WPT" = "Demo - Debugger WPT"; }
     value(62253; FlameGraph) { Implementation = "PerfToolCodeunit WPT" = "Demo - FlameGraph WPT"; }
-
+    value(62254; "Keys") { Implementation = "PerfToolCodeunit WPT" = "Demo  - Keys WPT"; }
 }

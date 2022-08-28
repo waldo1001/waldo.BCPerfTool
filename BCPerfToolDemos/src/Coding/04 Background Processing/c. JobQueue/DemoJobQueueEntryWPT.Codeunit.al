@@ -12,6 +12,7 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion StartJobQueueEntry
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -45,5 +46,6 @@ codeunit 62232 "Demo - JobQueueEntry WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::JobQueueEntry, false, true, WPTSuiteLine);
     end;
+    #endregion
 
 }

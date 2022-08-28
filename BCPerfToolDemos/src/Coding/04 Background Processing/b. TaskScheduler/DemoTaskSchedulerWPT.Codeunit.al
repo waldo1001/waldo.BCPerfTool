@@ -38,6 +38,7 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
 
 
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -74,5 +75,6 @@ codeunit 62231 "Demo - TaskScheduler WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::TaskScheduler, false, true, WPTSuiteLine);
     end;
+    #endregion
 
 }

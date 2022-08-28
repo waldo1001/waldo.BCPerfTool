@@ -1,6 +1,6 @@
 codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region Classic LoopyLoop
+    #region Classic LoopyLoop
     procedure ClassicLoopyLoop()
     var
         Customer: Record Customer;
@@ -30,7 +30,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
 
     //#endregion Classic LoopyLoop
 
-    //#region LoopWithQuery
+    #region LoopWithQuery
     procedure LoopWithQuery()
     var
         NestedLoopWPT: Query "NestedLoop WPT";
@@ -45,6 +45,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
 
     //#endregion LoopWithQuery
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -78,5 +79,6 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1.Looping', 'Looping', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);
     end;
+    #endregion
 
 }

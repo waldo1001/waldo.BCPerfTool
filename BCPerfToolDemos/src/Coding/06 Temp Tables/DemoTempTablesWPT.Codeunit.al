@@ -61,6 +61,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -98,4 +99,5 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::TempTables, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

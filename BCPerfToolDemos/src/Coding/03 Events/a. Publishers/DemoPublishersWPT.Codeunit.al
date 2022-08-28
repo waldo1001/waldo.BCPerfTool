@@ -1,7 +1,7 @@
 #pragma warning disable AA0005
 codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region NoPublishers
+    #region NoPublishers
     local procedure NoPublishers()
     begin
         for i := 0 to 100000 do begin
@@ -10,7 +10,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region Publishers
+    #region Publishers
     local procedure Publishers()
     begin
         for i := 0 to 100000 do begin
@@ -25,7 +25,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region PublishersWithSubscriber
+    #region PublishersWithSubscriber
     local procedure PublishersWithSubscriber()
     begin
         for i := 0 to 100000 do begin
@@ -45,7 +45,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region PublishersWithSubscrSingleInst
+    #region PublishersWithSubscrSingleInst
     local procedure PublishersWithSubscrSingleInst()
     begin
         for i := 0 to 100000 do begin
@@ -63,6 +63,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -103,4 +104,5 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Publishers, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

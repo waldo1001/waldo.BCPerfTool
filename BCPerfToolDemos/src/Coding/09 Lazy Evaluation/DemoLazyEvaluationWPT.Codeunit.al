@@ -44,6 +44,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Sleep(2000);
     end;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -83,5 +84,6 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LazyEvaluation, true, false, WPTSuiteLine);
     end;
+    #endregion
 
 }

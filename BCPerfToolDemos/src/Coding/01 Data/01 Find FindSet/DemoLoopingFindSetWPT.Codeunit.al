@@ -1,7 +1,7 @@
 #pragma warning disable
 codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region FindSetAndLoop40
+    #region FindSetAndLoop40
     local procedure FindSetAndLoop40()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -12,7 +12,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindSetAndLoop40
 
-    //#region FindMinAndLoop40
+    #region FindMinAndLoop40
     local procedure FindMinAndLoop40()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -23,7 +23,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindMinAndLoop40
 
-    //#region FindSetAndLoop100
+    #region FindSetAndLoop100
     local procedure FindSetAndLoop100()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -34,7 +34,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion FindSetAndLoop100
 
-    //#region FindMinAndLoop100
+    #region FindMinAndLoop100
     local procedure FindMinAndLoop100()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
@@ -48,6 +48,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -72,8 +73,6 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
         Result.Add('FindMinAndLoop100');
     end;
 
-
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup()
     var
@@ -88,4 +87,5 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Table, database::"Just Some Table WPT", true, false, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::FindSet, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

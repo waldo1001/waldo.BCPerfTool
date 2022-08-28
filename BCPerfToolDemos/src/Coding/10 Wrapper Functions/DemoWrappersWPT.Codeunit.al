@@ -1,7 +1,7 @@
 codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
 {
 
-    //#region SubFunction
+    #region SubFunction
     local procedure SubFunction()
     var
         myGuid: Guid;
@@ -20,7 +20,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion SubFunction
 
-    //#region NoSubFunction
+    #region NoSubFunction
     local procedure NoSubfunction()
     var
         myGuid: Guid;
@@ -34,7 +34,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion NoSubFunction
 
-    //#region SingleInstance
+    #region SingleInstance
     local procedure SingleInstance()
     var
         TrimBracketsSingleInstWPT: Codeunit "TrimBrackets - SingleInst WPT";
@@ -49,7 +49,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion SingleInstance
 
-    //#region NoSingleInstance
+    #region NoSingleInstance
     local procedure NoSingleInstance()
     var
         TrimBracketsNoSingleInsWPT: Codeunit "TrimBrackets - NoSingleIns WPT";
@@ -70,6 +70,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         exit(1000000);
     end;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -109,4 +110,5 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. WRAPPERS', 'Wrapper functions', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, false, WPTSuiteLine);
     end;
+    #endregion
 }

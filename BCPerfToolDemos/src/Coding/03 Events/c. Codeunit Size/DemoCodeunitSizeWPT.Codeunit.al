@@ -1,7 +1,7 @@
 codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
 {
 
-    //#region SmallCodeunit
+    #region SmallCodeunit
     local procedure SmallCodeunit()
     begin
         for i := 0 to 100000 do begin
@@ -16,7 +16,7 @@ codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region BigCodeunit
+    #region BigCodeunit
     local procedure BigCodeunit()
     begin
         for i := 0 to 100000 do begin
@@ -34,6 +34,7 @@ codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -66,4 +67,5 @@ codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3. CU Size', 'Codeunit Size', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::CodeunitSize, false, false, WPTSuiteLine);
     end;
+    #endregion
 }

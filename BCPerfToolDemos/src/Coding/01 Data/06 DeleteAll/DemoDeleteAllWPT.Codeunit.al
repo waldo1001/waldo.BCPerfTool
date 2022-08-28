@@ -71,6 +71,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         page.RunModal(page::"EmptyTable WPT");
     end;
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -108,4 +109,5 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, Page::"EmptyTable WPT", true, false, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DeleteAll, true, true, WPTSuiteLine);
     end;
+    #endregion
 }

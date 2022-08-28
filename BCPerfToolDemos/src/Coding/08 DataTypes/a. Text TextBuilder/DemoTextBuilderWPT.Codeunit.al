@@ -1,6 +1,6 @@
 codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
 {
-    //#region TextLoop
+    #region TextLoop
     procedure TextLoop()
     var
         i: integer;
@@ -11,7 +11,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
-    //#region TextBuilderLoop
+    #region TextBuilderLoop
     procedure TextBuilderLoop()
     var
         i: integer;
@@ -22,6 +22,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
     end;
     //#endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -56,4 +57,5 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTextBuilder, true, false, WPTSuiteLine);
     end;
+    #endregion
 }

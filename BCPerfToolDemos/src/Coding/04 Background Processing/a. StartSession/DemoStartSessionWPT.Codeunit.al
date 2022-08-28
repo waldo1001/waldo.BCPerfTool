@@ -61,6 +61,7 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
@@ -100,5 +101,6 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::StartSession, false, true, WPTSuiteLine);
     end;
+    #endregion
 
 }
