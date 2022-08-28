@@ -14,7 +14,7 @@ codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
     local procedure OnAfterDoingSomething()
     begin
     end;
-    //#endregion
+    #endregion
 
     #region BigCodeunit
     local procedure BigCodeunit()
@@ -29,7 +29,7 @@ codeunit 62216 "Demo - Codeunit Size WPT" implements "PerfToolCodeunit WPT"
     local procedure OnAfterDoingSomethingElse()
     begin
     end;
-    //#endregion
+    #endregion
 
     var
         i: integer;

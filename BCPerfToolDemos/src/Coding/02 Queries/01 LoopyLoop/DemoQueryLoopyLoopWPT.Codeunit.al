@@ -28,7 +28,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
             until Customer.Next() < 1;
     end;
 
-    //#endregion Classic LoopyLoop
+    #endregion Classic LoopyLoop
 
     #region LoopWithQuery
     procedure LoopWithQuery()
@@ -43,7 +43,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         NestedLoopWPT.Close();
     end;
 
-    //#endregion LoopWithQuery
+    #endregion LoopWithQuery
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

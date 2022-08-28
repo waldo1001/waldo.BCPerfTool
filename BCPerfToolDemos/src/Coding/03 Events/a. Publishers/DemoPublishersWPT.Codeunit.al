@@ -8,7 +8,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
             //Do Something        
         end;
     end;
-    //#endregion
+    #endregion
 
     #region Publishers
     local procedure Publishers()
@@ -23,7 +23,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     local procedure OnAfterDoingSomething()
     begin
     end;
-    //#endregion
+    #endregion
 
     #region PublishersWithSubscriber
     local procedure PublishersWithSubscriber()
@@ -43,7 +43,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     local procedure EmptySubscriber()
     begin
     end;
-    //#endregion
+    #endregion
 
     #region PublishersWithSubscrSingleInst
     local procedure PublishersWithSubscrSingleInst()
@@ -58,7 +58,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     local procedure OnAfterDoingSomethingElse2()
     begin
     end;
-    //#endregion
+    #endregion
 
     var
         i: integer;

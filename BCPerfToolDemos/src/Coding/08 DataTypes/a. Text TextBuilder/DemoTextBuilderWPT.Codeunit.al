@@ -9,7 +9,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         for i := 1 to 10000 do
             string += 'AJ';
     end;
-    //#endregion
+    #endregion
 
     #region TextBuilderLoop
     procedure TextBuilderLoop()
@@ -20,7 +20,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         for i := 1 to 10000 do
             string.Append('waldo');
     end;
-    //#endregion
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

@@ -10,7 +10,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         JustSomeTable.SetRange(Color, 'BROWN');
         JustSomeTable.ModifyAll("Message 2", format(random(1000)), false);
     end;
-    //#endregion ModifyAllNoEvents
+    #endregion ModifyAllNoEvents
 
     #region ModifyAllFullEvents
     procedure ModifyAllFullEvents();
@@ -25,7 +25,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
         JustSomeTable.ModifyAll("Message 2", format(random(1000)), false);
         UnbindSubscription(DemoSubs);
     end;
-    //#endregion ModifyAllFullEvents
+    #endregion ModifyAllFullEvents
 
     #region LoopAllAlwaysBound
     procedure LoopAllAlwaysBound()
@@ -44,7 +44,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 
         UnbindSubscription(DemoSubs);
     end;
-    //#endregion LoopAllAlwaysBound
+    #endregion LoopAllAlwaysBound
 
     #region LoopAllJITBinding
     procedure LoopAllJITBinding()
@@ -66,7 +66,7 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 
             until JustSomeTable.Next() < 1;
     end;
-    //#endregion LoopAllJITBinding
+    #endregion LoopAllJITBinding
 
 
     #region InterfaceImplementation

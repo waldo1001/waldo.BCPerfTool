@@ -18,7 +18,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     begin
         exit(format(myGuid, 0, 4));
     end;
-    //#endregion SubFunction
+    #endregion SubFunction
 
     #region NoSubFunction
     local procedure NoSubfunction()
@@ -32,7 +32,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         for i := 0 to NumberOfInvocations() do
             Result := format(myGuid, 0, 4);
     end;
-    //#endregion NoSubFunction
+    #endregion NoSubFunction
 
     #region SingleInstance
     local procedure SingleInstance()
@@ -47,7 +47,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         for i := 0 to NumberOfInvocations() do
             Result := TrimBracketsSingleInstWPT.TrimBrackets(myGuid);
     end;
-    //#endregion SingleInstance
+    #endregion SingleInstance
 
     #region NoSingleInstance
     local procedure NoSingleInstance()
@@ -63,7 +63,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
             Result := TrimBracketsNoSingleInsWPT.TrimBrackets(myGuid);
     end;
 
-    //#endregion NoSingleInstance
+    #endregion NoSingleInstance
 
     local procedure NumberOfInvocations(): Integer
     begin

@@ -52,7 +52,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
         TempGroupingResult.insert(false);
     end;
 
-    //#endregion Legacy Loop
+    #endregion Legacy Loop
 
     #region Query Loop
     local procedure LoopWithQuery()
@@ -77,7 +77,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
         page.Run(page::"GroupingResult List WPT");
     end;
 
-    //#endregion Query Loop
+    #endregion Query Loop
 
     #region Skip Method
     local procedure SkipMethod()
@@ -107,7 +107,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
 
         page.Run(page::"GroupingResult List WPT");
     end;
-    //#endregion Skip Method
+    #endregion Skip Method
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

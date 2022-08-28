@@ -10,7 +10,7 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
             JustSomeColorsWPT.CalcFields(TotalQuantity);
         until JustSomeColorsWPT.Next() < 1;
     end;
-    //#endregion CalcFieldsInLoop
+    #endregion CalcFieldsInLoop
 
     #region AutoCalcFields
     local procedure AutoCalcFields()
@@ -22,7 +22,7 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
         repeat
         until JustSomeColorsWPT.Next() < 1;
     end;
-    //#endregion AutoCalcFields
+    #endregion AutoCalcFields
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

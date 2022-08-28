@@ -16,7 +16,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
             if i > 10000 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
-    //#endregion FindSetNoPartialrecords
+    #endregion FindSetNoPartialrecords
 
     #region FindSetWithPartialrecords
     local procedure FindSetWithPartialrecords()
@@ -32,7 +32,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
             if i > 10000 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
-    //#endregion FindSetWithPartialrecords
+    #endregion FindSetWithPartialrecords
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

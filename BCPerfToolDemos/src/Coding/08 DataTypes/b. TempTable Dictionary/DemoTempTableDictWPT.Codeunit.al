@@ -19,7 +19,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
         until TempJustSomeTableWPT.Next() < 1;
 
     end;
-    //#endregion
+    #endregion
 
     #region DictionaryKeyValuePair
     procedure DictionaryKeyValuePair()
@@ -37,7 +37,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
         foreach Val in Dict.Values do begin
         end;
     end;
-    //#endregion
+    #endregion
 
     #region TempTableCompleteRecord
     procedure TempTableCompleteRecord()
@@ -57,7 +57,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
         until TempJustSomeTableWPT.Next() < 1;
 
     end;
-    //#endregion
+    #endregion
 
     #region DictionaryCompleteRecord
     procedure DictionaryCompleteRecord()
@@ -76,7 +76,7 @@ codeunit 62240 "Demo - TempTable Dict WPT" implements "PerfToolCodeunit WPT"
             JustSomeTableWPT.Get(Val); //Obviously this is killing performance
         end;
     end;
-    //#endregion
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

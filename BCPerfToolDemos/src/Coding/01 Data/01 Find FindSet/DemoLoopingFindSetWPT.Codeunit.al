@@ -10,7 +10,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 40 do
                 JustSomeTableWPT.Next();
     end;
-    //#endregion FindSetAndLoop40
+    #endregion FindSetAndLoop40
 
     #region FindMinAndLoop40
     local procedure FindMinAndLoop40()
@@ -21,7 +21,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 40 do
                 JustSomeTableWPT.Next();
     end;
-    //#endregion FindMinAndLoop40
+    #endregion FindMinAndLoop40
 
     #region FindSetAndLoop100
     local procedure FindSetAndLoop100()
@@ -32,7 +32,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 100 do
                 JustSomeTableWPT.Next();
     end;
-    //#endregion FindSetAndLoop100
+    #endregion FindSetAndLoop100
 
     #region FindMinAndLoop100
     local procedure FindMinAndLoop100()
@@ -43,7 +43,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 100 do
                 JustSomeTableWPT.Next();
     end;
-    //#endregion FindMinAndLoop100
+    #endregion FindMinAndLoop100
 
     var
         i: integer;

@@ -10,7 +10,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
         repeat
         until JustSomeTableWPT.Next() < 1;
     end;
-    //#endregion
+    #endregion
 
     #region RecRefRecordRead
     local procedure RecRefRecordRead()
@@ -26,7 +26,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
         until RecRef.Next() < 1;
         RecRef.Close();
     end;
-    //#endregion
+    #endregion
 
     #region NormalRecordWrite
     local procedure NormalRecordWrite()
@@ -40,7 +40,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
             JustSomeTableWPT.Modify();
         until JustSomeTableWPT.Next() < 1;
     end;
-    //#endregion
+    #endregion
 
     #region RecRefRecordWrite
     local procedure RecRefRecordWrite()
@@ -62,7 +62,7 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
         until RecRef.Next() < 1;
         RecRef.Close();
     end;
-    //#endregion
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
