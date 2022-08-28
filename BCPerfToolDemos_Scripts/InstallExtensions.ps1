@@ -2,15 +2,15 @@ $UserName = 'waldo'
 $Password = ConvertTo-SecureString 'Waldo1234' -AsPlainText -Force
 $ContainerCredential = New-Object System.Management.Automation.PSCredential ($UserName, $Password)
 
-Invoke-ScriptInBcContainer -containerName bccurrent -scriptblock {
-    function PublishApp($AppName){
+# Invoke-ScriptInBcContainer -containerName bccurrent -scriptblock {
+#     function PublishApp($AppName){
     
-    Get-NAVAppInfo -ServerInstance BC | where name -like $AppName | Uninstall-NAVApp -DoNotSaveData -Force 
-    Get-NAVAppInfo -ServerInstance BC | where name -like $AppName | UnPublish-NavApp     
-    }
+#     Get-NAVAppInfo -ServerInstance BC | where name -like $AppName | Uninstall-NAVApp -DoNotSaveData -Force 
+#     Get-NAVAppInfo -ServerInstance BC | where name -like $AppName | UnPublish-NavApp     
+#     }
     
-    PublishApp -Verbose -AppName "BCPerfToolDemos_Ext*"
-} 
+#     PublishApp -Verbose -AppName "BCPerfToolDemos_Ext*"
+# } 
 
 function PublishExtensionApp($AppName){
     $AppExists = Get-BcContainerAppInfo -containerName bccurrent | where Name -eq $AppName
@@ -21,8 +21,7 @@ function PublishExtensionApp($AppName){
     }
 }
 
-PublishExtensionApp -AppName 'BCPerfTool'
-PublishExtensionApp -AppName 'BCPerfToolDemos'
+
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext1'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext2'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext3'

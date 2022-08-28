@@ -31,5 +31,8 @@ TODO: Subscribers
 
 
 
-????MARS
-https://www.yammer.com/dynamicsnavdev/#/threads/show?threadId=1824174540636160
+
+
+Questions AJ:
+- SetAutoCalcFields doesn't use Cache.. ?
+

@@ -1,8 +1,8 @@
 #pragma warning disable
 codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
 {
-    #region Table0_FindSetNoPartialrecords
-    local procedure Table0_FindSetNoPartialrecords()
+    #region FindSetNoPartialrecords
+    local procedure FindSetNoPartialrecords()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
         NumberOfRecords: Integer;
@@ -11,7 +11,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
@@ -26,7 +26,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
@@ -41,7 +41,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
@@ -56,7 +56,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
@@ -71,13 +71,73 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
 
     #region FindSetWithPartialrecords
     local procedure FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+    #region Table1_FindSetWithPartialrecords
+    local procedure Table1_FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 1 WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+    #region Table2_FindSetWithPartialrecords
+    local procedure Table2_FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 2 WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+    #region Table3_FindSetWithPartialrecords
+    local procedure Table3_FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 3 WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+    #region Table4_FindSetWithPartialrecords
+    local procedure Table4_FindSetWithPartialrecords()
     var
         JustSomeTableWPT: Record "Just Some Extended Table 4 WPT";
         i: Integer;
@@ -86,7 +146,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         if JustSomeTableWPT.FindSet() then;
         repeat
             i += 1;
-            if i > 10000 then exit;
+            if i > 7500 then exit;
         until JustSomeTableWPT.Next() < 1;
     end;
     #endregion
@@ -96,17 +156,25 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                Table0_FindSetNoPartialrecords();
+                FindSetNoPartialrecords();
             GetProcedures().Get(2):
-                Table1_FindSetNoPartialrecords();
-            GetProcedures().Get(3):
-                Table2_FindSetNoPartialrecords();
-            GetProcedures().Get(4):
-                Table3_FindSetNoPartialrecords();
-            GetProcedures().Get(5):
-                Table4_FindSetNoPartialrecords();
-            GetProcedures().Get(6):
                 FindSetWithPartialrecords();
+            GetProcedures().Get(3):
+                Table1_FindSetNoPartialrecords();
+            GetProcedures().Get(4):
+                Table1_FindSetWithPartialrecords();
+            GetProcedures().Get(5):
+                Table2_FindSetNoPartialrecords();
+            GetProcedures().Get(6):
+                Table2_FindSetWithPartialrecords();
+            GetProcedures().Get(7):
+                Table3_FindSetNoPartialrecords();
+            GetProcedures().Get(8):
+                Table3_FindSetWithPartialrecords();
+            GetProcedures().Get(9):
+                Table4_FindSetNoPartialrecords();
+            GetProcedures().Get(10):
+                Table4_FindSetWithPartialrecords();
         end;
 
         OnAfterRun(ProcedureName);
@@ -116,12 +184,16 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('Table0_FindSetNoPartialrecords');
-        Result.Add('Table1_FindSetNoPartialrecords');
-        Result.Add('Table2_FindSetNoPartialrecords');
-        Result.Add('Table3_FindSetNoPartialrecords');
-        Result.Add('Table4_FindSetNoPartialrecords');
+        Result.Add('FindSetNoPartialrecords');
         Result.Add('FindSetWithPartialrecords');
+        Result.Add('Table1_FindSetNoPartialrecords');
+        Result.Add('Table1_FindSetWithPartialrecords');
+        Result.Add('Table2_FindSetNoPartialrecords');
+        Result.Add('Table2_FindSetWithPartialrecords');
+        Result.Add('Table3_FindSetNoPartialrecords');
+        Result.Add('Table3_FindSetWithPartialrecords');
+        Result.Add('Table4_FindSetNoPartialrecords');
+        Result.Add('Table4_FindSetWithPartialrecords');
 
         OnAfterGetProcedures(Result);
     end;
