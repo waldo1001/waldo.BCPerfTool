@@ -16,7 +16,6 @@ codeunit 62233 "Complicated Calc Meth WPT"
     var
         JustSomeTable: Record "Just Some Table WPT";
     begin
-        SelectLatestVersion();
         sleep(1000); //Just to prove the point ;-)
 
         JustSomeTable.SetCurrentKey(Color);

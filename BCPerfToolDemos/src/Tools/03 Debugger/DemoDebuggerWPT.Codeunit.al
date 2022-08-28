@@ -10,8 +10,6 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     begin
         cnt := 1; //Some useless variable
 
-        SelectLatestVersion(); //Don't read from cache
-
         JustSomeTableWPT.SetCurrentKey("Message 2"); //There is no key on "Message 2"-field
 
         // JustSomeTableWPT.SetLoadFields(); //Load all fields
@@ -35,8 +33,6 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     begin
         cnt := 1; //Some useless variable
 
-        SelectLatestVersion(); //Don't read from cache
-
         JustSomeTableWPT.SetCurrentKey(Message); //There IS a key
 
         JustSomeTableWPT.SetLoadFields(Message);
@@ -55,8 +51,6 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     var
         NestedLoopWPT: Query "NestedLoop WPT";
     begin
-        SelectLatestVersion();
-
         NestedLoopWPT.Open();
 
         while NestedLoopWPT.Read() do begin

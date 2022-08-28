@@ -6,8 +6,6 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
         JustSomeTableWPT: Record "Just Some Table WPT";
     // ReadsBefore, StatementsBefore : biginteger;
     begin
-        SelectLatestVersion();
-
         // ReadsBefore := SessionInformation.SqlRowsRead();
         // StatementsBefore := SessionInformation.SqlStatementsExecuted();
 
@@ -24,8 +22,6 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
     begin
-        SelectLatestVersion();
-
         JustSomeTableWPT.SetLoadFields(Message);
         JustSomeTableWPT.LockTable();
         JustSomeTableWPT.FindFirst();
@@ -39,8 +35,6 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
     begin
-        SelectLatestVersion();
-
         JustSomeTableWPT.SetLoadFields(Message);
         JustSomeTableWPT.LockTable();
         JustSomeTableWPT.FindFirst();

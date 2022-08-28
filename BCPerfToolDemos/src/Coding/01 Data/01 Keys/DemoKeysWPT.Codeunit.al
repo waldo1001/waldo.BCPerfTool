@@ -7,8 +7,6 @@ codeunit 62254 "Demo  - Keys WPT" implements "PerfToolCodeunit WPT"
         JustSomeTableWPT: Record "Just Some Table WPT";
         number: integer;
     begin
-        SelectLatestVersion();
-
         JustSomeTableWPT.SetFilter(Color, 'BLACK|WHITE');
         number := JustSomeTableWPT.Count;
     end;
@@ -20,8 +18,6 @@ codeunit 62254 "Demo  - Keys WPT" implements "PerfToolCodeunit WPT"
         JustSomeTableWPT: Record "Just Some Table WPT";
         number: integer;
     begin
-        SelectLatestVersion();
-
         JustSomeTableWPT.SetFilter("Color 2", 'BLACK|WHITE');
         number := JustSomeTableWPT.Count;
     end;
