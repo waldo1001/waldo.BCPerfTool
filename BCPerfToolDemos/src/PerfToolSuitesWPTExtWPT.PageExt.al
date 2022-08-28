@@ -16,12 +16,14 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
 
                 trigger OnAction()
                 var
-                    ResetDemoDataWPT: Report "Reset Demo Data WPT";
+                    // ResetDemoDataWPT: Report "Reset Demo Data WPT";
                     InstallSuitesWPT: Codeunit "Install Suites WPT";
+                    InstallDemoDataWPT: Codeunit "Install Demo Data WPT";
                 begin
                     InstallSuitesWPT.ResetAll();
                     InstallSuitesWPT.FillSuite();
-                    ResetDemoDataWPT.RunModal();
+                    InstallDemoDataWPT.FillData();
+                    // ResetDemoDataWPT.RunModal();
                 end;
             }
         }

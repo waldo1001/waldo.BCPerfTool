@@ -161,25 +161,4 @@ table 62214 "Just Some Extended Table 4 WPT"
         exit(JustSomeCountry.Code);
     end;
 
-
-    procedure UpdateCountries()
-    var
-        JustSomeTable: Record "Just Some Table WPT";
-        i: Integer;
-        Progress: Dialog;
-    begin
-        Progress.Open('#1#########');
-        if JustSomeTable.FindSet() then
-            repeat
-                i += 1;
-                if i mod 1000 = 0 then
-                    Progress.Update(1, i);
-
-                JustSomeTable.Country := GetRandomCountry();
-                JustSomeTable."Country 2" := JustSomeTable.Country;
-                JustSomeTable."Country 3" := JustSomeTable.Country;
-                JustSomeTable.Modify();
-            until JustSomeTable.Next() = 0;
-        Progress.Close();
-    end;
 }

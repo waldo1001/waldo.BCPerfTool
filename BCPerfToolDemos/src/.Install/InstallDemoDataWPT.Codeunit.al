@@ -7,7 +7,7 @@ codeunit 62205 "Install Demo Data WPT"
         FillData();
     end;
 
-    local procedure FillData()
+    procedure FillData()
     begin
         FillJustSomeCountries();
         EmptyTable();
@@ -17,32 +17,18 @@ codeunit 62205 "Install Demo Data WPT"
 
     local procedure InsertBigTables()
     var
-        JobQueueEntry: Record "Job Queue Entry";
-        SessionId: Integer;
+        JobQueueEntry1: Record "Job Queue Entry";
+        JobQueueEntry2: Record "Job Queue Entry";
+        JobQueueEntry3: Record "Job Queue Entry";
+        JobQueueEntry4: Record "Job Queue Entry";
+        JobQueueEntry5: Record "Job Queue Entry";
         RecId: Recordid;
     begin
-        // SessionId := 0;
-        // StartSession(SessionId, Codeunit::"Install - Big Table WPT");
-        // SessionId := 0;
-        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 1 WPT");
-        // SessionId := 0;
-        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 2 WPT");
-        // SessionId := 0;
-        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 3 WPT");
-        // SessionId := 0;
-        // StartSession(SessionId, Codeunit::"Install - Big Ext. Table 4 WPT");
-
-        // TaskScheduler.CreateTask(codeunit::"Install - Big Table WPT", 0, true);
-        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 1 WPT", 0, true);
-        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 2 WPT", 0, true);
-        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 3 WPT", 0, true);
-        // TaskScheduler.CreateTask(codeunit::"Install - Big Ext. Table 4 WPT", 0, true);
-
-        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
-        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
-        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
-        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
-        JobQueueEntry.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
+        JobQueueEntry1.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
+        JobQueueEntry2.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
+        JobQueueEntry3.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
+        JobQueueEntry4.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
+        JobQueueEntry5.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
     end;
 
     local procedure EmptyTable()
@@ -59,7 +45,11 @@ codeunit 62205 "Install Demo Data WPT"
     end;
 
     local procedure FillJustSomeCountries()
+    var
+        JustSomeCountryWPT: Record "Just Some Country WPT";
     begin
+        if not JustSomeCountryWPT.IsEmpty then exit;
+
         InsertCountry('AF', 'Afghanistan');
         InsertCountry('AL', 'Albania');
         InsertCountry('DZ', 'Algeria');
