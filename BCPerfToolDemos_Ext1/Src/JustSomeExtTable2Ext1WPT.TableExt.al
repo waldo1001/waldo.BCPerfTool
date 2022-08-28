@@ -18,10 +18,10 @@ tableextension 62303 "JustSomeExtTable2 Ext1 WPT" extends "Just Some Extended Ta
         {
             DataClassification = CustomerContent;
         }
-        field(62305; "Field5 WPT"; Blob)
-        {
-            DataClassification = CustomerContent;
-        }
+        // field(62305; "Field5 WPT"; Blob)
+        // {
+        //     DataClassification = CustomerContent;
+        // }
     }
 
 }

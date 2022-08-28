@@ -62,6 +62,37 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
 
     #endregion LoopWithQuery
 
+    #region Table4_FindSetNoPartialrecords
+    local procedure Table4_FindSetNoPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 4 WPT";
+        NumberOfRecords: Integer;
+        i: Integer;
+    begin
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+    #region Table4_FindSetWithPartialrecords
+    local procedure Table4_FindSetWithPartialrecords()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 4 WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -72,6 +103,10 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
                 ShortRunningQuery();
             GetProcedures().Get(3):
                 LoopWithQuery();
+            GetProcedures().Get(4):
+                Table4_FindSetNoPartialrecords();
+            GetProcedures().Get(5):
+                Table4_FindSetWithPartialrecords();
         end;
 
         Result := true;
@@ -82,6 +117,8 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         Result.Add('LongRunningQuery');
         Result.Add('ShortRunningQuery');
         Result.Add('LoopWithQuery');
+        Result.Add('Table4_FindSetNoPartialrecords');
+        Result.Add('Table4_FindSetWithPartialrecords');
 
     end;
 

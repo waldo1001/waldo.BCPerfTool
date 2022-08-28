@@ -18,7 +18,8 @@
             "numberOfSqlStatements": 10,
             "tenant": "default",
             "startupObjectId": 62102,
-            "startupObjectType": "Page"
+            "startupObjectType": "Page",
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }
