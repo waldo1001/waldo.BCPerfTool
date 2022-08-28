@@ -15,10 +15,11 @@
             "enableSqlInformationDebugger": true,
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
-            "numberOfSqlStatements": 10,
+            "numberOfSqlStatements": 1,
             "tenant": "default",
             "startupObjectId": 62102,
-            "startupObjectType": "Page"
+            "startupObjectType": "Page",
+            "schemaUpdateMode": "ForceSync"
         }
     ]
 }

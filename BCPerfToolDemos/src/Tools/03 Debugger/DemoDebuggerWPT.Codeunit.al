@@ -92,6 +92,22 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region Table4_JITLoading
+    local procedure Table4_JITLoading()
+    var
+        JustSomeTableWPT: Record "Just Some Extended Table 4 WPT";
+        i: Integer;
+        MyText: Text;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            if i > 10000 then exit;
+            MyText := JustSomeTableWPT.Color;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
@@ -107,6 +123,8 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
                 Table4_FindSetNoPartialrecords();
             GetProcedures().Get(5):
                 Table4_FindSetWithPartialrecords();
+            GetProcedures().Get(6):
+                Table4_JITLoading();
         end;
 
         Result := true;
@@ -119,6 +137,7 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         Result.Add('LoopWithQuery');
         Result.Add('Table4_FindSetNoPartialrecords');
         Result.Add('Table4_FindSetWithPartialrecords');
+        Result.Add('Table4_JITLoading');
 
     end;
 
