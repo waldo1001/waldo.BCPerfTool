@@ -25,7 +25,6 @@ table 62204 "Just Some Colors WPT"
             FieldClass = FlowField;
             CalcFormula = sum("Just Some Table WPT".Quantity where("Color 2" = field(Color)));
         }
-
     }
 
     keys

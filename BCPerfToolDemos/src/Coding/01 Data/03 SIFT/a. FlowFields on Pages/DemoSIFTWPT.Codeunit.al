@@ -16,6 +16,30 @@ codeunit 62206 "Demo - SIFT WPT"
         PerfToolWPT.Stop();
     end;
 
+    [EventSubscriber(ObjectType::Page, page::"Just Some Countries BAD WPT", 'OnAfterGetCurrRecordEvent', '', true, true)]
+    local procedure StopPerfLogging3()
+    var
+        PerfToolWPT: Codeunit "PerfTool WPT";
+    begin
+        PerfToolWPT.Stop();
+    end;
+
+    [EventSubscriber(ObjectType::Page, page::"Just Some Countries SIFT WPT", 'OnAfterGetCurrRecordEvent', '', true, true)]
+    local procedure StopPerfLogging4()
+    var
+        PerfToolWPT: Codeunit "PerfTool WPT";
+    begin
+        PerfToolWPT.Stop();
+    end;
+
+    [EventSubscriber(ObjectType::Page, page::"Just Some Countries INCL WPT", 'OnAfterGetCurrRecordEvent', '', true, true)]
+    local procedure StopPerfLogging5()
+    var
+        PerfToolWPT: Codeunit "PerfTool WPT";
+    begin
+        PerfToolWPT.Stop();
+    end;
+
     #region InstallCode
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
@@ -29,8 +53,11 @@ codeunit 62206 "Demo - SIFT WPT"
         CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3.a Flowfields', 'FlowFields on Pages', PerfToolSuiteHeaderWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Bad) WPT", true, true, WPTSuiteLine);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Good) WPT", true, true, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Bad) WPT", true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Good) WPT", true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Countries BAD WPT", true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Countries SIFT WPT", true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Countries INCL WPT", true, false, WPTSuiteLine);
     end;
     #endregion
 }
