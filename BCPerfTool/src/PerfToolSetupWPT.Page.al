@@ -20,6 +20,12 @@ page 62113 "PerfTool Setup WPT"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the FlameGraphServer field.';
                 }
+                field(DisableFlamegraph; Rec.DisableFlamegraph)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Disable Flamegraph field.';
+                }
+
             }
         }
     }

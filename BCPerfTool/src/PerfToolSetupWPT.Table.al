@@ -21,6 +21,11 @@ table 62105 "PerfTool Setup WPT"
                     error('Invalid IP Address');
             end;
         }
+        field(3; DisableFlamegraph; Boolean)
+        {
+            Caption = 'Disable Flamegraph';
+            DataClassification = CustomerContent;
+        }
 
     }
 
