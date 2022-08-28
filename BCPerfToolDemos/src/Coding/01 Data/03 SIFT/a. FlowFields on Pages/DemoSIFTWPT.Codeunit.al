@@ -16,6 +16,7 @@ codeunit 62206 "Demo - SIFT WPT"
         PerfToolWPT.Stop();
     end;
 
+    #region InstallCode
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
@@ -27,8 +28,9 @@ codeunit 62206 "Demo - SIFT WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2.a Flowfields', 'FlowFields on Pages', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3.a Flowfields', 'FlowFields on Pages', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Bad) WPT", true, true, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, page::"Just Some Colors (Good) WPT", true, true, WPTSuiteLine);
     end;
+    #endregion
 }

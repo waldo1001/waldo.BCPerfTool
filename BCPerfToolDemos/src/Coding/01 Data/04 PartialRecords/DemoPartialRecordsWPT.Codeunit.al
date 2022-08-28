@@ -65,7 +65,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '3. PartialRecords', 'Partial Records', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '4. PartialRecords', 'Partial Records', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::PartialRecords, true, false, WPTSuiteLine);
     end;
     #endregion
