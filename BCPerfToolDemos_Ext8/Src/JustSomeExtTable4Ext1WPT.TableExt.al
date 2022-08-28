@@ -18,10 +18,10 @@ tableextension 62351 "JustSomeExtTable4 Ext1 WPT" extends "Just Some Extended Ta
         {
             DataClassification = CustomerContent;
         }
-        // field(62355; "Field55 WPT"; Blob)
-        // {
-        //     DataClassification = CustomerContent;
-        // }
+        field(62355; "Field55 WPT"; Blob)
+        {
+            DataClassification = CustomerContent;
+        }
     }
 
 }
