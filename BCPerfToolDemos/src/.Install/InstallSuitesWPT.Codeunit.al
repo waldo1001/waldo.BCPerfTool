@@ -4,7 +4,7 @@ codeunit 62201 "Install Suites WPT"
 
     trigger OnInstallAppPerCompany()
     begin
-        FillSuite();
+        // FillSuite();
     end;
 
     procedure FillSuite()

@@ -148,7 +148,7 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2.Grouping', 'Grouping', PerfToolSuiteHeaderWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Query, query::"GroupingJustSomeTable WPT", false, false, WPTSuiteLine);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Grouping, false, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::QryGrouping, false, false, WPTSuiteLine);
     end;
     #endregion
 }

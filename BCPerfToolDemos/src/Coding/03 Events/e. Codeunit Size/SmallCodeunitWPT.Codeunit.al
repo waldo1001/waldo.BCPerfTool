@@ -1,6 +1,7 @@
+#pragma warning disable
 codeunit 62217 "SmallCodeunit WPT"
 {
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Codeunit Size WPT", 'OnAfterDoingSomething', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Codeunit Size WPT", 'OnAfterDoingSomething_SmallCodeunit', '', false, false)]
     local procedure MyProcedure()
     begin
         SomeFunction();
@@ -10,6 +11,6 @@ codeunit 62217 "SmallCodeunit WPT"
     var
         i: Integer;
     begin
-        for i := 1 to 1000 do;
+        // for i := 1 to 1000 do;
     end;
 }

@@ -1,6 +1,6 @@
 page 62208 "Page With BackgroundTask WPT"
 {
-    Caption = 'Caption';
+    Caption = 'Page With BackgroundTask';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;

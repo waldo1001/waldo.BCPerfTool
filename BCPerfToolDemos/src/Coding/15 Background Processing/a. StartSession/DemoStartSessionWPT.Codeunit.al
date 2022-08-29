@@ -95,7 +95,7 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('04.BACKGROUND', 'Background Processing', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('15.BACKGROUND', 'Background Processing', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. BG-StartSession', 'Background - StartSession', PerfToolSuiteHeaderWPT);
 

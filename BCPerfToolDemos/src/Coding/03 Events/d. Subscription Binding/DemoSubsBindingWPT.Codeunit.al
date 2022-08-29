@@ -1,32 +1,6 @@
 #pragma warning disable AA0005
-codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
+codeunit 62262 "Demo - SubsBinding WPT" implements "PerfToolCodeunit WPT"
 {
-    #region ModifyAllNoEvents
-    procedure ModifyAllNoEvents();
-    var
-        JustSomeTable: Record "Just Some Table WPT";
-    begin
-        JustSomeTable.SetFilter("Entry No.", '<%1', 50000); //Just to limit the amount of records we would change
-        JustSomeTable.SetRange(Color, 'BROWN');
-        JustSomeTable.ModifyAll("Message 2", format(random(1000)), false);
-    end;
-    #endregion ModifyAllNoEvents
-
-    #region ModifyAllFullEvents
-    procedure ModifyAllFullEvents();
-    var
-        JustSomeTable: Record "Just Some Table WPT";
-        DemoSubs: codeunit "Subs OnModify WPT";
-    begin
-        // Enable events in subscriber-codeunit
-        BindSubscription(DemoSubs);
-        JustSomeTable.SetFilter("Entry No.", '<%1', 50000); //Just to limit the amount of records we would change
-        JustSomeTable.SetRange(Color, 'BROWN');
-        JustSomeTable.ModifyAll("Message 2", format(random(1000)), false);
-        UnbindSubscription(DemoSubs);
-    end;
-    #endregion ModifyAllFullEvents
-
     #region LoopAllAlwaysBound
     procedure LoopAllAlwaysBound()
     var
@@ -74,12 +48,8 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                ModifyAllNoEvents();
-            GetProcedures().Get(2):
-                ModifyAllFullEvents();
-            GetProcedures().Get(3):
                 LoopAllAlwaysBound();
-            GetProcedures().Get(4):
+            GetProcedures().Get(2):
                 LoopAllJITBinding();
         end;
 
@@ -88,13 +58,10 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('ModifyAll - NoEvents');
-        Result.Add('ModifyAll - FullEvents');
         Result.Add('LoopAll - Always Bound');
         Result.Add('LoopAll - JIT Binding');
     end;
 
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
@@ -106,9 +73,9 @@ codeunit 62227 "Demo - Subscribers WPT" implements "PerfToolCodeunit WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('03.Events', 'Events', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2. Subscribers', 'Subscribers', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '4. SubsBinding', 'Subscription Binding', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Subscribers, false, true, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::SubscriptionBinding, false, true, WPTSuiteLine);
     end;
     #endregion
 }

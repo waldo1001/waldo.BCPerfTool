@@ -77,7 +77,7 @@ codeunit 62223 "Demo - Query - LoopyLoop WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateGroup('02.QUERIES', 'Queries', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1.Looping', 'Looping', PerfToolSuiteHeaderWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LoopyLoop, false, true, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::QryLoopyLoop, false, true, WPTSuiteLine);
     end;
     #endregion
 

@@ -9,8 +9,8 @@ codeunit 62230 "Some Business Logic WPT"
     begin
         cnt := 5000;
 
-        if EnvironmentInformation.IsSaaS() then
-            cnt := 500;
+        // if EnvironmentInformation.IsSaaS() then
+        //     cnt := 500;
 
         for i := 1 to cnt do
             EmptyTableWPT.InsertWaldo(false, format(i));

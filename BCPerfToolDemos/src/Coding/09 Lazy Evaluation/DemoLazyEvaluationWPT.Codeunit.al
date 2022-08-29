@@ -9,6 +9,8 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
 
     procedure ManualLazyEvaluationAND()
     begin
+        sleep(200); //capture it with Profiler
+
         if ShouldBeTrueButReturnsFalse() then
             if HeavyFunction() then
                 Message('This message should not show.');
@@ -24,6 +26,8 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
 
     procedure ManualLazyEvaluationOR()
     begin
+        sleep(200); //capture it with Profiler
+
         if SomethingThatReturnedTrue() then exit;
         if HeavyFunction() then exit;
     end;
@@ -82,7 +86,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Lazy Evaluation', 'Lazy Evaluation', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LazyEvaluation, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LazyEvaluation, true, true, WPTSuiteLine);
     end;
     #endregion
 

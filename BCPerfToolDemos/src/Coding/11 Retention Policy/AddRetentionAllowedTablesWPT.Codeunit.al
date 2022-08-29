@@ -7,8 +7,8 @@ codeunit 62212 "AddRetentionAllowedTables WPT"
 
     trigger OnInstallAppPerCompany()
     begin
-        AddRetentionPolicyAllowedTables();
-        CreateRetentionPolicy();
+        // AddRetentionPolicyAllowedTables();
+        // CreateRetentionPolicy();
     end;
 
     procedure AddRetentionPolicyAllowedTables()

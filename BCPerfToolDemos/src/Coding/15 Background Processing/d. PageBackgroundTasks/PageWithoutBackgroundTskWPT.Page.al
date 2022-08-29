@@ -1,6 +1,6 @@
 page 62209 "Page Without BackgroundTsk WPT"
 {
-    Caption = 'Caption';
+    Caption = 'Page Without BackgroundTsk';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;

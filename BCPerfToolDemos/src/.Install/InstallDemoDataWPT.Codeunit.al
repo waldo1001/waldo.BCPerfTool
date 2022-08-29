@@ -4,7 +4,7 @@ codeunit 62205 "Install Demo Data WPT"
 
     trigger OnInstallAppPerCompany()
     begin
-        FillData();
+        // FillData();
     end;
 
     procedure FillData()
@@ -17,6 +17,11 @@ codeunit 62205 "Install Demo Data WPT"
 
     local procedure InsertBigTables()
     var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        JustSomeExtendedTable1WPT: Record "Just Some Extended Table 1 WPT";
+        JustSomeExtendedTable2WPT: Record "Just Some Extended Table 2 WPT";
+        JustSomeExtendedTable3WPT: Record "Just Some Extended Table 3 WPT";
+        JustSomeExtendedTable4WPT: Record "Just Some Extended Table 4 WPT";
         JobQueueEntry1: Record "Job Queue Entry";
         JobQueueEntry2: Record "Job Queue Entry";
         JobQueueEntry3: Record "Job Queue Entry";
@@ -24,11 +29,16 @@ codeunit 62205 "Install Demo Data WPT"
         JobQueueEntry5: Record "Job Queue Entry";
         RecId: Recordid;
     begin
-        JobQueueEntry1.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
-        JobQueueEntry2.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
-        JobQueueEntry3.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
-        JobQueueEntry4.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
-        JobQueueEntry5.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
+        if JustSomeTableWPT.IsEmpty then
+            JobQueueEntry1.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
+        if JustSomeExtendedTable1WPT.IsEmpty then
+            JobQueueEntry2.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
+        if JustSomeExtendedTable2WPT.IsEmpty then
+            JobQueueEntry3.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
+        if JustSomeExtendedTable3WPT.IsEmpty then
+            JobQueueEntry4.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
+        if JustSomeExtendedTable4WPT.IsEmpty then
+            JobQueueEntry5.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
     end;
 
     local procedure EmptyTable()

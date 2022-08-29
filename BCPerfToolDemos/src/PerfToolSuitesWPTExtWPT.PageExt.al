@@ -47,7 +47,7 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
             }
             view(Background)
             {
-                Filters = where("Group Code" = const('04.BACKGROUND'));
+                Filters = where("Group Code" = const('15.BACKGROUND'));
             }
             view(TempTables)
             {

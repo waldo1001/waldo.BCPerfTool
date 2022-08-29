@@ -28,6 +28,25 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region RecRefRecordRead_SetTable
+    local procedure RecRefRecordRead_SetTable()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        RecRef: RecordRef;
+        FldRef: FieldRef;
+    begin
+        // RecRef.Open(database::"Just Some Table WPT");
+        RecRef.GetTable(JustSomeTableWPT);
+        FldRef := RecRef.Field(1);
+        FldRef.SetRange(1, 10000);
+        RecRef.FindSet();
+        repeat
+        until RecRef.Next() < 1;
+        RecRef.SetTable(JustSomeTableWPT);
+        RecRef.Close();
+    end;
+    #endregion
+
     #region NormalRecordWrite
     local procedure NormalRecordWrite()
     var
@@ -73,8 +92,10 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(2):
                 RecRefRecordRead();
             GetProcedures().Get(3):
-                NormalRecordWrite();
+                RecRefRecordRead_SetTable();
             GetProcedures().Get(4):
+                NormalRecordWrite();
+            GetProcedures().Get(5):
                 RecRefRecordWrite();
 
         end;
@@ -84,8 +105,9 @@ codeunit 62214 "Demo - RecRef vs Record WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('NormalRecordRead');
-        Result.Add('RecRefRecordRead');
+        Result.Add('NormalRecordRead_Open');
+        Result.Add('RecRefRecordRead_Open');
+        Result.Add('RecRefRecordRead_SetTable');
         Result.Add('NormalRecordWrite');
         Result.Add('RecRefRecordWrite');
     end;

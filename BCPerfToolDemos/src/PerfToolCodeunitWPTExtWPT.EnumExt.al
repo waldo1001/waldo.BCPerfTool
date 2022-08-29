@@ -1,10 +1,13 @@
 enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
 {
     value(62219; Wrappers) { Implementation = "PerfToolCodeunit WPT" = "Demo - Wrappers WPT"; }
-    value(62223; LoopyLoop) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query - LoopyLoop WPT"; }
-    value(62224; Grouping) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query - Grouping WPT"; }
-    value(62227; Subscribers) { Implementation = "PerfToolCodeunit WPT" = "Demo - Subscribers WPT"; }
+    value(62223; QryLoopyLoop) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query - LoopyLoop WPT"; }
+    value(62224; QryGrouping) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query - Grouping WPT"; }
+    value(62267; QryIndexes) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query - Index WPT"; }
+    value(62227; OnModifySubs) { Implementation = "PerfToolCodeunit WPT" = "Demo - Subs OnModify WPT"; }
+    value(62262; SubscriptionBinding) { Implementation = "PerfToolCodeunit WPT" = "Demo - SubsBinding WPT"; }
     value(62207; Publishers) { Implementation = "PerfToolCodeunit WPT" = "Demo - Publishers WPT"; }
+    value(62260; PublishersWithSubscribers) { Implementation = "PerfToolCodeunit WPT" = "Demo - PublishersWithSubs WPT"; }
     value(62229; StartSession) { Implementation = "PerfToolCodeunit WPT" = "Demo - StartSession WPT"; }
     value(62231; TaskScheduler) { Implementation = "PerfToolCodeunit WPT" = "Demo - TaskScheduler WPT"; }
     value(62232; JobQueueEntry) { Implementation = "PerfToolCodeunit WPT" = "Demo - JobQueueEntry WPT"; }
@@ -19,6 +22,7 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62216; CodeunitSize) { Implementation = "PerfToolCodeunit WPT" = "Demo - Codeunit Size WPT"; }
     value(62225; LazyEvaluation) { Implementation = "PerfToolCodeunit WPT" = "Demo - Lazy Evaluation WPT"; }
     value(62238; DeleteAll) { Implementation = "PerfToolCodeunit WPT" = "Demo - DeleteAll WPT"; }
+    value(62248; PageInspector) { Implementation = "PerfToolCodeunit WPT" = "Demo - Page Inspector WPT"; }
     value(62249; Debugger) { Implementation = "PerfToolCodeunit WPT" = "Demo - Debugger WPT"; }
     value(62253; FlameGraph) { Implementation = "PerfToolCodeunit WPT" = "Demo - FlameGraph WPT"; }
     value(62254; "Keys") { Implementation = "PerfToolCodeunit WPT" = "Demo  - Keys WPT"; }
