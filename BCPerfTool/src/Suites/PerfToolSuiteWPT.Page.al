@@ -161,17 +161,6 @@ page 62104 "PerfTool Suite WPT"
                 Image = TaskList;
                 RunObject = page "Scheduled Tasks WPT";
             }
-            action("Job Queue Entries")
-            {
-                Caption = 'Job Queue Entries';
-                ToolTip = 'Shows the current Job Queue Entries';
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                Image = TaskList;
-                RunObject = page "Job Queue Entries";
-            }
         }
     }
     trigger OnAfterGetRecord()

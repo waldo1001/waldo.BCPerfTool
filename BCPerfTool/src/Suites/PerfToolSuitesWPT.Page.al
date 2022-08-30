@@ -43,9 +43,6 @@ page 62102 "PerfTool Suites WPT"
                 ToolTip = 'Opens the PerfTool Setup.';
                 ApplicationArea = All;
                 RunObject = page "PerfTool Setup WPT";
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Setup;
             }
             action(Groups)
@@ -54,9 +51,6 @@ page 62102 "PerfTool Suites WPT"
                 ToolTip = 'Executes the Groups action.';
                 ApplicationArea = All;
                 RunObject = page "PerfTool Groups WPT";
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Group;
             }
             action(LogEntries)
@@ -69,6 +63,30 @@ page 62102 "PerfTool Suites WPT"
                 PromotedIsBig = true;
                 PromotedCategory = Process;
                 Image = Log;
+            }
+            action("Job Queue Entries")
+            {
+                Caption = 'Job Queue Entries';
+                ToolTip = 'Shows the current Job Queue Entries';
+                ApplicationArea = All;
+                Image = TaskList;
+                RunObject = page "Job Queue Entries";
+            }
+            action("Active Sessions")
+            {
+                Caption = 'Active Sessions';
+                ToolTip = 'Shows the current active sessions';
+                ApplicationArea = All;
+                Image = List;
+                RunObject = page "Active Sessions WPT";
+            }
+            action("Scheduled Tasks")
+            {
+                Caption = 'Scheduled Tasks';
+                ToolTip = 'Shows the current Scheduled Tasks';
+                ApplicationArea = All;
+                Image = TaskList;
+                RunObject = page "Scheduled Tasks WPT";
             }
         }
         area(Processing)
