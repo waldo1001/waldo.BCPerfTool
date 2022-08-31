@@ -4,7 +4,7 @@ codeunit 62108 "Run SuiteLine Meth WPT"
     var
         IsHandled: Boolean;
     begin
-        OnBeforeStart(SuiteLine, ShowResults, IsHandled);
+        OnBeforeRun(SuiteLine, ShowResults, IsHandled);
 
         DoRun(SuiteLine, ShowResults, IsHandled);
 
@@ -40,7 +40,7 @@ codeunit 62108 "Run SuiteLine Meth WPT"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeStart(var SuiteLine: Record "PerfTool Suite Line WPT"; var ShowResults: Boolean; var IsHandled: Boolean);
+    local procedure OnBeforeRun(var SuiteLine: Record "PerfTool Suite Line WPT"; var ShowResults: Boolean; var IsHandled: Boolean);
     begin
     end;
 

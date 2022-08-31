@@ -1,5 +1,5 @@
 #pragma warning disable AA0206
-codeunit 62254 "Demo  - Keys WPT" implements "PerfToolCodeunit WPT"
+codeunit 62254 "Demo - Keys WPT" implements "PerfToolCodeunit WPT"
 {
     #region CountWithoutKey
     procedure CountWithoutKey()

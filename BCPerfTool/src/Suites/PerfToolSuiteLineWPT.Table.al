@@ -172,6 +172,16 @@ table 62100 "PerfTool Suite Line WPT"
         exit(GetObjectName());
     end;
 
+    procedure CurrentTag(Prefix: Text): Text[249]
+    var
+        TheTag: text;
+    begin
+        TheTag := CurrentTag();
+        TheTag := Prefix + ' - ' + CurrentTag();
+
+        Exit(CopyStr(TheTag, 1, 249));
+    end;
+
     procedure GetObjectName(): Text[50]
     begin
         if Rec.HasInterfaceImplementation() and (Rec."Object Type" = Rec."Object Type"::Codeunit) then

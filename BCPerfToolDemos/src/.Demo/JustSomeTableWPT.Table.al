@@ -125,7 +125,7 @@ table 62202 "Just Some Table WPT"
         InsertColorIfNecessary(JustSomeTable.Color);
     end;
 
-    local procedure GetRandomColor(): Code[10]
+    procedure GetRandomColor(): Code[10]
     begin
         Randomize();
         case Random(1000) mod 10 of
