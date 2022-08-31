@@ -1,3 +1,4 @@
+#pragma warning disable AA0137
 codeunit 62263 "Publisher SingleInst Subs WPT"
 {
     SingleInstance = true;

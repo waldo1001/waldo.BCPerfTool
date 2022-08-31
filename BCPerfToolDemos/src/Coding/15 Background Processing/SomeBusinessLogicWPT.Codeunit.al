@@ -3,7 +3,6 @@ codeunit 62230 "Some Business Logic WPT"
     trigger OnRun()
     var
         EmptyTableWPT: Record "EmptyTable WPT";
-        EnvironmentInformation: Codeunit "Environment Information";
         i: integer;
         cnt: Integer;
     begin
