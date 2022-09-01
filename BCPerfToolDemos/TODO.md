@@ -11,7 +11,3 @@ So, I know there are partners out there that don't use TableType temporary and s
 TODO: Subscribers
 
 
-
-Questions AJ:
-- Docker / Hetzer - aanbieden van omgevingen
-

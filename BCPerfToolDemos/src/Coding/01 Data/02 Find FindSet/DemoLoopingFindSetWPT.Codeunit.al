@@ -11,7 +11,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 40 do
                 JustSomeTableWPT.Next();
     end;
-    #endregion FindSetAndLoop40
+    #endregion
 
     #region FindMinAndLoop40
     local procedure FindMinAndLoop40()
@@ -23,7 +23,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 40 do
                 JustSomeTableWPT.Next();
     end;
-    #endregion FindMinAndLoop40
+    #endregion
 
     #region FindSetAndLoop100
     local procedure FindSetAndLoop100()
@@ -35,7 +35,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 100 do
                 JustSomeTableWPT.Next();
     end;
-    #endregion FindSetAndLoop100
+    #endregion
 
     #region FindMinAndLoop100
     local procedure FindMinAndLoop100()
@@ -47,7 +47,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
             for i := 1 to 100 do
                 JustSomeTableWPT.Next();
     end;
-    #endregion FindMinAndLoop100
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
@@ -88,5 +88,4 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Table, database::"Just Some Table WPT", true, false, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::FindSet, true, false, WPTSuiteLine);
     end;
-    #endregion
-}
+    #endregion}
