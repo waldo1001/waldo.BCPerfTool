@@ -89,3 +89,4 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::FindSet, true, false, WPTSuiteLine);
     end;
     #endregion}
+}
