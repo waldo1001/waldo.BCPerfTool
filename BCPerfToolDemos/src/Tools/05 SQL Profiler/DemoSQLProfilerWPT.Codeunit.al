@@ -1,21 +1,28 @@
 codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
 {
-    #region SQLInfoFindMinRepeat
-    procedure SQLInfoFindMinRepeat()
+    #region FindSetAndLoop100
+    local procedure FindSetAndLoop100()
     var
         JustSomeTableWPT: Record "Just Some Table WPT";
-    // ReadsBefore, StatementsBefore : biginteger;
+        i: integer;
     begin
-        // ReadsBefore := SessionInformation.SqlRowsRead();
-        // StatementsBefore := SessionInformation.SqlStatementsExecuted();
-
-        JustSomeTableWPT.SetFilter("Entry No.", '<%1', 50000);
-        if JustSomeTableWPT.Find('-') then
-            repeat
-            until JustSomeTableWPT.Next() < 1;
+        if JustSomeTableWPT.FindSet() then
+            for i := 1 to 100 do
+                JustSomeTableWPT.Next();
     end;
+    #endregion
 
-    #endregion SQLInfoFindMinRepeat
+    #region FindMinAndLoop100
+    local procedure FindMinAndLoop100()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: integer;
+    begin
+        if JustSomeTableWPT.Find('-') then
+            for i := 1 to 100 do
+                JustSomeTableWPT.Next();
+    end;
+    #endregion
 
     #region SetLoadFieldsAndModifySameField
     procedure SetLoadFieldsAndModifySameField()
@@ -82,14 +89,16 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                SQLInfoFindMinRepeat();
+                FindSetAndLoop100();
             GetProcedures().Get(2):
-                SetLoadFieldsAndModifySameField();
+                FindMinAndLoop100();
             GetProcedures().Get(3):
-                SetLoadFieldsAndModifyDifferentField();
+                SetLoadFieldsAndModifySameField();
             GetProcedures().Get(4):
-                BulkInserts();
+                SetLoadFieldsAndModifyDifferentField();
             GetProcedures().Get(5):
+                BulkInserts();
+            GetProcedures().Get(6):
                 BulkInsertsWithNumberSequence();
         end;
 
@@ -98,6 +107,7 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
+        Result.Add('FindSet + Repeat');
         Result.Add('Find(''-'') + Repeat');
         Result.Add('SetLoadFields & ModifySameField');
         Result.Add('SetLoadFields & ModifyDifferentField');
@@ -114,11 +124,11 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('09.LazyEvaluation', 'Lazy Evaluation', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('20.Tools', 'Tools', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Lazy Evaluation', 'Lazy Evaluation', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '5. SQL Profiler', 'SQL Profiler', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::LazyEvaluation, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::SQLProfiler, true, false, WPTSuiteLine);
     end;
     #endregion
 }
