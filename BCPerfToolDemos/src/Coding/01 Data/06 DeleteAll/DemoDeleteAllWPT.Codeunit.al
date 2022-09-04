@@ -62,6 +62,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region PrepDemoData (unimportant)
     procedure PrepDemoData()
     var
         EmptyTableWPT: Record "EmptyTable WPT";
@@ -70,6 +71,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
 
         page.RunModal(page::"EmptyTable WPT");
     end;
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

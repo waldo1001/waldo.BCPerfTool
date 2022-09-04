@@ -1,17 +1,16 @@
 #pragma warning disable
-codeunit 62218 "BigCodeunit WPT"
+codeunit 62276 "Publisher Subs (Big) WPT"
 {
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - Codeunit Size WPT", 'OnAfterDoingSomething_BigCodeunit', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - PublishersWithSubs WPT", 'OnAfterDoingSomethingBig', '', false, false)]
     local procedure Myprocedure()
     begin
-        SomeFunction();
     end;
 
     local procedure SomeFunction()
     var
         i: Integer;
     begin
-        // for i := 1 to 1000 do;
+        for i := 1 to 1000 do;
     end;
 
     local procedure SomeFunction1()

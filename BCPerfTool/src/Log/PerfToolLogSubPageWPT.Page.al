@@ -90,9 +90,6 @@ page 62106 "PerfTool Log SubPage WPT"
             action(DownloadProfile)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
                 Image = Download;
                 Enabled = IsProfileAvailable;
                 Caption = 'Download Profile';
@@ -107,9 +104,6 @@ page 62106 "PerfTool Log SubPage WPT"
             action(DownloadFlameGraph)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
                 Image = Download;
                 Enabled = IsProfileAvailable;
                 Caption = 'Download FlameGraph';
@@ -124,9 +118,6 @@ page 62106 "PerfTool Log SubPage WPT"
             action(UploadToPeriscope)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
                 Image = Download;
                 Enabled = IsProfileAvailable;
                 Caption = 'Upload To Periscope';
@@ -145,8 +136,6 @@ page 62106 "PerfTool Log SubPage WPT"
                 ApplicationArea = All;
                 Image = GanttChart;
                 Enabled = IsProfileAvailable;
-                Promoted = true;
-                PromotedCategory = Process;
                 ToolTip = 'Shows the FlameChart action.';
                 Scope = Repeater;
                 RunObject = page "FlameGraph WPT";
@@ -157,9 +146,6 @@ page 62106 "PerfTool Log SubPage WPT"
                 Caption = 'Log Entries';
                 ToolTip = 'Opens the log entries.';
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Log;
 
                 trigger OnAction()
@@ -178,9 +164,6 @@ page 62106 "PerfTool Log SubPage WPT"
                 Caption = 'Clear';
                 ToolTip = 'Clears the log entries.';
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Delete;
 
                 trigger OnAction()

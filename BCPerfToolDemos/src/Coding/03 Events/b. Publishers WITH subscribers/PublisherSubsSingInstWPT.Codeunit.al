@@ -1,7 +1,9 @@
 #pragma warning disable AA0137
-codeunit 62208 "Publisher Subs WPT"
+codeunit 62263 "Publisher Subs (SingInst) WPT"
 {
-    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - PublishersWithSubs WPT", 'OnAfterDoingSomethingElse', '', false, false)]
+    SingleInstance = true;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - PublishersWithSubs WPT", 'OnAfterDoingSomethingBigSingleInst', '', false, false)]
     local procedure EmptySubscriber()
     begin
     end;

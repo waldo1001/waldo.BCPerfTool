@@ -34,8 +34,8 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
-    #region NoBulkInsertsWithNumberSeq
-    procedure NoBulkInsertsWithNumberSeq()
+    #region BulkInsertsWithNumberSeq
+    procedure BulkInsertsWithNumberSeq()
     var
         TableWithNoAutoIncrementWPT: Record "Table WithNo AutoIncrement WPT";
         i: Integer;
@@ -44,8 +44,8 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
 
         for i := 1 to 10000 do begin
             TableWithNoAutoIncrementWPT.Init();
-            TableWithNoAutoIncrementWPT.Id := NumberSequence.Next('NoBulkInsertsWithNumberSeq');
-            TableWithNoAutoIncrementWPT.Description := 'NoBulkInsertsWithNumberSeq';
+            TableWithNoAutoIncrementWPT.Id := NumberSequence.Next('BulkInsertsWithNumberSeq');
+            TableWithNoAutoIncrementWPT.Description := 'BulkInsertsWithNumberSeq';
             TableWithNoAutoIncrementWPT.Insert(true);
         end;
     end;
@@ -60,7 +60,7 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(2):
                 NoBulkInserts();
             GetProcedures().Get(3):
-                NoBulkInsertsWithNumberSeq();
+                BulkInsertsWithNumberSeq();
         end;
 
         Result := true;
@@ -71,7 +71,7 @@ codeunit 62202 "Demo - Bulk Inserts WPT" implements "PerfToolCodeunit WPT"
     begin
         Result.Add('BulkInserts');
         Result.Add('NoBulkInserts');
-        Result.Add('NoBulkInsertsWithNumberSeq');
+        Result.Add('BulkInsertsWithNumberSeq');
     end;
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]

@@ -29,7 +29,7 @@ table 62205 "EmptyTable WPT"
         }
     }
 
-    procedure InsertWaldo(DeleteAllFirst: Boolean; Description: Text[50])
+    procedure InsertWaldo(DeleteAllFirst: Boolean; pDescription: Text[50])
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
@@ -37,13 +37,13 @@ table 62205 "EmptyTable WPT"
             DeleteAllAndCommit();
 
         EmptyTableWPT.Code := 'WALDO';
-        EmptyTableWPT.Description := Description;
+        EmptyTableWPT.Description := pDescription;
         EmptyTableWPT.Insert(true);
     end;
 
-    procedure InsertWaldoAndCommit(DeleteAllFirst: Boolean; Description: Text[50])
+    procedure InsertWaldoAndCommit(DeleteAllFirst: Boolean; pDescription: Text[50])
     begin
-        InsertWaldo(DeleteAllFirst, Description);
+        InsertWaldo(DeleteAllFirst, pDescription);
 
         Commit();
     end;

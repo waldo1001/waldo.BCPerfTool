@@ -102,14 +102,14 @@ table 62214 "Just Some Extended Table 4 WPT"
         "LastTrigger" := 'modify';
     end;
 
-    procedure Create(Message: Text[2048]; Id: Integer)
+    procedure Create(pMessage: Text[2048]; Id: Integer)
     var
         JustSomeTable: Record "Just Some Extended Table 4 WPT";
     begin
         JustSomeTable.init();
         JustSomeTable."Entry No." := Id;
-        JustSomeTable.Message := Message;
-        JustSomeTable."Message 2" := Message;
+        JustSomeTable.Message := pMessage;
+        JustSomeTable."Message 2" := pMessage;
         JustSomeTable.Quantity := random(1000);
         JustSomeTable.Color := GetRandomColor();
         JustSomeTable."Color 2" := JustSomeTable.Color;

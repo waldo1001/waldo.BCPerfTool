@@ -124,9 +124,6 @@ page 62103 "PerfTool Suite SubPage WPT"
             action("Run")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Caption = 'Run';
                 Image = Start;
                 ToolTip = 'Runs the codeunit';
@@ -141,9 +138,6 @@ page 62103 "PerfTool Suite SubPage WPT"
             action(LogEntries)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Caption = 'Log';
                 Image = Entries;
                 ToolTip = 'Shows the log';
@@ -155,9 +149,6 @@ page 62103 "PerfTool Suite SubPage WPT"
             action(ClearLogEntries)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Caption = 'Clear Log';
                 Image = Delete;
                 ToolTip = 'Clears the log for this line';

@@ -1,7 +1,7 @@
 page 62211 "Just Some Countries BAD WPT"
 {
     ApplicationArea = All;
-    Caption = 'Just Some Countries (Bad)';
+    Caption = 'Just Some Countries (Key)';
     PageType = List;
     SourceTable = "Just Some Country WPT";
     UsageCategory = Lists;

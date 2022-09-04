@@ -1,20 +1,70 @@
 #pragma warning disable AA0005
 codeunit 62260 "Demo - PublishersWithSubs WPT" implements "PerfToolCodeunit WPT"
 {
-
-    #region PublishersWithSubscriber
-    local procedure PublishersWithSubscriber()
+    #region PublishersWithoutSubscriber
+    local procedure PublishersWithoutSubscriber()
     var
         i: integer;
     begin
         for i := 0 to 100000 do begin
             //Do Something and raise event
-            OnAfterDoingSomethingElse();
+            OnAfterDoingSomething();
         end;
     end;
 
     [BusinessEvent(true)]
-    local procedure OnAfterDoingSomethingElse()
+    local procedure OnAfterDoingSomething()
+    begin
+    end;
+    #endregion
+
+    #region PublishersWithSmallSubscriber
+    local procedure PublishersWithSmallSubscriber()
+    var
+        i: integer;
+    begin
+        for i := 0 to 100000 do begin
+            //Do Something and raise event
+            OnAfterDoingSomethingSmall();
+        end;
+    end;
+
+    [BusinessEvent(true)]
+    local procedure OnAfterDoingSomethingSmall()
+    begin
+    end;
+    #endregion
+
+    #region PublishersWithBigSubscriber
+    local procedure PublishersWithBigSubscriber()
+    var
+        i: integer;
+    begin
+        for i := 0 to 100000 do begin
+            //Do Something and raise event
+            OnAfterDoingSomethingBig();
+        end;
+    end;
+
+    [BusinessEvent(true)]
+    local procedure OnAfterDoingSomethingBig()
+    begin
+    end;
+    #endregion
+
+    #region PublishersWithGlobalVar
+    local procedure PublishersWithGlobalVar()
+    var
+        i: integer;
+    begin
+        for i := 0 to 100000 do begin
+            //Do Something and raise event
+            OnAfterDoingSomethingGlobalVar();
+        end;
+    end;
+
+    [BusinessEvent(true)]
+    local procedure OnAfterDoingSomethingGlobalVar()
     begin
     end;
     #endregion
@@ -26,12 +76,12 @@ codeunit 62260 "Demo - PublishersWithSubs WPT" implements "PerfToolCodeunit WPT"
     begin
         for i := 0 to 100000 do begin
             //Do Something and raise event
-            OnAfterDoingSomethingElse2();
+            OnAfterDoingSomethingBigSingleInst();
         end;
     end;
 
     [BusinessEvent(true)]
-    local procedure OnAfterDoingSomethingElse2()
+    local procedure OnAfterDoingSomethingBigSingleInst()
     begin
     end;
     #endregion
@@ -41,8 +91,14 @@ codeunit 62260 "Demo - PublishersWithSubs WPT" implements "PerfToolCodeunit WPT"
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                PublishersWithSubscriber();
+                PublishersWithoutSubscriber();
             GetProcedures().Get(2):
+                PublishersWithSmallSubscriber();
+            GetProcedures().Get(3):
+                PublishersWithBigSubscriber();
+            GetProcedures().Get(4):
+                PublishersWithGlobalVar();
+            GetProcedures().Get(5):
                 PublishersWithSubscrSingleInst();
         end;
 
@@ -51,8 +107,11 @@ codeunit 62260 "Demo - PublishersWithSubs WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('PublishersWithSubscriber');
-        Result.Add('PublishersWithSubscrSingleInst');
+        Result.Add('No Subscriber');
+        Result.Add('Small Subscriber');
+        Result.Add('Big Subscriber');
+        Result.Add('Subscriber with Global Vars');
+        Result.Add('Subscriber with Global Vars (Single Instance)');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]

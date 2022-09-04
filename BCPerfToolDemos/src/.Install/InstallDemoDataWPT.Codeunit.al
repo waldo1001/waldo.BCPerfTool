@@ -50,7 +50,7 @@ codeunit 62205 "Install Demo Data WPT"
 
     local procedure SetupNumberSequences()
     begin
-        if not NumberSequence.Exists('NoBulkInsertsWithNumberSequence') then NumberSequence.Insert('NoBulkInsertsWithNumberSequence');
+        if not NumberSequence.Exists('BulkInsertsWithNumberSeq') then NumberSequence.Insert('BulkInsertsWithNumberSeq');
         if not NumberSequence.Exists('JustSomeTableWPT') then NumberSequence.Insert('JustSomeTableWPT');
     end;
 

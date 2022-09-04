@@ -1,3 +1,4 @@
+#pragma warning disable AA0232
 table 62203 "Just Some Country WPT"
 {
     DataClassification = CustomerContent;
@@ -13,9 +14,8 @@ table 62203 "Just Some Country WPT"
         {
             Caption = 'Name';
         }
-#pragma warning disable AA0232
+
         field(3; TotalQuantity; Decimal)
-#pragma warning restore AA0232
         {
             Caption = 'Total Qty.';
             Editable = false;

@@ -1,3 +1,4 @@
+#pragma warning disable AA0232
 table 62204 "Just Some Colors WPT"
 {
     DataClassification = CustomerContent;
@@ -9,9 +10,8 @@ table 62204 "Just Some Colors WPT"
             Caption = 'Color';
             DataClassification = CustomerContent;
         }
-#pragma warning disable AA0232
+
         field(2; TotalQuantity; Decimal)
-#pragma warning restore AA0232
         {
             Caption = 'Total Qty.';
             Editable = false;

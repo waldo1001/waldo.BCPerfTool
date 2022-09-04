@@ -1,5 +1,6 @@
 codeunit 62206 "Demo - SIFT WPT"
 {
+    #region SubscribersToStopTheTimer
     [EventSubscriber(ObjectType::Page, page::"Just Some Colors (Bad) WPT", 'OnAfterGetCurrRecordEvent', '', true, true)]
     local procedure StopPerfLogging1()
     var
@@ -39,6 +40,7 @@ codeunit 62206 "Demo - SIFT WPT"
     begin
         PerfToolWPT.Stop();
     end;
+    #endregion
 
     #region InstallCode
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]

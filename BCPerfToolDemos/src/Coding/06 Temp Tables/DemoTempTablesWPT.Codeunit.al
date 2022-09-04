@@ -5,6 +5,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
     procedure NormalTable()
     var
         MyTable: Record "NormalTable WPT";
+        i: integer;
     begin
         for i := 0 to 2000 do begin
             MyTable."Entry No." := i;
@@ -24,6 +25,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
     procedure NormalTableAsTemp()
     var
         MyTable: Record "NormalTable WPT" temporary;
+        i: integer;
     begin
         for i := 0 to 2000 do begin
             MyTable."Entry No." := i;
@@ -43,6 +45,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
     procedure TempTable()
     var
         MyTable: Record "TempTable WPT";
+        i: integer;
     begin
         for i := 0 to 2000 do begin
             MyTable."Entry No." := i;
@@ -57,9 +60,6 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
         MyTable.DeleteAll();
     end;
     #endregion
-
-    var
-        i: integer;
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

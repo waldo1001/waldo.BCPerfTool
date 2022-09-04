@@ -2,7 +2,7 @@
     "Snippet: PerftoolCodeunit": {
         "prefix": "tPerftoolCodeunitWaldo",
         "body": [
-            "codeunit ${1:Id} ${2:MyCodeunit}",
+            "codeunit ${1:Id} ${2:MyCodeunit} implements \"PerfToolCodeunit WPT\"",
             "{",
             "\t#region ${3:NameOfTheTest}",
             "\tprocedure ${3:NameOfTheTest}()",

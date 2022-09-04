@@ -49,11 +49,11 @@ table 62101 "PerfTool Suite Header WPT"
         DeleteLines(Rec);
     end;
 
-    local procedure DeleteLines(Rec: Record "PerfTool Suite Header WPT")
+    local procedure DeleteLines(pRec: Record "PerfTool Suite Header WPT")
     var
         PerfToolSuiteLineWPT: Record "PerfTool Suite Line WPT";
     begin
-        PerfToolSuiteLineWPT.SetRange("PerfTool Code", Rec.Code);
+        PerfToolSuiteLineWPT.SetRange("PerfTool Code", pRec.Code);
         PerfToolSuiteLineWPT.DeleteAll(true);
     end;
 

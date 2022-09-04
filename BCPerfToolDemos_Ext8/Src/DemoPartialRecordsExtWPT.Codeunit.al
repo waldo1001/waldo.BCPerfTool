@@ -1,3 +1,4 @@
+#pragma warning disable AA0242
 codeunit 62351 "Demo - PartialRecords Ext WPT"
 {
     #region Table4_JITLoading
@@ -7,6 +8,7 @@ codeunit 62351 "Demo - PartialRecords Ext WPT"
         i: Integer;
         MyText: Text;
     begin
+        i := 1;
         JustSomeTableWPT.SetLoadFields(Message);
         if JustSomeTableWPT.FindSet() then;
         repeat
