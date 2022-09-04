@@ -46,7 +46,7 @@ page 62100 "PerfTool Log Entries API WPT"
                 }
                 field(testDuration; Rec.TestDuration)
                 {
-                    Caption = 'Duration';
+                    Caption = 'Duration (ms)';
                 }
                 field(startTime; Rec.StartTime)
                 {

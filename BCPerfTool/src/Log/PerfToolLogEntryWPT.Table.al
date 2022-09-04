@@ -36,7 +36,7 @@ table 62102 "PerfTool Log Entry WPT"
         }
         field(22; TestDuration; Duration)
         {
-            Caption = 'Duration';
+            Caption = 'Duration (ms)';
             DataClassification = CustomerContent;
         }
         Field(30; SqlRowsRead; BigInteger)
