@@ -39,7 +39,8 @@
             "tenant": "default",
             "startupObjectId": 62102,
             "startupObjectType": "Page",
-            "schemaUpdateMode": "ForceSync"
+            "schemaUpdateMode": "ForceSync",
+            "forceUpgrade": true
         }
     ]
 }

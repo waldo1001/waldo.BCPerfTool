@@ -24,6 +24,7 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
         DataTranf: DataTransfer;
     begin
         DataTranf.SetTables(Database::"Table With Obsolete Fields WPT", Database::"Table With New Fields WPT");
+        DataTranf.AddJoin(Source.FieldNo("Entry No."), Target.FieldNo("Entry No."));
         DataTranf.AddFieldValue(Source.Fieldno(Message), Target.FieldNo(Message));
         DataTranf.AddFieldValue(Source.FieldNo("Message 2"), Target.FieldNo("Message 2"));
         DataTranf.CopyFields();
@@ -68,6 +69,26 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region PerformUpgrade
+    procedure PerformUpgrade()
+    var
+        PerfToolSuiteLineWPT: Record "PerfTool Suite Line WPT";
+        Target: Record "New Table WPT";
+    begin
+        Target.DeleteAll(); //Prep Table
+
+        PerfToolSuiteLineWPT.SetRange("PerfTool Code", '10. DATATRANSFER');
+        PerfToolSuiteLineWPT.SetFilter("Procedure Name", '*DataTransfer*');
+        if PerfToolSuiteLineWPT.FindSet() then
+            repeat
+                PerfToolSuiteLineWPT.Run(False);
+                Commit();
+                Sleep(1000);
+            // end
+            until PerfToolSuiteLineWPT.Next() < 1;
+    end;
+    #endregion
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -80,6 +101,8 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
                 ClassicCopyRows();
             GetProcedures().Get(4):
                 DataTransferCopyRows();
+            GetProcedures().Get(5):
+                PerformUpgrade();
         end;
 
         Result := true;
@@ -91,6 +114,7 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Copy Fields with DataTransfer');
         Result.Add('Copy Rows Classic');
         Result.Add('Copy Rows with DataTransfer');
+        // Result.Add('Perform Upgrade (TestOnly - Should fail)');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
