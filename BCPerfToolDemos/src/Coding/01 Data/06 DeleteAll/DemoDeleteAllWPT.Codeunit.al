@@ -106,7 +106,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '6. DeleteAll', 'DeleteAll Locking Issue', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '06. DeleteAll', 'DeleteAll Locking Issue', PerfToolSuiteHeaderWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Page, Page::"EmptyTable WPT", true, false, WPTSuiteLine);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DeleteAll, true, true, WPTSuiteLine);
