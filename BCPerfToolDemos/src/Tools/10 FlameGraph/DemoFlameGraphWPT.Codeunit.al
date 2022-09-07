@@ -1,3 +1,4 @@
+#pragma warning disable PTE0007,AA0161
 codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
 {
     #region OpenSalesInvoicePage
@@ -18,12 +19,33 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region PostSalesInvoice
+    procedure PostSalesInvoice()
+    var
+        SalesHeader: Record "Sales Header";
+        FlameGraphSubsWPT: Codeunit "FlameGraph Subs WPT";
+    begin
+        BindSubscription(FlameGraphSubsWPT);
+
+        SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Invoice);
+        SalesHeader.FindFirst();
+
+        if Codeunit.Run(Codeunit::"Sales-Post", SalesHeader) then;
+
+        asserterror Error(''); //silently roll back
+
+        UnbindSubscription(FlameGraphSubsWPT);
+    end;
+    #endregion
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
             GetProcedures().Get(1):
                 OpenSalesInvoicePage();
+            GetProcedures().Get(2):
+                PostSalesInvoice();
         end;
 
         Result := true;
@@ -32,6 +54,7 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     procedure GetProcedures() Result: List of [Text[50]];
     begin
         Result.Add('Open Sales Invoice Page');
+        Result.Add('Post Sales Invoice');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
