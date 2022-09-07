@@ -32,4 +32,12 @@ codeunit 62265 "FlameGraph Subs WPT"
     begin
         sleep(100);
     end;
+
+    //SuppressCommit
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostSalesDoc', '', false, false)]
+    local procedure OnBeforePostSalesDoc(var Sender: Codeunit "Sales-Post"; var SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PreviewMode: Boolean; var HideProgressWindow: Boolean);
+    begin
+        sender.SetSuppressCommit(true);
+    end;
+
 }
