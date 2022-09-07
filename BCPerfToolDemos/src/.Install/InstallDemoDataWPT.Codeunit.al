@@ -45,6 +45,8 @@ codeunit 62205 "Install Demo Data WPT"
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
+        if EmptyTableWPT.IsEmpty then exit;
+
         EmptyTableWPT.DeleteAll();
     end;
 
