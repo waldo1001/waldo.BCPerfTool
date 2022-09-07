@@ -6,7 +6,7 @@
             "type": "al",
             "request": "launch",
             "environmentType": "OnPrem",
-            "server": "http://bccurrent",
+            "server": "http://bcdaily",
             "serverInstance": "BC",
             "authentication": "UserPassword",
             "breakOnError": true,
