@@ -6,19 +6,6 @@ page 62112 "FlameGraph WPT"
     {
         area(Content)
         {
-            // group(Viewer1)
-            // {
-            //     usercontrol(FlamegraphAddIn; "FlamegraphControlAddIn WPT")
-            //     {
-            //         ApplicationArea = All;
-
-            //         trigger ControlAddInReady()
-            //         begin
-            //             SetContent();
-            //         end;
-            //     }
-            // }
-
             group(Viewer2)
             {
                 ShowCaption = false;

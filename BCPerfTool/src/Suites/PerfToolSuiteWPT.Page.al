@@ -161,6 +161,28 @@ page 62104 "PerfTool Suite WPT"
                 Image = TaskList;
                 RunObject = page "Scheduled Tasks WPT";
             }
+            action("Open Pyroscope")
+            {
+                Caption = 'Open Pyroscope';
+                ToolTip = 'Opens Pyroscope';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Open;
+                trigger OnAction()
+                var
+                    PerfToolSetupWPT: Record "PerfTool Setup WPT";
+                begin
+                    PerfToolSetupWPT.Get();
+                    if PerfToolSetupWPT.DisableFlamegraph then exit;
+                    if PerfToolSetupWPT.FlameGraphServer = '' then exit;
+
+                    hyperlink(StrSubstNo('http://%1:4040', PerfToolSetupWPT.FlameGraphServer));
+                end;
+
+            }
+
         }
     }
     trigger OnAfterGetRecord()

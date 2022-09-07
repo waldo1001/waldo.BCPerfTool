@@ -6,35 +6,64 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     var
         SalesHeader: Record "Sales Header";
         PageManagement: Codeunit "Page Management";
-        FlameGraphSubsWPT: Codeunit "FlameGraph Subs WPT";
+        FlameGraphSubsFastWPT: Codeunit "FlameGraph Subs (Fast) WPT";
     begin
-        BindSubscription(FlameGraphSubsWPT);
+        BindSubscription(FlameGraphSubsFastWPT);
 
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Invoice);
         SalesHeader.FindFirst();
 
         PageManagement.PageRunModal(SalesHeader);
 
-        UnbindSubscription(FlameGraphSubsWPT);
+        UnbindSubscription(FlameGraphSubsFastWPT);
     end;
     #endregion
 
     #region PostSalesInvoice
     procedure PostSalesInvoice()
     var
-        SalesHeader: Record "Sales Header";
-        FlameGraphSubsWPT: Codeunit "FlameGraph Subs WPT";
+        FlameGraphSubsFastWPT: Codeunit "FlameGraph Subs (Fast) WPT";
+        FlameGraphSubsSlowWPT: Codeunit "FlameGraph Subs (Slow) WPT";
+        PyroscopeDemoGlobalsWPT: Codeunit "PyroscopeDemoGlobals WPT";
     begin
-        BindSubscription(FlameGraphSubsWPT);
+        if PyroscopeDemoGlobalsWPT.GetMakeSlow() then
+            BindSubscription(FlameGraphSubsSlowWPT)
+        else
+            BindSubscription(FlameGraphSubsFastWPT);
 
+
+        PostFirstSalesInvoice();
+
+
+        if PyroscopeDemoGlobalsWPT.GetMakeSlow() then
+            UnbindSubscription(FlameGraphSubsSlowWPT)
+        else
+            UnbindSubscription(FlameGraphSubsFastWPT);
+    end;
+
+    local procedure PostFirstSalesInvoice()
+    var
+        SalesHeader: Record "Sales Header";
+        SalesPost: Codeunit "Sales-Post";
+    begin
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Invoice);
         SalesHeader.FindFirst();
 
-        if Codeunit.Run(Codeunit::"Sales-Post", SalesHeader) then;
+        SalesPost.SetSuppressCommit(true);
+        SalesPost.run(SalesHeader);
 
         asserterror Error(''); //silently roll back
+    end;
+    #endregion
 
-        UnbindSubscription(FlameGraphSubsWPT);
+    #region ToggleMakeSlow
+    local procedure ToggleMakeSlow()
+    var
+        PyroscopeDemoGlobalsWPT: Codeunit "PyroscopeDemoGlobals WPT";
+    begin
+        PyroscopeDemoGlobalsWPT.ToggleMakeSlow();
+
+        Message('MakeSlow:' + format(PyroscopeDemoGlobalsWPT.GetMakeSlow()));
     end;
     #endregion
 
@@ -46,6 +75,8 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
                 OpenSalesInvoicePage();
             GetProcedures().Get(2):
                 PostSalesInvoice();
+            GetProcedures().Get(3):
+                ToggleMakeSlow();
         end;
 
         Result := true;
@@ -55,6 +86,7 @@ codeunit 62253 "Demo - FlameGraph WPT" implements "PerfToolCodeunit WPT"
     begin
         Result.Add('Open Sales Invoice Page');
         Result.Add('Post Sales Invoice');
+        Result.Add('Toggle "MakeSlow"');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
