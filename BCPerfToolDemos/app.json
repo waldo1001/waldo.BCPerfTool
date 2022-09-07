@@ -22,7 +22,7 @@
             "id": "75f1590f-55c5-4501-ae63-bada5534e852",
             "publisher": "Microsoft",
             "name": "Performance Toolkit",
-            "version": "17.6.0.0"
+            "version": "20.0.0.0"
         }
     ],
     "screenshots": [],
@@ -38,5 +38,6 @@
         "allowDebugging": true,
         "allowDownloadingSource": true,
         "includeSourceInSymbolFile": true
-    }
+    },
+    "runtime": "9.0"
 }

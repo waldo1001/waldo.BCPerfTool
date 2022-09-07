@@ -28,5 +28,6 @@
     },
     "features": [
         "TranslationFile"
-    ]
+    ],
+    "runtime": "9.0"
 }
