@@ -139,7 +139,13 @@ codeunit 62128 "UploadToPyroscope Meth WPT"
         MyNotification.Id := '481c5cca-3581-4fcf-aa8e-a05fed6fa99a';
         MyNotification.Scope := NotificationScope::LocalScope;
         MyNotification.Message := 'Failure: ' + NotificationMsg;
+        MyNotification.AddAction('Open Setup', codeunit::"UploadToPyroscope Meth WPT", 'OpenPerftoolSetup');
         MyNotification.Send();
+    end;
+
+    procedure OpenPerftoolSetup(MyNotification: Notification)
+    begin
+        page.RunModal(page::"PerfTool Setup WPT");
     end;
 
     local procedure CreateRequestUrl(Server: Text; Port: Integer; Name: Text; FromUNIX: Text; UntilUnix: Text): Text
