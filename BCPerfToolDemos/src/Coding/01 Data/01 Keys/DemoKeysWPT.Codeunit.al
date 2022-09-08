@@ -10,7 +10,7 @@ codeunit 62254 "Demo - Keys WPT" implements "PerfToolCodeunit WPT"
         JustSomeTableWPT.SetFilter(Color, 'BLACK|WHITE');
         number := JustSomeTableWPT.Count;
     end;
-    #endregion CountWithoutKey
+    #endregion
 
     #region CountWithKey
     procedure CountWithKey()
@@ -21,7 +21,7 @@ codeunit 62254 "Demo - Keys WPT" implements "PerfToolCodeunit WPT"
         JustSomeTableWPT.SetFilter("Color 2", 'BLACK|WHITE');
         number := JustSomeTableWPT.Count;
     end;
-    #endregion CountWithKey
+    #endregion
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;

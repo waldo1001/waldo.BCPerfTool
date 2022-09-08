@@ -14,18 +14,24 @@ page 62102 "PerfTool Suites WPT"
         {
             repeater(General)
             {
-                field("Group Code"; Rec."Group Code")
-                {
-                    ToolTip = 'Specifies the value of the Group Code field.';
-                    ApplicationArea = All;
-                }
-
                 field("Code"; Rec."Code")
                 {
                     ToolTip = 'Specifies the value of the Code field.';
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(Description; Rec.Description)
+                {
+                    ToolTip = 'Specifies the value of the Description field.';
+                    ApplicationArea = All;
+                }
+                field("Group Code"; Rec."Group Code")
+                {
+                    ToolTip = 'Specifies the value of the Group Code field.';
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field(GroupDescription; Rec."Group Description")
                 {
                     ToolTip = 'Specifies the value of the Description field.';
                     ApplicationArea = All;

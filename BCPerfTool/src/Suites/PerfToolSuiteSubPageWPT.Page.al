@@ -52,7 +52,7 @@ page 62103 "PerfTool Suite SubPage WPT"
                     trigger OnDrillDown()
                     begin
                         Rec.Run(False);
-                        CurrPage.Update(false);
+                        // CurrPage.Update(false);
                     end;
                 }
                 field(DisableFromBatch; Rec.DisableFromBatch)
@@ -132,7 +132,7 @@ page 62103 "PerfTool Suite SubPage WPT"
                 trigger OnAction()
                 begin
                     Rec.Run(false);
-                    CurrPage.Update(false);
+                    // CurrPage.Update(false);
                 end;
             }
             action(LogEntries)

@@ -20,6 +20,14 @@ table 62101 "PerfTool Suite Header WPT"
             DataClassification = CustomerContent;
             TableRelation = "PerfTool Group WPT".Code;
         }
+        field(4; "Group Description"; Text[100])
+        {
+            Caption = 'Group Description';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("PerfTool Group WPT".Description where(Code = field("Group Code")));
+        }
+
         field(10; CurrentTag; Text[50])
         {
             Caption = 'Current Tag';

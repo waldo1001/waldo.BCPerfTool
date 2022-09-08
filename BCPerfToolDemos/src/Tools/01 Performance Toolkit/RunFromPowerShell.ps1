@@ -2,7 +2,8 @@ $UserName = 'waldo'
 $Password = ConvertTo-SecureString 'Waldo1234' -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ($UserName, $Password)
 
-Set-Location "C:\bcartifacts.cache\sandbox\20.0.37400.0\platform\Applications\testframework\TestRunner"
+$Version = (Get-ChildItem "C:\bcartifacts.cache\sandbox\" | where Name -like "*20.5*" | sort Name -Descending | select Name -First 1).Name
+Set-Location "C:\bcartifacts.cache\sandbox\$Version\platform\Applications\testframework\TestRunner"
 
 ./RunBCPTTests.ps1 `
     -Environment OnPrem `
@@ -10,7 +11,7 @@ Set-Location "C:\bcartifacts.cache\sandbox\20.0.37400.0\platform\Applications\te
     -Credential $Credential `
     -TestRunnerPage 149002 `
     -SuiteCode "TEST" `
-    -ServiceUrl 'http://bcdaily/BC' `
-    -BCPTTestRunnerInternalFolderPath './internal'
+    -ServiceUrl 'http://bccurrent/BC' `
+    -BCPTTestRunnerInternalFolderPath './internal' 
 
 

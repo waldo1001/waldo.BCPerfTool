@@ -105,7 +105,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('10.WRAPPERS', '', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('10.WRAPPERS', 'Wrappers', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. WRAPPERS', 'Wrapper functions', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, false, WPTSuiteLine);

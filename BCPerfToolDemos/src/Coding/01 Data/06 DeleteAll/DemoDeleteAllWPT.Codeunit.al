@@ -14,10 +14,10 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         //Session2
         Sleep(2000); //Sleep to make sure the above transaction has started
 
-        RefreshVjeko();
+        DeleteAllVjekosAndDoSomething();
     end;
 
-    local procedure RefreshVjeko()
+    local procedure DeleteAllVjekosAndDoSomething()
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
@@ -26,8 +26,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         EmptyTableWPT.DeleteAll(true);
 
         EmptyTableWPT.Init();
-        EmptyTableWPT.Code := 'Vjeko';
-        EmptyTableWPT.Description := 'Msg1';
+        EmptyTableWPT.Code := 'AJ';
         EmptyTableWPT.insert(true);
     end;
     #endregion
@@ -43,11 +42,11 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         //Session2
         Sleep(2000); //Sleep to make sure the above transaction has started
 
-        InsertVjekoWithIsemptyCheck();
+        InsertAJWithIsemptyCheck();
     end;
 
 
-    local procedure InsertVjekoWithIsemptyCheck()
+    local procedure InsertAJWithIsemptyCheck()
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
@@ -57,7 +56,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
             EmptyTableWPT.DeleteAll(true);
 
         EmptyTableWPT.Init();
-        EmptyTableWPT.Code := 'Vjeko';
+        EmptyTableWPT.Code := 'AJ';
         EmptyTableWPT.insert(true);
     end;
     #endregion

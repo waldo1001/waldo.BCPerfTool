@@ -93,7 +93,7 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('06.TEMPTABLES', '', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('06.TEMPTABLES', 'Temp Tables', PerfToolGroupWPT);
 
         CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Temp Tables', 'Temp Tables', PerfToolSuiteHeaderWPT);
 
