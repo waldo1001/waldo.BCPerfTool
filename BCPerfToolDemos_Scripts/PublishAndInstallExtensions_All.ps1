@@ -23,3 +23,5 @@ PublishExtensionApp -AppName 'BCPerfToolDemos_Ext5'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext6'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext7'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext8'
+
+start "http://$containername/BC/?page=62102"

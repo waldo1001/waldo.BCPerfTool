@@ -4,7 +4,7 @@ codeunit 62205 "Install Demo Data WPT"
 
     trigger OnInstallAppPerCompany()
     begin
-        FillData();
+        // FillData();
     end;
 
     procedure FillData()
