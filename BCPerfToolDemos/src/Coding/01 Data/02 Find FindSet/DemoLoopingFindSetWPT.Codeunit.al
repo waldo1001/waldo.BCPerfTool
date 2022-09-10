@@ -68,10 +68,10 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('FindSetAndLoop40');
-        Result.Add('FindMinAndLoop40');
-        Result.Add('FindSetAndLoop100');
-        Result.Add('FindMinAndLoop100');
+        Result.Add('FindSet And Loop 40');
+        Result.Add('Find(''-'') And Loop 40');
+        Result.Add('FindSet And Loop 100');
+        Result.Add('Find(''-'') And Loop 100');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]

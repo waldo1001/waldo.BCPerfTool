@@ -21,7 +21,6 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
-        //Some Silly way to insert a silly record
         EmptyTableWPT.Setrange(Code, 'Vjeko');
         EmptyTableWPT.DeleteAll(true);
 
@@ -50,7 +49,6 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
     var
         EmptyTableWPT: Record "EmptyTable WPT";
     begin
-        //Some Silly way to insert a silly record
         EmptyTableWPT.Setrange(Code, 'Vjeko');
         if not EmptyTableWPT.IsEmpty() then
             EmptyTableWPT.DeleteAll(true);

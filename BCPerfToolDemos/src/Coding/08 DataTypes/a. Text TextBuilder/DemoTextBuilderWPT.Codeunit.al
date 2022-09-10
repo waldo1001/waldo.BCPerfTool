@@ -6,7 +6,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         i: integer;
         string: Text;
     begin
-        for i := 1 to 10000 do
+        for i := 1 to 25000 do
             string += 'AJ';
     end;
     #endregion
@@ -17,7 +17,7 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
         i: integer;
         string: TextBuilder;
     begin
-        for i := 1 to 10000 do
+        for i := 1 to 25000 do
             string.Append('waldo');
     end;
     #endregion

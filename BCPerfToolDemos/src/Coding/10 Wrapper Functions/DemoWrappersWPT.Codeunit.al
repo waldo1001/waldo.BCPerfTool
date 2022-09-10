@@ -10,7 +10,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     begin
         myGuid := '{f4d9885c-8df6-401f-8a90-3286b814fe0a}';
 
-        for i := 0 to NumberOfInvocations() do
+        for i := 0 to 1000000 do
             Result := TrimBrackets(myGuid);
     end;
 
@@ -29,7 +29,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     begin
         myGuid := '{f4d9885c-8df6-401f-8a90-3286b814fe0a}';
 
-        for i := 0 to NumberOfInvocations() do
+        for i := 0 to 1000000 do
             Result := format(myGuid, 0, 4);
     end;
     #endregion NoSubFunction
@@ -44,7 +44,7 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     begin
         myGuid := '{f4d9885c-8df6-401f-8a90-3286b814fe0a}';
 
-        for i := 0 to NumberOfInvocations() do
+        for i := 0 to 1000000 do
             Result := TrimBracketsSingleInstWPT.TrimBrackets(myGuid);
     end;
     #endregion SingleInstance
@@ -59,16 +59,11 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     begin
         myGuid := '{f4d9885c-8df6-401f-8a90-3286b814fe0a}';
 
-        for i := 0 to NumberOfInvocations() do
+        for i := 0 to 1000000 do
             Result := TrimBracketsNoSingleInsWPT.TrimBrackets(myGuid);
     end;
 
     #endregion NoSingleInstance
-
-    local procedure NumberOfInvocations(): Integer
-    begin
-        exit(1000000);
-    end;
 
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
@@ -89,10 +84,10 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('Wrappers - Subfunction');
-        Result.Add('Wrappers - No Subfunction');
-        Result.Add('Wrappers - Single Instance');
-        Result.Add('Wrappers - No Single Instance');
+        Result.Add('Subfunction');
+        Result.Add('No Subfunction');
+        Result.Add('Single Instance');
+        Result.Add('No Single Instance');
     end;
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]

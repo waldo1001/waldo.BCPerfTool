@@ -18,7 +18,6 @@ codeunit 62227 "Demo - Subs OnModify WPT" implements "PerfToolCodeunit WPT"
         JustSomeTable: Record "Just Some Extended Table 1 WPT";
         DemoSubs: codeunit "Subs OnModify WPT";
     begin
-        // Enable events in subscriber-codeunit
         BindSubscription(DemoSubs);
         JustSomeTable.SetFilter("Entry No.", '<%1', 50000); //Just to limit the amount of records we would change
         JustSomeTable.SetRange(Color, 'BROWN');
@@ -31,6 +30,7 @@ codeunit 62227 "Demo - Subs OnModify WPT" implements "PerfToolCodeunit WPT"
     procedure ModifyAllEventsNotBound();
     var
         JustSomeTable: Record "Just Some Extended Table 1 WPT";
+    // DemoSubs: codeunit "Subs OnModify WPT";
     begin
         // BindSubscription(DemoSubs);
         JustSomeTable.SetFilter("Entry No.", '<%1', 50000); //Just to limit the amount of records we would change
