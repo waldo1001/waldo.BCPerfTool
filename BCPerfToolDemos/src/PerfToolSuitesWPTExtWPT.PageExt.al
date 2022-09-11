@@ -61,10 +61,10 @@ pageextension 62201 "PerfToolSuitesWPT Ext WPT" extends "PerfTool Suites WPT"
             // {
             //     Filters = where("Group Code" = const('10.WRAPPERS'));
             // }
-            view(Retention)
-            {
-                Filters = where("Group Code" = const('11.RETENTION'));
-            }
+            // view(Retention)
+            // {
+            //     Filters = where("Group Code" = const('11.RETENTION'));
+            // }
             view(BackgroundProcessing)
             {
                 Filters = where("Group Code" = const('15.BACKGROUND'));

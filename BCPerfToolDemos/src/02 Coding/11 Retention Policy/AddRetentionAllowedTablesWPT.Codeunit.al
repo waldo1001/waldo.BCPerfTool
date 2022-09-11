@@ -5,35 +5,37 @@ codeunit 62212 "AddRetentionAllowedTables WPT"
     var
         TwoDayTok: Label 'Two Days', MaxLength = 20;
 
-    trigger OnInstallAppPerCompany()
-    begin
-        AddRetentionPolicyAllowedTables();
-        CreateRetentionPolicy();
-    end;
+    // trigger OnInstallAppPerCompany()
+    // var
+    //     JustSomeTableWPT: Record "Just Some Table WPT";
+    //     SentEmail: Record "Sent Email";
+    // begin
+    //     AddRetentionPolicyAllowedTables();
+    //     CreateRetentionPolicy(Database::"Just Some Table WPT", JustSomeTableWPT.FieldNo(DateCreated));
+    //     CreateRetentionPolicy(Database::"Sent Email", SentEmail.FieldNo(SystemCreatedAt));
+    // end;
 
     procedure AddRetentionPolicyAllowedTables()
     var
-        Field: Record Field;
         JustSomeTableWPT: Record "Just Some Table WPT";
         RetenPolAllowedTables: Codeunit "Reten. Pol. Allowed Tables";
         Tablefilters: JsonArray;
     begin
         RetenPolAllowedTables.RemoveAllowedTable(database::"Sent Email");
-        RetenPolAllowedTables.AddAllowedTable(Database::"Sent Email", field.FieldNo(SystemCreatedAt), 7, enum::"Reten. Pol. Filtering"::Default, enum::"Reten. Pol. Deleting"::Per1000Records, Tablefilters);
+        // RetenPolAllowedTables.AddAllowedTable(Database::"Sent Email", field.FieldNo(SystemCreatedAt), 7, enum::"Reten. Pol. Filtering"::Default, enum::"Reten. Pol. Deleting"::Per1000Records, Tablefilters);
         RetenPolAllowedTables.RemoveAllowedTable(database::"Just Some Table WPT");
         RetenPolAllowedTables.AddAllowedTable(Database::"Just Some Table WPT", JustSomeTableWPT.FieldNo(DateCreated), 1, enum::"Reten. Pol. Filtering"::Default, enum::"Reten. Pol. Deleting"::Per1000Records, tablefilters);
     end;
 
-    local procedure CreateRetentionPolicy()
+    local procedure CreateRetentionPolicy(TableId: Integer; DateFieldNo: Integer)
     var
         RetentionPolicySetup: Record "Retention Policy Setup";
-        JustSomeTableWPT: Record "Just Some Table WPT";
     begin
-        if RetentionPolicySetup.get(Database::"Just Some Table WPT") then exit;
+        if RetentionPolicySetup.get(TableId) then exit;
 
-        RetentionPolicySetup."Table Id" := Database::"Just Some Table WPT";
+        RetentionPolicySetup."Table Id" := TableId;
         RetentionPolicySetup."Retention Period" := CreateTwoDayRetentionPeriod();
-        RetentionPolicySetup."Date Field No." := JustSomeTableWPT.FieldNo(DateCreated);
+        RetentionPolicySetup."Date Field No." := DateFieldNo;
         RetentionPolicySetup."Apply to all records" := true;
         RetentionPolicySetup.Enabled := false;
         RetentionPolicySetup.Insert();
