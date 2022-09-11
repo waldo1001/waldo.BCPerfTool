@@ -3,24 +3,32 @@ codeunit 62215 "Demo - Calcfields WPT" implements "PerfToolCodeunit WPT"
     #region CalcFieldsInLoop
     local procedure CalcFieldsInLoop()
     var
-        JustSomeColorsWPT: Record "Just Some Country WPT";
+        JustSomeCountryWPT: Record "Just Some Country WPT";
+        i: Integer;
     begin
-        JustSomeColorsWPT.FindSet();
+        i := 0;
+        JustSomeCountryWPT.FindSet();
         repeat
-            JustSomeColorsWPT.CalcFields(TotalQuantity);
-        until JustSomeColorsWPT.Next() < 1;
+            JustSomeCountryWPT.CalcFields(TotalQuantity);
+            i += 1;
+            if i > 100 then exit;
+        until JustSomeCountryWPT.Next() < 1;
     end;
     #endregion CalcFieldsInLoop
 
     #region AutoCalcFields
     local procedure AutoCalcFields()
     var
-        JustSomeColorsWPT: Record "Just Some Country WPT";
+        JustSomeCountryWPT: Record "Just Some Country WPT";
+        i: Integer;
     begin
-        JustSomeColorsWPT.SetAutoCalcFields(TotalQuantity);
-        JustSomeColorsWPT.FindSet();
+        i := 0;
+        JustSomeCountryWPT.SetAutoCalcFields(TotalQuantity);
+        JustSomeCountryWPT.FindSet();
         repeat
-        until JustSomeColorsWPT.Next() < 1;
+            i += 1;
+            if i > 100 then exit;
+        until JustSomeCountryWPT.Next() < 1;
     end;
     #endregion AutoCalcFields
 
