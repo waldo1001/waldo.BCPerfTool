@@ -91,19 +91,19 @@ codeunit 62219 "Demo - Wrappers WPT" implements "PerfToolCodeunit WPT"
     end;
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup();
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    // local procedure OnAfterInsertSuiteGroup();
 
-    var
-        PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
-        WPTSuiteLine: Record "PerfTool Suite Line WPT";
-        PerfToolGroupWPT: Record "PerfTool Group WPT";
-        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
-    begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('10.WRAPPERS', 'Wrappers', PerfToolGroupWPT);
+    // var
+    //     PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
+    //     WPTSuiteLine: Record "PerfTool Suite Line WPT";
+    //     PerfToolGroupWPT: Record "PerfTool Group WPT";
+    //     CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
+    // begin
+    //     CreatePerfToolDataLibraryWPT.CreateGroup('10.WRAPPERS', 'Wrappers', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. WRAPPERS', 'Wrapper functions', PerfToolSuiteHeaderWPT);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, false, WPTSuiteLine);
-    end;
+    //     CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. WRAPPERS', 'Wrapper functions', PerfToolSuiteHeaderWPT);
+    //     CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::Wrappers, false, false, WPTSuiteLine);
+    // end;
     #endregion
 }

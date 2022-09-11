@@ -1,7 +1,8 @@
 {
-    "country":  "us",
-    "appFolders":  [
+    "country": "us",
+    "appFolders": [
+        "BCPerftTool",
+        "BCPerfToolDemos"
     ],
-    "testFolders":  [
-    ]
+    "testFolders": []
 }

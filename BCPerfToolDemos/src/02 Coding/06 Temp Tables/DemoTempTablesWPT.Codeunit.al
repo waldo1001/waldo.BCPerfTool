@@ -84,20 +84,20 @@ codeunit 62203 "Demo - Temp Tables WPT" implements "PerfToolCodeunit WPT"
     end;
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup();
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    // local procedure OnAfterInsertSuiteGroup();
 
-    var
-        PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
-        WPTSuiteLine: Record "PerfTool Suite Line WPT";
-        PerfToolGroupWPT: Record "PerfTool Group WPT";
-        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
-    begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('06.TEMPTABLES', 'Temp Tables', PerfToolGroupWPT);
+    // var
+    //     PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
+    //     WPTSuiteLine: Record "PerfTool Suite Line WPT";
+    //     PerfToolGroupWPT: Record "PerfTool Group WPT";
+    //     CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
+    // begin
+    //     CreatePerfToolDataLibraryWPT.CreateGroup('06.TEMPTABLES', 'Temp Tables', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Temp Tables', 'Temp Tables', PerfToolSuiteHeaderWPT);
+    //     CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. Temp Tables', 'Temp Tables', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::TempTables, true, false, WPTSuiteLine);
-    end;
+    //     CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::TempTables, true, false, WPTSuiteLine);
+    // end;
     #endregion
 }

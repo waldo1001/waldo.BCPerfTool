@@ -134,21 +134,21 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
 
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup();
+    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    // local procedure OnAfterInsertSuiteGroup();
 
-    var
-        PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
-        WPTSuiteLine: Record "PerfTool Suite Line WPT";
-        PerfToolGroupWPT: Record "PerfTool Group WPT";
-        CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
-    begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('02.QUERIES', 'Queries', PerfToolGroupWPT);
+    // var
+    //     PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
+    //     WPTSuiteLine: Record "PerfTool Suite Line WPT";
+    //     PerfToolGroupWPT: Record "PerfTool Group WPT";
+    //     CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
+    // begin
+    //     CreatePerfToolDataLibraryWPT.CreateGroup('02.QUERIES', 'Queries', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2.Grouping', 'Grouping', PerfToolSuiteHeaderWPT);
+    //     CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '2.Grouping', 'Grouping', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Query, query::"GroupingJustSomeTable WPT", false, false, WPTSuiteLine);
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::QryGrouping, false, false, WPTSuiteLine);
-    end;
+    //     CreatePerfToolDataLibraryWPT.CreateSuiteLine(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Query, query::"GroupingJustSomeTable WPT", false, false, WPTSuiteLine);
+    //     CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::QryGrouping, false, false, WPTSuiteLine);
+    // end;
     #endregion
 }

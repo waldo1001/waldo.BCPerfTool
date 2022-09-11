@@ -6,7 +6,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
     begin
-        for i := 0 to 100000 do begin
+        for i := 0 to 1000000 do begin
             //Do Something        
         end;
     end;
@@ -17,7 +17,7 @@ codeunit 62207 "Demo - Publishers WPT" implements "PerfToolCodeunit WPT"
     var
         i: integer;
     begin
-        for i := 0 to 100000 do begin
+        for i := 0 to 1000000 do begin
             //Do Something and raise event
             OnAfterDoingSomething();
         end;
