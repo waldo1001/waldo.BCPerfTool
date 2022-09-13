@@ -9,7 +9,7 @@ function PublishExtensionApp($AppName){
     if ($AppExists){
         Install-BcContainerApp -containerName $containername -appName $AppName        
     } else {
-        Publish-BcContainerApp -containerName $containername -credential $ContainerCredential -ignoreIfAppExists -appFile "C:\_Source\Community\waldo.BCPerfTool\$($AppName)\waldo_$($AppName)_1.0.0.0.app" -skipVerification -sync ForceSync -useDevEndpoint -install
+        Publish-BcContainerApp -containerName $containername -credential $ContainerCredential -ignoreIfAppExists -appFile "$PSScriptRoot\..\$($AppName)\waldo_$($AppName)_1.0.0.0.app" -skipVerification -sync ForceSync -useDevEndpoint -install
     }
 }
 
