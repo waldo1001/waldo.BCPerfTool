@@ -29,6 +29,18 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region LazyCase
+
+    procedure LazyCase()
+    begin
+        case true of
+            SomethingThatReturnedTrue(),
+            HeavyFunction(): //This will not execute
+                exit;
+        end;
+    end;
+    #endregion
+
     local procedure ShouldBeTrueButReturnsFalse(): Boolean
     begin
         Exit(false);
@@ -56,6 +68,8 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
                 NoLazyEvaluationOR();
             GetProcedures().Get(4):
                 ManualLazyEvaluationOR();
+            GetProcedures().Get(5):
+                LazyCase();
         end;
 
         Result := true;
@@ -67,6 +81,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Result.Add('ManualLazyEvaluationAND');
         Result.Add('NoLazyEvaluationOR');
         Result.Add('ManualLazyEvaluationOR');
+        Result.Add('LazyCase');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
