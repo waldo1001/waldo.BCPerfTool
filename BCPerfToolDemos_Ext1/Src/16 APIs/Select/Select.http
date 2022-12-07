@@ -1,0 +1,22 @@
+@usernamelocal = waldo
+@passwordlocal = Waldo1234
+@baseurl = http://bccurrent:7048/BC/api/waldo/perftool/v1.0
+
+##################################################################################
+get {{baseurl}}
+Authorization: Basic {{usernamelocal}} {{passwordlocal}}
+
+##################################################################################
+# @name companies
+get {{baseurl}}/companies
+Authorization: Basic {{usernamelocal}} {{passwordlocal}}
+##################################################################################
+@companyid = {{companies.response.body.$.value[0].id}}
+##################################################################################
+get {{baseurl}}/companies({{companyid}})/justSomeTableRecs?$top=1000
+Authorization: Basic {{usernamelocal}} {{passwordlocal}}
+
+##################################################################################
+get {{baseurl}}/companies({{companyid}})/justSomeTableRecs?$select=message,message2&$top=1000
+Authorization: Basic {{usernamelocal}} {{passwordlocal}}
+
