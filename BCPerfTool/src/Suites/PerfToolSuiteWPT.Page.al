@@ -173,7 +173,7 @@ page 62104 "PerfTool Suite WPT"
                 trigger OnAction()
                 var
                     PerfToolSetupWPT: Record "PerfTool Setup WPT";
-                    UrlLbl: label 'http://%1:4040';
+                    UrlLbl: label 'http://%1:4040', Comment = '%1 is Pyroscope server.';
                 begin
                     PerfToolSetupWPT.Get();
                     if PerfToolSetupWPT.DisableFlamegraph then exit;
