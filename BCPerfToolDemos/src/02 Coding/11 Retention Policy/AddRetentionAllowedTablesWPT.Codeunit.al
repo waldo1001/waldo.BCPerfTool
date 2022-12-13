@@ -27,6 +27,7 @@ codeunit 62212 "AddRetentionAllowedTables WPT"
         RetenPolAllowedTables.AddAllowedTable(Database::"Just Some Table WPT", JustSomeTableWPT.FieldNo(DateCreated), 1, enum::"Reten. Pol. Filtering"::Default, enum::"Reten. Pol. Deleting"::Per1000Records, tablefilters);
     end;
 
+#pragma warning disable
     local procedure CreateRetentionPolicy(TableId: Integer; DateFieldNo: Integer)
     var
         RetentionPolicySetup: Record "Retention Policy Setup";
