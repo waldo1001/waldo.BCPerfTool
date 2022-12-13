@@ -178,7 +178,9 @@ page 62104 "PerfTool Suite WPT"
                     if PerfToolSetupWPT.DisableFlamegraph then exit;
                     if PerfToolSetupWPT.FlameGraphServer = '' then exit;
 
+#pragma warning disable AA0217
                     hyperlink(StrSubstNo('http://%1:4040', PerfToolSetupWPT.FlameGraphServer));
+#pragma warning restore AA0217
                 end;
 
             }
