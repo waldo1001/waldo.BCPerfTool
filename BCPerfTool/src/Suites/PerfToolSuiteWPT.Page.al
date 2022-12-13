@@ -173,18 +173,15 @@ page 62104 "PerfTool Suite WPT"
                 trigger OnAction()
                 var
                     PerfToolSetupWPT: Record "PerfTool Setup WPT";
+                    UrlLbl: label 'http://%1:4040';
                 begin
                     PerfToolSetupWPT.Get();
                     if PerfToolSetupWPT.DisableFlamegraph then exit;
                     if PerfToolSetupWPT.FlameGraphServer = '' then exit;
 
-#pragma warning disable AA0217
-                    hyperlink(StrSubstNo('http://%1:4040', PerfToolSetupWPT.FlameGraphServer));
-#pragma warning restore AA0217
+                    hyperlink(StrSubstNo(Urllbl, PerfToolSetupWPT.FlameGraphServer));
                 end;
-
             }
-
         }
     }
     trigger OnAfterGetRecord()
