@@ -1,4 +1,4 @@
-table 62403 "New Table WPT"
+table 62220 "New Table WPT"
 {
     DataClassification = CustomerContent;
 

@@ -22,11 +22,15 @@ codeunit 62205 "Install Demo Data WPT"
         JustSomeExtendedTable2WPT: Record "Just Some Extended Table 2 WPT";
         JustSomeExtendedTable3WPT: Record "Just Some Extended Table 3 WPT";
         JustSomeExtendedTable4WPT: Record "Just Some Extended Table 4 WPT";
+        ObsoleteTableWPT: Record "Obsolete Table WPT";
+        TableWithObsoleteFieldsWPT: Record "Table With Obsolete Fields WPT";
         JobQueueEntry1: Record "Job Queue Entry";
         JobQueueEntry2: Record "Job Queue Entry";
         JobQueueEntry3: Record "Job Queue Entry";
         JobQueueEntry4: Record "Job Queue Entry";
         JobQueueEntry5: Record "Job Queue Entry";
+        JobQueueEntry6: Record "Job Queue Entry";
+        JobQueueEntry7: Record "Job Queue Entry";
         RecId: Recordid;
     begin
         if JustSomeTableWPT.IsEmpty then
@@ -39,6 +43,12 @@ codeunit 62205 "Install Demo Data WPT"
             JobQueueEntry4.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
         if JustSomeExtendedTable4WPT.IsEmpty then
             JobQueueEntry5.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
+        if ObsoleteTableWPT.IsEmpty then
+            JobQueueEntry6.ScheduleJobQueueEntry(codeunit::"Install - Obsolete Table WPT", RecId);
+        if ObsoleteTableWPT.IsEmpty then
+            JobQueueEntry6.ScheduleJobQueueEntry(codeunit::"Install - Obsolete Table WPT", RecId);
+        if TableWithObsoleteFieldsWPT.IsEmpty then
+            JobQueueEntry7.ScheduleJobQueueEntry(Codeunit::"Install - Obsolete Fields WPT", RecId);
     end;
 
     local procedure EmptyTable()

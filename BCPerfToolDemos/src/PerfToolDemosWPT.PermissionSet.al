@@ -16,5 +16,10 @@ permissionset 62201 "PerfTool Demos WPT"
         tabledata "Table With AutoIncrement WPT" = RIMD,
         tabledata "Table WithNo AutoIncrement WPT" = RIMD,
         tabledata "NormalTable WPT" = RIMD,
-        tabledata "TempTable WPT" = RIMD;
+        tabledata "TempTable WPT" = RIMD,
+        tabledata "Table With Obsolete Fields WPT" = RIMD,
+        tabledata "Table With New Fields WPT" = RIMD,
+        tabledata "Obsolete Table WPT" = RIMD,
+        tabledata "New Table WPT" = RIMD;
+    ;
 }

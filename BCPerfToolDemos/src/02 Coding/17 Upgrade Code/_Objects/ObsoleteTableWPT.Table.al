@@ -1,4 +1,4 @@
-table 62404 "Table With Obsolete Fields WPT"
+table 62221 "Obsolete Table WPT"
 {
     DataClassification = CustomerContent;
 
@@ -70,21 +70,21 @@ table 62404 "Table With Obsolete Fields WPT"
 
     procedure Create(pMessage: Text[2048]; Id: Integer)
     var
-        TableWithObsoleteFieldsWPT: Record "Table With Obsolete Fields WPT";
+        ObsoleteTableWPT: Record "Obsolete Table WPT";
     begin
-        TableWithObsoleteFieldsWPT.init();
-        TableWithObsoleteFieldsWPT."Entry No." := Id;
-        TableWithObsoleteFieldsWPT.Message := pMessage;
-        TableWithObsoleteFieldsWPT."Message 2" := pMessage;
-        TableWithObsoleteFieldsWPT.Quantity := random(1000);
-        TableWithObsoleteFieldsWPT."Color 2" := TableWithObsoleteFieldsWPT.Color;
-        TableWithObsoleteFieldsWPT."Country 2" := TableWithObsoleteFieldsWPT.Country;
-        TableWithObsoleteFieldsWPT."Country 3" := TableWithObsoleteFieldsWPT.Country;
+        ObsoleteTableWPT.init();
+        ObsoleteTableWPT."Entry No." := Id;
+        ObsoleteTableWPT.Message := pMessage;
+        ObsoleteTableWPT."Message 2" := pMessage;
+        ObsoleteTableWPT.Quantity := random(1000);
+        ObsoleteTableWPT."Color 2" := ObsoleteTableWPT.Color;
+        ObsoleteTableWPT."Country 2" := ObsoleteTableWPT.Country;
+        ObsoleteTableWPT."Country 3" := ObsoleteTableWPT.Country;
         if Id < 5000 then
-            TableWithObsoleteFieldsWPT.DateCreated := WorkDate()
+            ObsoleteTableWPT.DateCreated := WorkDate()
         else
-            TableWithObsoleteFieldsWPT.DateCreated := CalcDate('<-10D>', WorkDate());
-        TableWithObsoleteFieldsWPT.Insert(false);
+            ObsoleteTableWPT.DateCreated := CalcDate('<-10D>', WorkDate());
+        ObsoleteTableWPT.Insert(false);
     end;
 
 }

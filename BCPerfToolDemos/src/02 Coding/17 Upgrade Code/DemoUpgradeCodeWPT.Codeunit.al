@@ -1,5 +1,12 @@
-codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
+codeunit 62290 "Demo - Upgrade Code WPT" implements "PerfToolCodeunit WPT"
 {
+    #region ObsoletedTable
+    procedure ShowObsoletedTable()
+    begin
+        page.RunModal(page::"ObsoletedTable WPT");
+    end;
+    #endregion
+
     #region ClassicCopyFields
     procedure ClassicCopyFields()
     var
@@ -69,15 +76,15 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
-    #region PerformUpgrade
-    procedure PerformUpgrade()
+    #region DataTransferUpgrade
+    procedure PerformUpgrade_DataTransfer()
     var
         PerfToolSuiteLineWPT: Record "PerfTool Suite Line WPT";
         Target: Record "New Table WPT";
     begin
         Target.DeleteAll(); //Prep Table
 
-        PerfToolSuiteLineWPT.SetRange("PerfTool Code", '10. DATATRANSFER');
+        PerfToolSuiteLineWPT.SetRange("PerfTool Code", '1.UPGRADECODE');
         PerfToolSuiteLineWPT.SetFilter("Procedure Name", '*DataTransfer*');
         if PerfToolSuiteLineWPT.FindSet() then
             repeat
@@ -89,20 +96,31 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region ScheduleUpgrade
+    procedure ScheduleUpgrade()
+    var
+        JobQueueUpgradeWPT: Codeunit "JobQueue DoUpgrade WPT";
+    begin
+        JobQueueUpgradeWPT.ScheduleUpgrade();
+    end;
+    #endregion
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                ClassicCopyFields();
+                ShowObsoletedTable();
             GetProcedures().Get(2):
-                DataTransferCopyFields();
+                ClassicCopyFields();
             GetProcedures().Get(3):
-                ClassicCopyRows();
+                DataTransferCopyFields();
             GetProcedures().Get(4):
-                DataTransferCopyRows();
+                ClassicCopyRows();
             GetProcedures().Get(5):
-                PerformUpgrade();
+                DataTransferCopyRows();
+            GetProcedures().Get(6):
+                ScheduleUpgrade();
         end;
 
         Result := true;
@@ -110,11 +128,12 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
+        Result.Add('ShowObsoletedTable');
         Result.Add('Copy Fields Classic');
         Result.Add('Copy Fields with DataTransfer');
         Result.Add('Copy Rows Classic');
         Result.Add('Copy Rows with DataTransfer');
-        // Result.Add('Perform Upgrade (TestOnly - Should fail)');
+        Result.Add('ScheduleUpgrade');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
@@ -125,11 +144,11 @@ codeunit 62400 "Demo - DataTransfer Type WPT" implements "PerfToolCodeunit WPT"
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('17.UPGRADECODE', 'Upgrade Code', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '10. DataTransfer', 'DataTransferType', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1.UPGRADECODE', 'Upgrade Code', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DataTransferType, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::UpgradeCode, true, false, WPTSuiteLine);
     end;
     #endregion
 }
