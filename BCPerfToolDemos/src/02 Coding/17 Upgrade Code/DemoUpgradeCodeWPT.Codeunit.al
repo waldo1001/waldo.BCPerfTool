@@ -7,6 +7,13 @@ codeunit 62290 "Demo - Upgrade Code WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region NewTable
+    procedure ShowNewTable()
+    begin
+        page.RunModal(page::"NewTable WPT");
+    end;
+    #endregion
+
     #region ClassicCopyFields
     procedure ClassicCopyFields()
     var
@@ -112,14 +119,16 @@ codeunit 62290 "Demo - Upgrade Code WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(1):
                 ShowObsoletedTable();
             GetProcedures().Get(2):
-                ClassicCopyFields();
+                ShowNewTable();
             GetProcedures().Get(3):
-                DataTransferCopyFields();
+                ClassicCopyFields();
             GetProcedures().Get(4):
-                ClassicCopyRows();
+                DataTransferCopyFields();
             GetProcedures().Get(5):
-                DataTransferCopyRows();
+                ClassicCopyRows();
             GetProcedures().Get(6):
+                DataTransferCopyRows();
+            GetProcedures().Get(7):
                 ScheduleUpgrade();
         end;
 
@@ -128,7 +137,8 @@ codeunit 62290 "Demo - Upgrade Code WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('ShowObsoletedTable');
+        Result.Add('Show Obsoleted Table');
+        Result.Add('Show New Table');
         Result.Add('Copy Fields Classic');
         Result.Add('Copy Fields with DataTransfer');
         Result.Add('Copy Rows Classic');

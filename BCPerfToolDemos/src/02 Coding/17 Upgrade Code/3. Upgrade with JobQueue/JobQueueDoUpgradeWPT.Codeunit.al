@@ -1,23 +1,29 @@
-#pragma warning disable AA0136
-codeunit 62295 "Normal Upgrade WPT"
+codeunit 62297 "JobQueue DoUpgrade WPT"
 {
-    Subtype = Upgrade;
-
-    trigger OnUpgradePerCompany()
+    trigger OnRun()
     var
         UpgradeTag: Codeunit "Upgrade Tag";
     begin
-        if UpgradeTag.HasUpgradeTag(NormalupgradeLbl) then exit;
+        if UpgradeTag.HasUpgradeTag(JobQueueUpgradeLbl) then exit;
 
         PerformUpgrade();
 
-        UpgradeTag.SetUpgradeTag(NormalupgradeLbl);
+        UpgradeTag.SetUpgradeTag(JobQueueUpgradeLbl);
+    end;
+
+    procedure ScheduleUpgrade() // can be local
+    var
+        JobQueueEntry: Record "Job Queue Entry";
+        UpgradeTag: Codeunit "Upgrade Tag";
+        RecId: RecordId;
+    begin
+        if UpgradeTag.HasUpgradeTag(JobQueueUpgradeLbl) then exit;
+
+        JobQueueEntry.ScheduleJobQueueEntry(Codeunit::"JobQueue DoUpgrade WPT", RecId);
     end;
 
     local procedure PerformUpgrade()
     begin
-        exit; //Prevent to run this codeunit
-
         ClassicCopyFields();
         ClassicCopyRows();
     end;
@@ -29,7 +35,8 @@ codeunit 62295 "Normal Upgrade WPT"
     begin
         if Source.FindSet() then
             repeat
-                Target.get(Source."Entry No.");
+                if not Target.get(Source."Entry No.") then exit;
+
                 Target.Message := Source.Message;
                 Target."Message 2" := Source."Message 2";
                 Target.Modify();
@@ -53,13 +60,14 @@ codeunit 62295 "Normal Upgrade WPT"
             until Source.Next() < 1;
     end;
 
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Upgrade Tag", 'OnGetPerCompanyUpgradeTags', '', false, false)]
     local procedure OnGetPerCompanyUpgradeTags(var PerCompanyUpgradeTags: List of [Code[250]]);
     begin
-        PerCompanyUpgradeTags.Add(NormalupgradeLbl);
+        PerCompanyUpgradeTags.Add(JobQueueUpgradeLbl);
     end;
 
 
     var
-        NormalupgradeLbl: Label 'waldo-Normalupgrade-20221213', Locked = true;
+        JobQueueUpgradeLbl: Label 'waldo-JobQueueUpgrade-20221213', Locked = true;
 }
