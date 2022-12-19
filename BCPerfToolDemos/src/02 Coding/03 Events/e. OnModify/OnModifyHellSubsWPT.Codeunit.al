@@ -16,7 +16,7 @@ codeunit 62288 "OnModifyHell Subs WPT"
     [EventSubscriber(ObjectType::Codeunit, codeunit::GlobalTriggerManagement, 'OnBeforeOnDatabaseModify', '', false, false)]
     local procedure OnBeforeOnDatabaseModify()
     begin
-        Message('OnBeforeOnDatabaseModify');
+        // Message('OnBeforeOnDatabaseModify');
     end;
 
 }
