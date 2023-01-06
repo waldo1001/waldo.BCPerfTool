@@ -87,7 +87,9 @@ codeunit 62224 "Demo - Query - Grouping WPT" implements "PerfToolCodeunit WPT"
     begin
         GroupingResult.DeleteAll();
 
+#pragma warning disable AA0210 //(Key doesn't exist)
         JustSomeTable.SetCurrentKey(Color);
+#pragma warning restore AA0210
 
         JustSomeTable.FindFirst();
         repeat
