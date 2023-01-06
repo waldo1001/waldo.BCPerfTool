@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "LocalDocker",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "OnPrem",
+            "server": "http://bccurrent",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 1,
+            "tenant": "default",
+            "startupObjectId": 62102,
+            "startupObjectType": "Page",
+            "schemaUpdateMode": "ForceSync"
+        },
+        {
+            "name": "training.waldo.be/Sandbox1",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "OnPrem",
+            "server": "https://training.waldo.be/",
+            "serverInstance": "Sandbox1dev",
+            "authentication": "UserPassword",
+            "port": 443,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 1,
+            "tenant": "default",
+            "startupObjectId": 62102,
+            "startupObjectType": "Page",
+            "schemaUpdateMode": "ForceSync"
+        }
+    ]
+}
