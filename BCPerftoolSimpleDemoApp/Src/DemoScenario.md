@@ -61,8 +61,9 @@ Open History - SamplingPerformanceProfiler.Codeunit
 
 - Codeunit
 
-# Create your own tests
+# Create your own PerfTool codeunit tests
 
   - "PerfTool WPT" codeunit
   - "PerfTool Triggers WPT" codeunit
+  - Write your codeunit
 
