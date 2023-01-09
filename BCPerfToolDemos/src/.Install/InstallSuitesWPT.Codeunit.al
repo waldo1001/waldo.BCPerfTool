@@ -8,23 +8,9 @@ codeunit 62201 "Install Suites WPT"
     end;
 
     procedure FillSuite()
-    begin
-        OnInstallAppPerCompanyFillSuite();
-    end;
-
-    procedure ResetAll()
     var
-        PerfToolLogEntryWPT: Record "PerfTool Log Entry WPT";
-        PerfToolGroupWPT: Record "PerfTool Group WPT";
-        PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
+        PerfToolTriggersWPT: Codeunit "PerfTool Triggers WPT";
     begin
-        PerfToolSuiteHeaderWPT.DeleteAll(true);
-        PerfToolGroupWPT.DeleteAll(true);
-        PerfToolLogEntryWPT.DeleteAll(true);
-    end;
-
-    [BusinessEvent(false)]
-    local procedure OnInstallAppPerCompanyFillSuite()
-    begin
+        PerfToolTriggersWPT.OnGetSuiteData();
     end;
 }

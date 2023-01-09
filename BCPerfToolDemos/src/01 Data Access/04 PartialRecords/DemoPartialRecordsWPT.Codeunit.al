@@ -203,7 +203,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     end;
 
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

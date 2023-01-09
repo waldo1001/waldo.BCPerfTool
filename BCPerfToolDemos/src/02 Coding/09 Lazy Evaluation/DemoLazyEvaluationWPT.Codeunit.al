@@ -84,7 +84,7 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Result.Add('LazyCase');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

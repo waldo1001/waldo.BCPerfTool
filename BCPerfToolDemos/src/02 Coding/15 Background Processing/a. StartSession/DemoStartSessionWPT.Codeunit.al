@@ -86,7 +86,7 @@ codeunit 62229 "Demo - StartSession WPT" implements "PerfToolCodeunit WPT"
 
 
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

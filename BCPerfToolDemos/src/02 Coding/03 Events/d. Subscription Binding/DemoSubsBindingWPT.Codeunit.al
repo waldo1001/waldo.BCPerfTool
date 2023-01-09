@@ -62,7 +62,7 @@ codeunit 62262 "Demo - SubsBinding WPT" implements "PerfToolCodeunit WPT"
         Result.Add('LoopAll - JIT Binding');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

@@ -1,5 +1,8 @@
 TODO: 
 
-Run in background - why?
+Send Wait stats to Telemetry
 
-Run pages with Page-testability
+Save Wait stats in BC - attached to a log-entry
+
+
+

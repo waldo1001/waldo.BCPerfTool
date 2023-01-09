@@ -31,4 +31,9 @@ codeunit 62102 "PerfTool Triggers WPT"
     procedure OnAfterRunObject(Identifier: Guid; ObjType: enum "Perftool Object Types WPT"; ObjId: Integer)
     begin
     end;
+
+    [BusinessEvent(false)]
+    procedure OnGetSuiteData()
+    begin
+    end;
 }

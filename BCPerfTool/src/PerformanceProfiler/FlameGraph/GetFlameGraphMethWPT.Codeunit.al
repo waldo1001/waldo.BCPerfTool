@@ -40,7 +40,7 @@ codeunit 62126 "GetFlameGraph Meth WPT"
         HttpContnt.WriteFrom(AllContent);
         HttpContnt.GetHeaders(Headers);
         Headers.Add('color', 'aqua');
-        Headers.Add('filter', 'BCPerfTool');
+        Headers.Add('filter', 'BCPerfTool'); //removes all entries of "BCPerfTool"
 
         if not Svg then
             Headers.Add('onlyfolded', 'true');

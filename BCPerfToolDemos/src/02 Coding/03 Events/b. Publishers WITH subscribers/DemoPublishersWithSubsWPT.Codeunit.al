@@ -114,7 +114,7 @@ codeunit 62260 "Demo - PublishersWithSubs WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Subscriber with Global Vars (Single Instance)');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

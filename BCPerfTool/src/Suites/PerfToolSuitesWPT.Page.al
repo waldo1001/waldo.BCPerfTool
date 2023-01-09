@@ -65,9 +65,6 @@ page 62102 "PerfTool Suites WPT"
                 ToolTip = 'Opens the log entries.';
                 ApplicationArea = All;
                 RunObject = page "PerfTool Log Entries WPT";
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = Log;
             }
             action("Job Queue Entries")
@@ -102,14 +99,69 @@ page 62102 "PerfTool Suites WPT"
                 Caption = 'Run All Batches';
                 ToolTip = 'Runs all lines for all Suites x times (Batch Count)';
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
                 Image = List;
                 trigger OnAction()
                 begin
                     Rec.RunAllBatchesOnSuites();
                 end;
+            }
+            group("Get Data")
+            {
+                ShowAs = SplitButton;
+
+                action("Get Suites")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Refresh Suites';
+                    Image = Import;
+                    ToolTip = 'Raises event to get the suites from dependent apps.';
+
+                    trigger OnAction()
+                    var
+                        GetSuites: Codeunit "Get Suites WPT";
+                    begin
+                        GetSuites.GetSuiteData(false);
+                    end;
+                }
+                action("Get Suites and remove history")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Get Suites and remove history';
+                    Image = Import;
+                    ToolTip = 'Removes all history and then raises event to get the suites from dependent apps.';
+
+                    trigger OnAction()
+                    var
+                        GetSuites: Codeunit "Get Suites WPT";
+                    begin
+                        GetSuites.GetSuiteData(true);
+                    end;
+                }
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                Caption = 'Process';
+
+                actionref("Run All Batches_Promoted"; "Run All Batches")
+                {
+                }
+                group("Get Suite Data")
+                {
+                    ShowAs = SplitButton;
+
+                    actionref("Get Suites_Promoted"; "Get Suites")
+                    {
+                    }
+                    actionref("Get Suites and remove history_Promoted"; "Get Suites and remove history")
+                    {
+                    }
+                }
+                actionref(LogEntries_Promoted; LogEntries)
+                {
+                }
             }
         }
     }

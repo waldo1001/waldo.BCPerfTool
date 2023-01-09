@@ -1,18 +1,18 @@
-codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
+codeunit 62402 "SimpleDemo WPTD" implements "PerfToolCodeunit WPT"
 {
-    #region TextLoop
-    procedure TextLoop()
+    #region SimpleTest
+    procedure SimpleTest()
     var
         i: integer;
         string: Text;
     begin
         for i := 1 to 25000 do
-            string += 'AJ';
+            string += 'Vjeko';
     end;
     #endregion
 
-    #region TextBuilderLoop
-    procedure TextBuilderLoop()
+    #region AnotherSimpleTest
+    procedure AnotherSimpleTest()
     var
         i: integer;
         string: TextBuilder;
@@ -27,9 +27,9 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
     begin
         case ProcedureName of
             GetProcedures().Get(1):
-                TextLoop();
+                SimpleTest();
             GetProcedures().Get(2):
-                TextBuilderLoop();
+                AnotherSimpleTest();
         end;
 
         Result := true;
@@ -37,25 +37,23 @@ codeunit 62210 "Demo - TextBuilder WPT" implements "PerfToolCodeunit WPT"
 
     procedure GetProcedures() Result: List of [Text[50]];
     begin
-        Result.Add('TextLoop');
-        Result.Add('TextBuilderLoop');
+        Result.Add('SimpleTest');
+        Result.Add('AnotherSimpleTest');
     end;
 
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create PerfToolDataLibrary WPT", 'OnAfterInsertSuiteGroup', '', false, false)]
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
-    local procedure OnAfterInsertSuiteGroup();
-
+    local procedure OnAfterInsertSuiteGroup()
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
         WPTSuiteLine: Record "PerfTool Suite Line WPT";
         PerfToolGroupWPT: Record "PerfTool Group WPT";
         CreatePerfToolDataLibraryWPT: Codeunit "Create PerfToolDataLibrary WPT";
     begin
-        CreatePerfToolDataLibraryWPT.CreateGroup('08.DATATYPES', 'Data Types', PerfToolGroupWPT);
+        CreatePerfToolDataLibraryWPT.CreateGroup('SimpleDemoApp', 'SimpleDemoApp', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '1. TEXT', 'Text vs Text Builder', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, 'SimpleCodeunit', 'Simple Codeunit', PerfToolSuiteHeaderWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::DTTextBuilder, true, false, WPTSuiteLine);
+        CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::SimpleCodeunit, true, false, WPTSuiteLine);
     end;
     #endregion
 }

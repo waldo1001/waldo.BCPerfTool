@@ -1,6 +1,6 @@
 codeunit 62222 "Demo - Retention WPT"
 {
-    // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    //     [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     // local procedure OnAfterInsertSuiteGroup();
 
     // var

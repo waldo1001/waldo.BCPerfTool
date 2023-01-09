@@ -115,7 +115,7 @@ codeunit 62252 "Demo SQLProfiler WPT" implements "PerfToolCodeunit WPT"
         Result.Add('BulkInserts With NumberSequence');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

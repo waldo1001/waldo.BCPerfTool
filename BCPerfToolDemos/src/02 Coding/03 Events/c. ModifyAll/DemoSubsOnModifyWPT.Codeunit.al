@@ -62,7 +62,7 @@ codeunit 62227 "Demo - Subs OnModify WPT" implements "PerfToolCodeunit WPT"
         Result.Add('ModifyAll - Events Not Bound');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
 
     var

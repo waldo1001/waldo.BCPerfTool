@@ -93,7 +93,7 @@ codeunit 62238 "Demo - DeleteAll WPT" implements "PerfToolCodeunit WPT"
         Result.Add('DeleteAllWithIsemptyCheck');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup();
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";

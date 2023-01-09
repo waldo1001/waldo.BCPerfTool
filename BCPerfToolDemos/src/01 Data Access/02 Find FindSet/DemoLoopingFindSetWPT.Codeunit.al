@@ -74,7 +74,7 @@ codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Find(''-'') And Loop 100');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Install Suites WPT", 'OnInstallAppPerCompanyFillSuite', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
     local procedure OnAfterInsertSuiteGroup()
     var
         PerfToolSuiteHeaderWPT: Record "PerfTool Suite Header WPT";
