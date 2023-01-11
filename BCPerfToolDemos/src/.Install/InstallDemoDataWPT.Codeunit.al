@@ -32,23 +32,26 @@ codeunit 62205 "Install Demo Data WPT"
         JobQueueEntry6: Record "Job Queue Entry";
         JobQueueEntry7: Record "Job Queue Entry";
         RecId: Recordid;
+        ScheduleAt: DateTime;
     begin
+        ScheduleAt := CreateDateTime(CalcDate('<+1D>', today), Time());
+
         if JustSomeTableWPT.IsEmpty then
-            JobQueueEntry1.ScheduleJobQueueEntry(codeunit::"Install - Big Table WPT", RecId);
+            JobQueueEntry1.ScheduleJobQueueEntryForLater(codeunit::"Install - Big Table WPT", ScheduleAt, '', '');
         if JustSomeExtendedTable1WPT.IsEmpty then
-            JobQueueEntry2.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 1 WPT", RecId);
+            JobQueueEntry2.ScheduleJobQueueEntryForLater(codeunit::"Install - Big Ext. Table 1 WPT", ScheduleAt, '', '');
         if JustSomeExtendedTable2WPT.IsEmpty then
-            JobQueueEntry3.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 2 WPT", RecId);
+            JobQueueEntry3.ScheduleJobQueueEntryForLater(codeunit::"Install - Big Ext. Table 2 WPT", ScheduleAt, '', '');
         if JustSomeExtendedTable3WPT.IsEmpty then
-            JobQueueEntry4.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 3 WPT", RecId);
+            JobQueueEntry4.ScheduleJobQueueEntryForLater(codeunit::"Install - Big Ext. Table 3 WPT", ScheduleAt, '', '');
         if JustSomeExtendedTable4WPT.IsEmpty then
-            JobQueueEntry5.ScheduleJobQueueEntry(codeunit::"Install - Big Ext. Table 4 WPT", RecId);
+            JobQueueEntry5.ScheduleJobQueueEntryForLater(codeunit::"Install - Big Ext. Table 4 WPT", ScheduleAt, '', '');
         if ObsoleteTableWPT.IsEmpty then
-            JobQueueEntry6.ScheduleJobQueueEntry(codeunit::"Install - Obsolete Table WPT", RecId);
+            JobQueueEntry6.ScheduleJobQueueEntryForLater(codeunit::"Install - Obsolete Table WPT", ScheduleAt, '', '');
         if ObsoleteTableWPT.IsEmpty then
-            JobQueueEntry6.ScheduleJobQueueEntry(codeunit::"Install - Obsolete Table WPT", RecId);
+            JobQueueEntry6.ScheduleJobQueueEntryForLater(codeunit::"Install - Obsolete Table WPT", ScheduleAt, '', '');
         if TableWithObsoleteFieldsWPT.IsEmpty then
-            JobQueueEntry7.ScheduleJobQueueEntry(Codeunit::"Install - Obsolete Fields WPT", RecId);
+            JobQueueEntry7.ScheduleJobQueueEntryForLater(Codeunit::"Install - Obsolete Fields WPT", ScheduleAt, '', '');
     end;
 
     local procedure EmptyTable()
