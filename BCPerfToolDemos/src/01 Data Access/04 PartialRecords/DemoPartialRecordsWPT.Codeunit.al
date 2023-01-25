@@ -29,6 +29,72 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region FindSetWithPartialrecordsSubscriberJIT
+    // Has a subscriber that uses a field that is not loaded with
+    // SetLoadFields
+    local procedure FindSetWithPartialRecordsSubJIT()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            DoLoopPartialRecordsSubJIT(JustSomeTableWPT);
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure DoLoopPartialRecordsSubJIT(var JustSomeTableWPT: Record "Just Some Table WPT")
+    begin
+
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecords WPT", 'DoLoopPartialRecordsSubJIT', '', false, false)]
+    local procedure DoLoopPartialRecordsSubJITSub(var JustSomeTableWPT: Record "Just Some Table WPT")
+    begin
+        if JustSomeTableWPT.Quantity > 0 then
+       ; // Do Nothing
+    end;
+    #endregion
+
+
+    #region FindSetWithPartialrecordsSubscriberAddLoad
+    // Has a subscriber that uses a field that is not loaded with
+    // SetLoadFields but adds it if it isn't already added.
+    local procedure FindSetWithPartialrecordsSubAddLoadFields();
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: Integer;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            i += 1;
+            DoLoopSubAddLoadFields(JustSomeTableWPT);
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure DoLoopSubAddLoadFields(var JustSomeTableWPT: Record "Just Some Table WPT")
+    begin
+
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecords WPT", 'DoLoopSubAddLoadFields', '', false, false)]
+    local procedure DoLoopSubAddLoadFieldsSub(var JustSomeTableWPT: Record "Just Some Table WPT")
+    begin
+        if not JustSomeTableWPT.AreFieldsLoaded(Quantity) then
+            JustSomeTableWPT.AddLoadFields(Quantity);
+        if JustSomeTableWPT.Quantity > 0 then
+       ; // Do Nothing
+    end;
+    #endregion
+
+
     #region Table1_FindSetNoPartialrecords
     local procedure Table1_FindSetNoPartialrecords()
     var
@@ -169,6 +235,10 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
                 Table4_FindSetNoPartialrecords();
             GetProcedures().Get(10):
                 Table4_FindSetWithPartialrecords();
+            GetProcedures().Get(11):
+                FindSetWithPartialRecordsSubJIT();
+            GetProcedures().Get(12):
+                FindSetWithPartialrecordsSubAddLoadFields();
         end;
 
         OnAfterRun(ProcedureName);
@@ -188,7 +258,8 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Table3_FindSetWithPartialrecords');
         Result.Add('Table4_FindSetNoPartialrecords');
         Result.Add('Table4_FindSetWithPartialrecords');
-
+        Result.Add('FindSetWithPartialRecordsSubJIT');
+        Result.Add('FindSetWithPartialrecordsSubAddLoadFields');
         OnAfterGetProcedures(Result);
     end;
 
