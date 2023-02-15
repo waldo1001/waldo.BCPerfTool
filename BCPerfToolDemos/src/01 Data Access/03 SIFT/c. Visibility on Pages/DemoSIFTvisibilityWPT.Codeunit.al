@@ -1,4 +1,4 @@
-codeunit 62208 "Demo - SIFT visibility WPT"
+codeunit 62216 "Demo - SIFT visibility WPT"
 {
     #region SubscribersToStopTheTimer
     [EventSubscriber(ObjectType::Page, page::"Just Some Colors DynHidden WPT", 'OnAfterGetCurrRecordEvent', '', true, true)]
