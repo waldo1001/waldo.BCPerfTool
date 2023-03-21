@@ -109,6 +109,19 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region FindSetTrueIsLocking
+    procedure FindSetTrueIsLocking()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: integer;
+    begin
+        JustSomeTableWPT.SetRange(Color, 'NotExist');
+        if JustSomeTableWPT.FindSet(true) then
+            JustSomeTableWPT.Next();
+        sleep(1000); //for the breakpoint
+    end;
+    #endregion
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -125,6 +138,8 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
                 Table4_FindSetWithPartialrecords();
             GetProcedures().Get(6):
                 Table4_JITLoading();
+            GetProcedures().Get(7):
+                FindSetTrueIsLocking();
         end;
 
         Result := true;
@@ -138,6 +153,7 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Table4_FindSetNoPartialrecords');
         Result.Add('Table4_FindSetWithPartialrecords');
         Result.Add('Table4_JITLoading');
+        Result.Add('FindSetTrueIsLocking');
 
     end;
 

@@ -12,5 +12,6 @@
     "CRS.RenameWithGit": false,
     "editor.formatOnSave": true,
     "CRS.ExtensionObjectNamePattern": "<BaseNameShort> Ext WPT",
-    "CRS.ObjectNameSuffix": " WPT"
+    "CRS.ObjectNameSuffix": " WPT",
+    "al.enableexternalrulesets": true
 }

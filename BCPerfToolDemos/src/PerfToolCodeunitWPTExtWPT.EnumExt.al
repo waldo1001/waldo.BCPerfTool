@@ -30,4 +30,5 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62254; "Keys") { Implementation = "PerfToolCodeunit WPT" = "Demo - Keys WPT"; }
     value(62285; "OnModify") { Implementation = "PerfToolCodeunit WPT" = "Demo - OnModify Hell WPT"; }
     value(62290; "UpgradeCode") { Implementation = "PerfToolCodeunit WPT" = "Demo - Upgrade Code WPT"; }
+    value(62218; "FindSetLockingWPT") { Implementation = "PerfToolCodeunit WPT" = "Demo - Locking Find(Set) WPT"; }
 }
