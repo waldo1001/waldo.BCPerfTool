@@ -1,23 +1,26 @@
-name: CI/CD
+﻿name: ' CI/CD'
 
 on:
   workflow_dispatch:
   push:
     paths-ignore:
-      - 'README.md'
-      - '.github/**'
-    branches: [ main, release/*, feature/* ]
-  pull_request:
-    paths-ignore:
-      - 'README.md'
-      - '.github/**'
-
-permissions:
-  contents: read
+      - '**.md'
+      - '.github/workflows/*.yaml'
+      - '!.github/workflows/CICD.yaml'
+    branches: [ 'main', 'release/*', 'feature/*' ]
 
 defaults:
   run:
-    shell: PowerShell
+    shell: powershell
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  workflowDepth: 1
+  ALGoOrgSettings: ${{ vars.ALGoOrgSettings }}
+  ALGoRepoSettings: ${{ vars.ALGoRepoSettings }}
 
 jobs:
   Initialization:
@@ -25,56 +28,158 @@ jobs:
     outputs:
       telemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
       settings: ${{ steps.ReadSettings.outputs.SettingsJson }}
-      projects: ${{ steps.ReadSettings.outputs.ProjectsJson }}
-      projectCount: ${{ steps.ReadSettings.outputs.ProjectCount }}
       environments: ${{ steps.ReadSettings.outputs.EnvironmentsJson }}
       environmentCount: ${{ steps.ReadSettings.outputs.EnvironmentCount }}
+      deliveryTargets: ${{ steps.DetermineDeliveryTargets.outputs.DeliveryTargetsJson }}
+      deliveryTargetCount: ${{ steps.DetermineDeliveryTargets.outputs.DeliveryTargetCount }}
       githubRunner: ${{ steps.ReadSettings.outputs.GitHubRunnerJson }}
+      githubRunnerShell: ${{ steps.ReadSettings.outputs.GitHubRunnerShell }}
+      checkRunId: ${{ steps.CreateCheckRun.outputs.checkRunId }}
+      projects: ${{ steps.determineProjectsToBuild.outputs.ProjectsJson }}
+      projectDependenciesJson: ${{ steps.determineProjectsToBuild.outputs.ProjectDependenciesJson }}
+      buildOrderJson: ${{ steps.determineProjectsToBuild.outputs.BuildOrderJson }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          lfs: true
 
       - name: Initialize the workflow
         id: init
-        uses: microsoft/AL-Go-Actions/WorkflowInitialize@v1.5
+        uses: microsoft/AL-Go-Actions/WorkflowInitialize@v3.0
         with:
+          shell: powershell
           eventId: "DO0091"
 
       - name: Read settings
         id: ReadSettings
-        uses: microsoft/AL-Go-Actions/ReadSettings@v1.5
+        uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
         with:
+          shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
-          getProjects: 'Y'
           getEnvironments: '*'
+          
+      - name: Determine Projects To Build
+        id: determineProjectsToBuild
+        uses: microsoft/AL-Go-Actions/DetermineProjectsToBuild@v3.0
+        with:
+          shell: powershell
+          maxBuildDepth: ${{ env.workflowDepth }}
+
+      - name: Determine Delivery Target Secrets
+        id: DetermineDeliveryTargetSecrets
+        run: |
+          $ErrorActionPreference = "STOP"
+          Set-StrictMode -version 2.0
+          $deliveryTargetSecrets = @('GitHubPackagesContext','NuGetContext','StorageContext','AppSourceContext')
+          $namePrefix = 'DeliverTo'
+          Get-Item -Path (Join-Path $ENV:GITHUB_WORKSPACE ".github/$($namePrefix)*.ps1") | ForEach-Object {
+            $deliveryTarget = [System.IO.Path]::GetFileNameWithoutExtension($_.Name.SubString($namePrefix.Length))
+            $deliveryTargetSecrets += @("$($deliveryTarget)Context")
+          }
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "Secrets=$($deliveryTargetSecrets -join ',')"
+
+      - name: Read secrets
+        uses: microsoft/AL-Go-Actions/ReadSecrets@v3.0
+        env:
+          secrets: ${{ toJson(secrets) }}
+        with:
+          shell: powershell
+          settingsJson: ${{ env.Settings }}
+          secrets: ${{ steps.DetermineDeliveryTargetSecrets.outputs.Secrets }}
+
+      - name: Determine Delivery Targets
+        id: DetermineDeliveryTargets
+        run: |
+          $ErrorActionPreference = "STOP"
+          Set-StrictMode -version 2.0
+          $deliveryTargets = @('GitHubPackages','NuGet','Storage')
+          if ($env:type -eq "AppSource App") {
+            $continuousDelivery = $false
+            # For multi-project repositories, we will add deliveryTarget AppSource if any project has AppSourceContinuousDelivery set to true
+            ('${{ steps.determineProjectsToBuild.outputs.ProjectsJson }}' | ConvertFrom-Json) | where-Object { $_ } | ForEach-Object {
+              $projectSettings = Get-Content (Join-Path $_ '.AL-Go/settings.json') -raw | ConvertFrom-Json
+              if ($projectSettings.PSObject.Properties.Name -eq 'AppSourceContinuousDelivery' -and $projectSettings.AppSourceContinuousDelivery) {
+                Write-Host "Project $_ is setup for Continuous Delivery"
+                $continuousDelivery = $true
+              }
+            }
+            if ($continuousDelivery) {
+              $deliveryTargets += @("AppSource")
+            }
+          }
+          $namePrefix = 'DeliverTo'
+          Get-Item -Path (Join-Path $ENV:GITHUB_WORKSPACE ".github/$($namePrefix)*.ps1") | ForEach-Object {
+            $deliveryTarget = [System.IO.Path]::GetFileNameWithoutExtension($_.Name.SubString($namePrefix.Length))
+            $deliveryTargets += @($deliveryTarget)
+          }
+          $deliveryTargets = @($deliveryTargets | Select-Object -unique | Where-Object {
+            $include = $false
+            Write-Host "Check DeliveryTarget $_"
+            $contextName = "$($_)Context"
+            $deliveryContext = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String([System.Environment]::GetEnvironmentVariable($contextName)))
+            if ($deliveryContext) {
+              $settingName = "DeliverTo$_"
+              $settings = $env:Settings | ConvertFrom-Json
+              if (($settings.PSObject.Properties.Name -eq $settingName) -and ($settings."$settingName".PSObject.Properties.Name -eq "Branches")) {
+                Write-Host "Branches:"
+                $settings."$settingName".Branches | ForEach-Object {
+                  Write-Host "- $_"
+                  if ($ENV:GITHUB_REF_NAME -like $_) {
+                    $include = $true
+                  }
+                }
+              }
+              else {
+                $include = ($ENV:GITHUB_REF_NAME -eq 'main')
+              }
+            }
+            if ($include) {
+              Write-Host "DeliveryTarget $_ included"
+            }
+            $include
+          })
+          $deliveryTargetsJson = $deliveryTargets | ConvertTo-Json -Depth 99 -compress
+          if ($deliveryTargets.Count -lt 2) { $deliveryTargetsJson = "[$($deliveryTargetsJson)]" }
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "DeliveryTargetsJson=$deliveryTargetsJson"
+          Write-Host "DeliveryTargetsJson=$deliveryTargetsJson"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "DeliveryTargetCount=$($deliveryTargets.Count)"
+          Write-Host "DeliveryTargetCount=$($deliveryTargets.Count)"
+          Add-Content -Path $env:GITHUB_ENV -Value "DeliveryTargets=$deliveryTargetsJson"
 
   CheckForUpdates:
     runs-on: [ windows-latest ]
     needs: [ Initialization ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Read settings
-        uses: microsoft/AL-Go-Actions/ReadSettings@v1.5
+        uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
         with:
+          shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
-          get: TemplateUrl
+          get: templateUrl
 
       - name: Check for updates to AL-Go system files
-        uses: microsoft/AL-Go-Actions/CheckForUpdates@v1.5
+        uses: microsoft/AL-Go-Actions/CheckForUpdates@v3.0
         with:
+          shell: powershell
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
-          templateUrl: ${{ env.TemplateUrl }}
+          templateUrl: ${{ env.templateUrl }}
 
   Build:
     needs: [ Initialization ]
+    if: (!failure()) && (!cancelled()) && fromJson(needs.Initialization.outputs.buildOrderJson)[0].projectsCount > 0
     runs-on: ${{ fromJson(needs.Initialization.outputs.githubRunner) }}
+    defaults:
+      run:
+        shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
     strategy:
       matrix:
-        project: ${{ fromJson(needs.Initialization.outputs.projects) }}
+        include: ${{ fromJson(needs.Initialization.outputs.buildOrderJson)[0].buildDimensions }}
       fail-fast: false
-    name: Build ${{ matrix.project }}
+    name: Build ${{ matrix.project }} - ${{ matrix.buildMode }}
     outputs:
       AppsArtifactsName: ${{ steps.calculateArtifactNames.outputs.AppsArtifactsName }}
       TestAppsArtifactsName: ${{ steps.calculateArtifactNames.outputs.TestAppsArtifactsName }}
@@ -83,158 +188,207 @@ jobs:
       BuildOutputArtifactsName: ${{ steps.calculateArtifactNames.outputs.BuildOutputArtifactsName }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+    
+      - name: Download thisbuild artifacts
+        if: env.workflowDepth > 1
+        uses: actions/download-artifact@v3
+        with:
+          path: '.dependencies'
 
       - name: Read settings
-        uses: microsoft/AL-Go-Actions/ReadSettings@v1.5
+        uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
         with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           project: ${{ matrix.project }}
 
-      - name: Read secrets (PR)
-        uses: microsoft/AL-Go-Actions/ReadSecrets@v1.5
-        if: github.event_name == 'pull_request'
-        env:
-          secrets: ${{ toJson(secrets) }}
-        with:
-          parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
-          settingsJson: ${{ env.Settings }}
-          secrets: 'licenseFileUrl,insiderSasToken,KeyVaultCertificateUrl,KeyVaultCertificatePassword,KeyVaultClientId'
-
       - name: Read secrets
-        uses: microsoft/AL-Go-Actions/ReadSecrets@v1.5
-        if: github.event_name != 'pull_request'
+        uses: microsoft/AL-Go-Actions/ReadSecrets@v3.0
         env:
           secrets: ${{ toJson(secrets) }}
         with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           settingsJson: ${{ env.Settings }}
-          secrets: 'licenseFileUrl,insiderSasToken,CodeSignCertificateUrl,CodeSignCertificatePassword,KeyVaultCertificateUrl,KeyVaultCertificatePassword,KeyVaultClientId,StorageContext'
+          secrets: 'licenseFileUrl,insiderSasToken,codeSignCertificateUrl,codeSignCertificatePassword,keyVaultCertificateUrl,keyVaultCertificatePassword,keyVaultClientId,storageContext,gitHubPackagesContext'
 
       - name: Run pipeline
-        uses: microsoft/AL-Go-Actions/RunPipeline@v1.5
+        id: RunPipeline
+        uses: microsoft/AL-Go-Actions/RunPipeline@v3.0
+        env:
+          BuildMode: ${{ matrix.buildMode }}
         with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
-          Project: ${{ matrix.project }}
+          project: ${{ matrix.project }}
+          projectDependenciesJson: ${{ needs.Initialization.outputs.projectDependenciesJson }}
           settingsJson: ${{ env.Settings }}
-          SecretsJson: ${{ env.RepoSecrets }}
+          secretsJson: ${{ env.RepoSecrets }}
+          buildMode: ${{ matrix.buildMode }}
 
       - name: Calculate Artifact names
-        id: calculateArtifactNames
+        id: calculateArtifactsNames
+        uses: microsoft/AL-Go-Actions/CalculateArtifactNames@v3.0
         if: success() || failure()
-        run: |
-          $settings = '${{ env.Settings }}' | ConvertFrom-Json
-          $project = '${{ matrix.project }}'
-          if ($project -eq ".") { $project = $settings.RepoName }
-          'Apps','Dependencies','TestApps','TestResults','BcptTestResults','BuildOutput' | ForEach-Object {
-            $name = "$($_)ArtifactsName"
-            $value = "$project-$("$ENV:GITHUB_REF_NAME".Replace('/','_'))-$_-$($settings.repoVersion).$($settings.appBuild).$($settings.appRevision)"
-            Write-Host "::set-output name=$name::$value"
-            Add-Content -Path $env:GITHUB_ENV -Value "$name=$value"
-          }
+        with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
+          settingsJson: ${{ env.Settings }}
+          project: ${{ matrix.project }}
+          buildMode: ${{ matrix.buildMode }}
+          branchName: ${{ github.ref_name }}
+
+      - name: Upload thisbuild artifacts - apps
+        if: env.workflowDepth > 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.calculateArtifactsNames.outputs.ThisBuildAppsArtifactsName }}
+          path: '${{ matrix.project }}/.buildartifacts/Apps/'
+          if-no-files-found: ignore
+          retention-days: 1
+
+      - name: Upload thisbuild artifacts - test apps
+        if: env.workflowDepth > 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.calculateArtifactsNames.outputs.ThisBuildTestAppsArtifactsName }}
+          path: '${{ matrix.project }}/.buildartifacts/TestApps/'
+          if-no-files-found: ignore
+          retention-days: 1
 
       - name: Publish artifacts - apps
-        uses: actions/upload-artifact@v2
-        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || startswith(github.ref_name, 'release/'))
+        uses: actions/upload-artifact@v3
+        if: github.ref_name == 'main' || startswith(github.ref_name, 'release/') || needs.Initialization.outputs.deliveryTargetCount > 0 || needs.Initialization.outputs.environmentCount > 0
         with:
-          name: ${{ env.appsArtifactsName }}
-          path: '${{ matrix.project }}/output/Apps/'
+          name: ${{ env.AppsArtifactsName }}
+          path: '${{ matrix.project }}/.buildartifacts/Apps/'
           if-no-files-found: ignore
 
       - name: Publish artifacts - dependencies
-        uses: actions/upload-artifact@v2
-        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || startswith(github.ref_name, 'release/'))
+        uses: actions/upload-artifact@v3
+        if: github.ref_name == 'main' || startswith(github.ref_name, 'release/') || needs.Initialization.outputs.deliveryTargetCount > 0 || needs.Initialization.outputs.environmentCount > 0
         with:
-          name: ${{ env.dependenciesArtifactsName }}
-          path: '${{ matrix.project }}/output/Dependencies/'
+          name: ${{ env.DependenciesArtifactsName }}
+          path: '${{ matrix.project }}/.buildartifacts/Dependencies/'
           if-no-files-found: ignore
 
       - name: Publish artifacts - test apps
-        uses: actions/upload-artifact@v2
-        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || startswith(github.ref_name, 'release/'))
+        uses: actions/upload-artifact@v3
+        if: github.ref_name == 'main' || startswith(github.ref_name, 'release/') || needs.Initialization.outputs.deliveryTargetCount > 0 || needs.Initialization.outputs.environmentCount > 0
         with:
-          name: ${{ env.testAppsArtifactsName }}
-          path: '${{ matrix.project }}/output/TestApps/'
+          name: ${{ env.TestAppsArtifactsName }}
+          path: '${{ matrix.project }}/.buildartifacts/TestApps/'
           if-no-files-found: ignore
 
       - name: Publish artifacts - build output
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: (success() || failure()) && (hashFiles(format('{0}/BuildOutput.txt',matrix.project)) != '')
         with:
-          name: ${{ env.buildOutputArtifactsName }}
+          name: ${{ env.BuildOutputArtifactsName }}
           path: '${{ matrix.project }}/BuildOutput.txt'
           if-no-files-found: ignore
 
+      - name: Publish artifacts - container event log
+        uses: actions/upload-artifact@v3
+        if: (failure()) && (hashFiles(format('{0}/ContainerEventLog.evtx',matrix.project)) != '')
+        with:
+          name: ${{ env.ContainerEventLogArtifactsName }}
+          path: '${{ matrix.project }}/ContainerEventLog.evtx'
+          if-no-files-found: ignore
+
       - name: Publish artifacts - test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: (success() || failure()) && (hashFiles(format('{0}/TestResults.xml',matrix.project)) != '')
         with:
-          name: ${{ env.testResultsArtifactsName }}
+          name: ${{ env.TestResultsArtifactsName }}
           path: '${{ matrix.project }}/TestResults.xml'
           if-no-files-found: ignore
 
       - name: Publish artifacts - bcpt test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: (success() || failure()) && (hashFiles(format('{0}/bcptTestResults.json',matrix.project)) != '')
         with:
-          name: ${{ env.bcptTestResultsArtifactsName }}
+          name: ${{ env.BcptTestResultsArtifactsName }}
           path: '${{ matrix.project }}/bcptTestResults.json'
           if-no-files-found: ignore
 
+      - name: Analyze Test Results
+        id: analyzeTestResults
+        if: success() || failure()
+        uses: microsoft/AL-Go-Actions/AnalyzeTests@v3.0
+        with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
+          parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
+          Project: ${{ matrix.project }}
+
       - name: Cleanup
         if: always()
-        uses: microsoft/AL-Go-Actions/PipelineCleanup@v1.5
+        uses: microsoft/AL-Go-Actions/PipelineCleanup@v3.0
         with:
+          shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           Project: ${{ matrix.project }}
 
   Deploy:
-    runs-on: [ windows-latest ] 
     needs: [ Initialization, Build ]
-    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'main' && needs.Initialization.outputs.environmentCount > 0 }}
-    strategy:
-      matrix:
-        environment: ${{ fromJson(needs.Initialization.outputs.environments) }}
-      fail-fast: false
+    if: always() && needs.Build.result == 'Success' && needs.Initialization.outputs.environmentCount > 0
+    strategy: ${{ fromJson(needs.Initialization.outputs.environments) }}
+    runs-on: ${{ fromJson(matrix.os) }}
     name: Deploy to ${{ matrix.environment }}
     environment:
       name: ${{ matrix.environment }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
-          path: '${{ github.workspace }}\artifacts'
+          path: '.artifacts'
 
       - name: EnvName
         id: envName
         run: |
+          $ErrorActionPreference = "STOP"
+          Set-StrictMode -version 2.0
           $envName = '${{ matrix.environment }}'.split(' ')[0]
-          Write-Host "::set-output name=envName::$envName"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "envName=$envName"
 
       - name: Read settings
-        uses: microsoft/AL-Go-Actions/ReadSettings@v1.5
+        uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
+        with:
+          shell: powershell
 
       - name: Read secrets
-        uses: microsoft/AL-Go-Actions/ReadSecrets@v1.5
+        uses: microsoft/AL-Go-Actions/ReadSecrets@v3.0
         env:
           secrets: ${{ toJson(secrets) }}
         with:
+          shell: powershell
           settingsJson: ${{ env.Settings }}
-          secrets: '${{ steps.envName.outputs.envName }}-AuthContext,${{ steps.envName.outputs.envName }}_AuthContext,AuthContext,${{ steps.envName.outputs.envName }}-EnvironmentName,${{ steps.envName.outputs.envName }}_EnvironmentName,EnvironmentName'
+          secrets: '${{ steps.envName.outputs.envName }}-AuthContext,${{ steps.envName.outputs.envName }}_AuthContext,AuthContext,${{ steps.envName.outputs.envName }}-EnvironmentName,${{ steps.envName.outputs.envName }}_EnvironmentName,EnvironmentName,projects'
 
       - name: AuthContext
         id: authContext
         run: |
+          $ErrorActionPreference = "STOP"
+          Set-StrictMode -version 2.0
           $envName = '${{ steps.envName.outputs.envName }}'
+          $deployToSettingStr = [System.Environment]::GetEnvironmentVariable("DeployTo$envName")
+          if ($deployToSettingStr) {
+            $deployToSetting = $deployToSettingStr | ConvertFrom-Json
+          }
+          else {
+            $deployToSetting = [PSCustomObject]@{}
+          }
           $authContext = $null
           "$($envName)-AuthContext", "$($envName)_AuthContext", "AuthContext" | ForEach-Object {
             if (!($authContext)) {
               $authContext = [System.Environment]::GetEnvironmentVariable($_)
               if ($authContext) {
-                Write-Host "Using $_ secret"
+                Write-Host "Using $_ secret as AuthContext"
               }
             }            
           }
@@ -242,45 +396,130 @@ jobs:
             Write-Host "::Error::No AuthContext provided"
             exit 1
           }
-          $environmentName = $null
-          "$($envName)-EnvironmentName", "$($envName)_EnvironmentName", "EnvironmentName" | ForEach-Object {
-            if (!($EnvironmentName)) {
-              $EnvironmentName = [System.Environment]::GetEnvironmentVariable($_)
-              if ($EnvironmentName) {
-                Write-Host "Using $_ secret"
-              }
-            }            
+          if (("$deployToSetting" -ne "") -and $deployToSetting.PSObject.Properties.name -eq "EnvironmentName") {
+            $environmentName = $deployToSetting.EnvironmentName
+          }
+          else {
+            $environmentName = $null
+            "$($envName)-EnvironmentName", "$($envName)_EnvironmentName", "EnvironmentName" | ForEach-Object {
+              if (!($EnvironmentName)) {
+                $EnvironmentName = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String([System.Environment]::GetEnvironmentVariable($_)))
+                if ($EnvironmentName) {
+                  Write-Host "Using $_ secret as EnvironmentName"
+                  Write-Host "Please consider using the DeployTo$_ setting instead, where you can specify EnvironmentName, projects and branches"
+                }
+              }            
+            }
           }
           if (!($environmentName)) {
             $environmentName = '${{ steps.envName.outputs.envName }}'
           }
-          $environmentName = ($environmentName + '${{ matrix.environment }}'.SubString($envName.Length)).ToUpperInvariant()
-          Write-Host "::set-output name=authContext::$authContext"
-          Write-Host "set-output name=authContext::$authContext"
-          Write-Host "::set-output name=environmentName::$environmentName"
-          Write-Host "set-output name=environmentName::$environmentName"
+          $environmentName = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(($environmentName + '${{ matrix.environment }}'.SubString($envName.Length)).ToUpperInvariant()))
+
+          if (("$deployToSetting" -ne "") -and $deployToSetting.PSObject.Properties.name -eq "projects") {
+            $projects = $deployToSetting.projects
+          }
+          else {
+            $projects = [System.Environment]::GetEnvironmentVariable("$($envName)-projects")
+            if (-not $projects) {
+              $projects = [System.Environment]::GetEnvironmentVariable("$($envName)_Projects")
+              if (-not $projects) {
+                $projects = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String([System.Environment]::GetEnvironmentVariable('projects')))
+              }
+            }
+          }
+          if ($projects -eq '' -or $projects -eq '*') {
+            $projects = '*'
+          }
+          else {
+            $buildProjects = '${{ needs.Initialization.outputs.projects }}' | ConvertFrom-Json
+            $projects = ($projects.Split(',') | Where-Object { $buildProjects -contains $_ }) -join ','
+          }
+
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "authContext=$authContext"
+          Write-Host "authContext=$authContext"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "environmentName=$environmentName"
+          Write-Host "environmentName=$([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($environmentName)))"
+          Write-Host "environmentName (as Base64)=$environmentName"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "projects=$projects"
+          Write-Host "projects=$projects"
 
       - name: Deploy
-        uses: microsoft/AL-Go-Actions/Deploy@v1.5
+        uses: microsoft/AL-Go-Actions/Deploy@v3.0
         env:
-          authContext: '${{ steps.authContext.outputs.authContext }}'
+          AuthContext: ${{ steps.authContext.outputs.authContext }}
         with:
+          shell: powershell
           type: 'CD'
-          projects: '${{ secrets.Projects }}'
-          environmentName: '${{ steps.authContext.outputs.environmentName }}'
-          artifacts: '${{ github.workspace }}\artifacts'
+          projects: ${{ steps.authContext.outputs.projects }}
+          environmentName: ${{ steps.authContext.outputs.environmentName }}
+          artifacts: '.artifacts'
 
-  PostProcess:
-    if: always()
+  Deliver:
+    needs: [ Initialization, Build ]
+    if: always() && needs.Build.result == 'Success' && needs.Initialization.outputs.deliveryTargetCount > 0
+    strategy:
+      matrix:
+        deliveryTarget: ${{ fromJson(needs.Initialization.outputs.deliveryTargets) }}
+      fail-fast: false
     runs-on: [ windows-latest ]
-    needs: [ Initialization,  Build, Deploy ]
+    name: Deliver to ${{ matrix.deliveryTarget }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: '.artifacts'
+
+      - name: Read settings
+        uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
+        with:
+          shell: powershell
+
+      - name: Read secrets
+        uses: microsoft/AL-Go-Actions/ReadSecrets@v3.0
+        env:
+          secrets: ${{ toJson(secrets) }}
+        with:
+          shell: powershell
+          settingsJson: ${{ env.Settings }}
+          secrets: '${{ matrix.deliveryTarget }}Context'
+
+      - name: DeliveryContext
+        id: deliveryContext
+        run: |
+          $ErrorActionPreference = "STOP"
+          Set-StrictMode -version 2.0
+          $contextName = '${{ matrix.deliveryTarget }}Context'
+          $deliveryContext = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String([System.Environment]::GetEnvironmentVariable($contextName)))
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "deliveryContext=$deliveryContext"
+          Write-Host "deliveryContext=$deliveryContext"
+
+      - name: Deliver
+        uses: microsoft/AL-Go-Actions/Deliver@v3.0
+        env:
+          deliveryContext: ${{ steps.deliveryContext.outputs.deliveryContext }}
+        with:
+          shell: powershell
+          type: 'CD'
+          projects: ${{ needs.Initialization.outputs.projects }}
+          deliveryTarget: ${{ matrix.deliveryTarget }}
+          artifacts: '.artifacts'
+
+  PostProcess:
+    if: (!cancelled())
+    runs-on: [ windows-latest ]
+    needs: [ Initialization, Build, Deploy, Deliver ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: microsoft/AL-Go-Actions/WorkflowPostProcess@v1.5
+        uses: microsoft/AL-Go-Actions/WorkflowPostProcess@v3.0
         with:
+          shell: powershell
           eventId: "DO0091"
           telemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}

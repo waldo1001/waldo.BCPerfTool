@@ -1,14 +1,23 @@
-﻿name: ' Test Next Major'
+﻿name: 'Pull Request Build'
 
 on:
-  workflow_dispatch:
+  pull_request_target:
+    paths-ignore:
+      - '**.md'
+    branches: [ 'main' ]
 
-permissions:
-  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 defaults:
   run:
     shell: powershell
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
 
 env:
   workflowDepth: 1
@@ -16,7 +25,24 @@ env:
   ALGoRepoSettings: ${{ vars.ALGoRepoSettings }}
 
 jobs:
+  PregateCheck:
+    if: github.event.pull_request.base.repo.full_name != github.event.pull_request.head.repo.full_name
+    runs-on: [ windows-latest ]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+          ref: refs/pull/${{ github.event.number }}/merge
+
+      - uses: microsoft/AL-Go-Actions/VerifyPRChanges@v3.0
+        with:
+          baseSHA: ${{ github.event.pull_request.base.sha }}
+          headSHA: ${{ github.event.pull_request.head.sha }}
+          prbaseRepository: ${{ github.event.pull_request.base.repo.full_name }}
+
   Initialization:
+    needs: [ PregateCheck ]
+    if: (!failure() && !cancelled())
     runs-on: [ windows-latest ]
     outputs:
       telemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
@@ -31,13 +57,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           lfs: true
+          ref: refs/pull/${{ github.event.number }}/merge
 
       - name: Initialize the workflow
         id: init
         uses: microsoft/AL-Go-Actions/WorkflowInitialize@v3.0
         with:
           shell: powershell
-          eventId: "DO0099"
+          eventId: "DO0104"
 
       - name: Read settings
         id: ReadSettings
@@ -45,6 +72,7 @@ jobs:
         with:
           shell: powershell
           parentTelemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
+          getEnvironments: '*'
           
       - name: Determine Projects To Build
         id: determineProjectsToBuild
@@ -66,6 +94,8 @@ jobs:
       fail-fast: false
     name: Build ${{ matrix.project }} - ${{ matrix.buildMode }}
     outputs:
+      AppsArtifactsName: ${{ steps.calculateArtifactNames.outputs.AppsArtifactsName }}
+      TestAppsArtifactsName: ${{ steps.calculateArtifactNames.outputs.TestAppsArtifactsName }}
       TestResultsArtifactsName: ${{ steps.calculateArtifactNames.outputs.TestResultsArtifactsName }}
       BcptTestResultsArtifactsName: ${{ steps.calculateArtifactNames.outputs.BcptTestResultsArtifactsName }}
       BuildOutputArtifactsName: ${{ steps.calculateArtifactNames.outputs.BuildOutputArtifactsName }}
@@ -74,12 +104,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           lfs: true
+          ref: refs/pull/${{ github.event.number }}/merge
     
       - name: Download thisbuild artifacts
         if: env.workflowDepth > 1
         uses: actions/download-artifact@v3
         with:
-          path: '${{ github.workspace }}\.dependencies'
+          path: '.dependencies'
 
       - name: Read settings
         uses: microsoft/AL-Go-Actions/ReadSettings@v3.0
@@ -96,9 +127,10 @@ jobs:
           shell: ${{ needs.Initialization.outputs.githubRunnerShell }}
           parentTelemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
           settingsJson: ${{ env.Settings }}
-          secrets: 'licenseFileUrl,insiderSasToken,codeSignCertificateUrl,codeSignCertificatePassword,keyVaultCertificateUrl,keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext'
+          secrets: 'licenseFileUrl,insiderSasToken,keyVaultCertificateUrl,keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext'
 
       - name: Run pipeline
+        id: RunPipeline
         uses: microsoft/AL-Go-Actions/RunPipeline@v3.0
         env:
           BuildMode: ${{ matrix.buildMode }}
@@ -121,7 +153,6 @@ jobs:
           project: ${{ matrix.project }}
           buildMode: ${{ matrix.buildMode }}
           branchName: ${{ github.ref_name }}
-          suffix: 'NextMajor'
 
       - name: Upload thisbuild artifacts - apps
         if: env.workflowDepth > 1
@@ -145,7 +176,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: (success() || failure()) && (hashFiles(format('{0}/BuildOutput.txt',matrix.project)) != '')
         with:
-          name: ${{ env.buildOutputArtifactsName }}
+          name: ${{ env.BuildOutputArtifactsName }}
           path: '${{ matrix.project }}/BuildOutput.txt'
           if-no-files-found: ignore
 
@@ -191,17 +222,20 @@ jobs:
           Project: ${{ matrix.project }}
 
   PostProcess:
-    if: always()
     runs-on: [ windows-latest ]
     needs: [ Initialization, Build ]
+    if: (!cancelled())
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          lfs: true
+          ref: refs/pull/${{ github.event.number }}/merge
 
       - name: Finalize the workflow
         id: PostProcess
         uses: microsoft/AL-Go-Actions/WorkflowPostProcess@v3.0
         with:
           shell: powershell
-          eventId: "DO0099"
+          eventId: "DO0104"
           telemetryScopeJson: ${{ needs.Initialization.outputs.telemetryScopeJson }}
