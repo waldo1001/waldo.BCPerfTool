@@ -3,7 +3,7 @@ page 62502 "APIV1 - Perftool Log"
     PageType = API;
     Caption = 'Perftool Log';
     APIPublisher = 'waldo';
-    APIGroup = 'bcPerftoolLog';
+    APIGroup = 'bcPerftool';
     APIVersion = 'v1.0';
     EntityName = 'perftoolLogEntry';
     EntitySetName = 'perftoolLogEntries';

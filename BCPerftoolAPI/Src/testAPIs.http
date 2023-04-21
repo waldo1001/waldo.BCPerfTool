@@ -1,0 +1,23 @@
+@username = WALDO
+@password = Waldo1234
+
+@bclocal = http://bccurrent:7048/BC
+
+@baseurl = {{bclocal}}/api
+ 
+
+##################################################################################
+get {{baseurl}}/waldo/bcPerftool/v1.0
+Authorization: Basic {{username}} {{password}}
+
+##################################################################################
+get {{baseurl}}/waldo/bcPerftool/v1.0/companies
+Authorization: Basic {{username}} {{password}}
+
+##################################################################################
+get {{baseurl}}/waldo/bcPerftool/v1.0/companies(2c15212e-9cdb-ed11-884d-6045bdacdef8)/suites
+Authorization: Basic {{username}} {{password}}
+
+##################################################################################
+get {{baseurl}}/waldo/bcPerftool/v1.0/companies(2c15212e-9cdb-ed11-884d-6045bdacdef8)/perftoolLogEntries
+Authorization: Basic {{username}} {{password}}
