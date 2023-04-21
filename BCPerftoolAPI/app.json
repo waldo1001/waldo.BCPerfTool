@@ -1,15 +1,16 @@
 {
-  "id": "46a35290-04f4-4a32-b7f9-0c1b62e822eb",
-  "name": "BCPerftool.SimpleDemoApp",
+  "id": "c9d49a0c-0dc3-448f-ba4c-9d9502f7a49c",
+  "name": "BCPerftoolAPI",
   "publisher": "waldo",
   "version": "1.0.0.0",
   "brief": "",
   "description": "",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
-  "logo": "",
+  "privacyStatement": "https://www.waldo.be",
+  "EULA": "https://www.waldo.be",
+  "help": "https://www.waldo.be",
+  "url": "https://www.waldo.be",
+  "contextSensitiveHelpUrl": "https://www.waldo.be",
+  "logo": "img/icon.png",
   "dependencies": [
     {
       "id": "b52c1c11-0820-4457-9835-05a613a9fb80",
@@ -23,8 +24,8 @@
   "application": "21.0.0.0",
   "idRanges": [
     {
-      "from": 62401,
-      "to": 62450
+      "from": 62500,
+      "to": 62549
     }
   ],
   "resourceExposurePolicy": {
@@ -32,8 +33,8 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "11.0",
   "features": [
     "NoImplicitWith"
-  ]
+  ],
+  "runtime": "11.0"
 }

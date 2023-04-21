@@ -41,6 +41,9 @@
         },
         {
             "path": "BCPerfToolDemos_Scripts"
+        },
+        {
+            "path": "BCPerftoolAPI"
         }
     ],
     "settings": {}
