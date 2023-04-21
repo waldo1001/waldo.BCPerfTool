@@ -1,4 +1,4 @@
-﻿name: 'Create a new app'
+name: 'Create a new app'
 
 on:
   workflow_dispatch:

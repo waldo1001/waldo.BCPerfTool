@@ -1,4 +1,4 @@
-﻿name: 'Add existing app or test app'
+name: 'Add existing app or test app'
 
 on:
   workflow_dispatch:

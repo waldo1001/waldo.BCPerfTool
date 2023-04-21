@@ -1,4 +1,4 @@
-﻿name: ' Test Current'
+name: ' Test Current'
 
 on:
   workflow_dispatch:
