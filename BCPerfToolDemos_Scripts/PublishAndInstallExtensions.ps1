@@ -1,3 +1,4 @@
+#Run in ISE because of $PSScriptRoot
 $containername = 'bccurrent'
 
 $UserName = 'waldo'
