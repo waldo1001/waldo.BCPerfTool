@@ -128,24 +128,6 @@ codeunit 62209 "Demo - PartialRecordsSS WPT" implements "PerfToolCodeunit WPT"
                 EightExt_PRLoopWithExtJITSubscriber();
             GetProcedures().Get(5):
                 EightExt_PRLoopWithExtAddFieldsSubscriber();
-        // GetProcedures().Get(6):
-        //     Table2_FindSetWithPartialrecords();
-        // GetProcedures().Get(7):
-        //     Table3_FindSetNoPartialrecords();
-        // GetProcedures().Get(8):
-        //     Table3_FindSetWithPartialrecords();
-        // GetProcedures().Get(9):
-        //     Table4_FindSetNoPartialrecords();
-        // GetProcedures().Get(10):
-        //     Table4_FindSetWithPartialrecords();
-        // GetProcedures().Get(11):
-        //     FindSetWithPartialRecordsSubJIT();
-        // GetProcedures().Get(12):
-        //     FindSetWithPartialrecordsSubAddLoadFields();
-        // GetProcedures().Get(13):
-        //     DemoPRWithSubscriberWPT.FindSetWithPartialRecordsSubJIT();
-        // GetProcedures().Get(14):
-        //     DemoPRWithSubscriberWPT.FindSetWithPartialrecordsSubAddLoadFields();
         end;
 
         OnAfterRun(ProcedureName);
@@ -160,7 +142,6 @@ codeunit 62209 "Demo - PartialRecordsSS WPT" implements "PerfToolCodeunit WPT"
         Result.Add('EightExt_PRLoopWithAddFieldsSubscriber');
         Result.add('EightExt_PRLoopWithExtJITSubscriber');
         Result.add('EightExt_PRLoopWithExtAddFieldsSubscriber');
-        //Result.Add('Table1_FindSetWithPartialrecords');
 
 
         OnAfterGetProcedures(Result);
