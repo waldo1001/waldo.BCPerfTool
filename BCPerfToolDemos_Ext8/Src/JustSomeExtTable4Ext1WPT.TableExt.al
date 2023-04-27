@@ -22,6 +22,11 @@ tableextension 62351 "JustSomeExtTable4 Ext1 WPT" extends "Just Some Extended Ta
         // {
         //     DataClassification = CustomerContent;
         // }
+        field(62356; "Field56 WPT"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "Customer"."No.";
+        }
     }
 
 }
