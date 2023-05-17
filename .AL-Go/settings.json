@@ -1,6 +1,19 @@
 {
   "country": "us",
-  "appFolders": [],
+  "appFolders": [
+    "BCPerfTool",
+    "BCPerfToolDemos",
+    "BCPerfToolSimpleDemoApp",
+    "BCPerfToolAPI",
+    "BCPerfToolDemos_Ext1",
+    "BCPerfToolDemos_Ext2",
+    "BCPerfToolDemos_Ext3",
+    "BCPerfToolDemos_Ext4",
+    "BCPerfToolDemos_Ext5",
+    "BCPerfToolDemos_Ext6",
+    "BCPerfToolDemos_Ext7",
+    "BCPerfToolDemos_Ext8"
+  ],
   "testFolders": [],
   "bcptTestFolders": []
 }
