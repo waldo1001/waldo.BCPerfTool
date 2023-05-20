@@ -1,6 +1,8 @@
 {
   "country": "us",
   "appFolders": [
+  ],
+  "testFolders": [
     "BCPerfTool",
     "BCPerfToolDemos",
     "BCPerfToolSimpleDemoApp",
@@ -14,6 +16,6 @@
     "BCPerfToolDemos_Ext7",
     "BCPerfToolDemos_Ext8"
   ],
-  "testFolders": [],
-  "bcptTestFolders": []
+  "bcptTestFolders": [],
+  "doNotRunTests": true
 }
