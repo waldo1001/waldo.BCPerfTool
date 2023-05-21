@@ -15,5 +15,6 @@
     "BCPerfToolDemos_Ext8"
   ],
   "testFolders": [],
-  "bcptTestFolders": []
+  "bcptTestFolders": [],
+  "doNotRunTests": true
 }
