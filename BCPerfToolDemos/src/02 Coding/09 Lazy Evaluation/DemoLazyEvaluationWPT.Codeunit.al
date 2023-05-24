@@ -30,7 +30,6 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
     #endregion
 
     #region LazyCase
-
     procedure LazyCase()
     begin
         case true of
@@ -38,6 +37,22 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
             HeavyFunction(): //This will not execute
                 exit;
         end;
+    end;
+    #endregion
+
+    #region LazyIN
+    procedure LazyIN()
+    begin
+        if true in [SomethingThatReturnedTrue(), HeavyFunction()] then
+            Message('This message should not show.');
+    end;
+    #endregion
+
+    #region LazyINSlow
+    procedure LazyINSlow()
+    begin
+        if true in [HeavyFunction(), SomethingThatReturnedTrue()] then
+            Message('This message should not show.');
     end;
     #endregion
 
@@ -70,6 +85,10 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
                 ManualLazyEvaluationOR();
             GetProcedures().Get(5):
                 LazyCase();
+            GetProcedures().Get(6):
+                LazyIN();
+            GetProcedures().Get(7):
+                LazyINSlow();
         end;
 
         Result := true;
@@ -82,6 +101,8 @@ codeunit 62225 "Demo - Lazy Evaluation WPT" implements "PerfToolCodeunit WPT"
         Result.Add('NoLazyEvaluationOR');
         Result.Add('ManualLazyEvaluationOR');
         Result.Add('LazyCase');
+        Result.Add('LazyIN');
+        Result.Add('LazyINSlow');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"PerfTool Triggers WPT", 'OnGetSuiteData', '', false, false)]
