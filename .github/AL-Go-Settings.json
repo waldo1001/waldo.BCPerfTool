@@ -2,6 +2,5 @@
   "type": "PTE",
   "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main",
   "useCompilerFolder": true,
-  "doNotPublishApps": true,
-  "runs-on": "self-hosted"
+  "doNotPublishApps": true
 }
