@@ -1,44 +1,47 @@
 ﻿{
-    "id": "2c48589d-7b44-4cdf-b5f3-d918316affce",
-    "name": "BCPerfToolDemos",
-    "publisher": "waldo",
-    "version": "1.0.0.0",
-    "brief": "Demos related to performance problems",
-    "description": "Demos related to performance problems",
-    "privacyStatement": "https://www.waldo.be",
-    "EULA": "https://www.waldo.be",
-    "help": "https://www.waldo.be",
-    "url": "https://www.waldo.be",
-    "contextSensitiveHelpUrl": "https://www.waldo.be",
-    "logo": "img/icon.png",
-    "dependencies": [
-        {
-            "id": "b52c1c11-0820-4457-9835-05a613a9fb80",
-            "name": "BCPerfTool",
-            "publisher": "waldo",
-            "version": "1.0.0.0"
-        },
-        {
-            "id": "75f1590f-55c5-4501-ae63-bada5534e852",
-            "publisher": "Microsoft",
-            "name": "Performance Toolkit",
-            "version": "20.0.0.0"
-        }
-    ],
-    "screenshots": [],
-    "platform": "1.0.0.0",
-    "application": "19.0.0.0",
-    "idRanges": [
-        {
-            "from": 62201,
-            "to": 62300
-        }
-    ],
-    "resourceExposurePolicy": {
-        "allowDebugging": true,
-        "allowDownloadingSource": true,
-        "includeSourceInSymbolFile": true
+  "id": "2c48589d-7b44-4cdf-b5f3-d918316affce",
+  "name": "BCPerfToolDemos",
+  "publisher": "waldo",
+  "version": "1.0.0.0",
+  "brief": "Demos related to performance problems",
+  "description": "Demos related to performance problems",
+  "privacyStatement": "https://www.waldo.be",
+  "EULA": "https://www.waldo.be",
+  "help": "https://www.waldo.be",
+  "url": "https://www.waldo.be",
+  "contextSensitiveHelpUrl": "https://www.waldo.be",
+  "logo": "img/icon.png",
+  "dependencies": [
+    {
+      "id": "b52c1c11-0820-4457-9835-05a613a9fb80",
+      "name": "BCPerfTool",
+      "publisher": "waldo",
+      "version": "1.0.0.0"
     },
-    "runtime": "11.0",
-    "target": "Cloud"
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "publisher": "Microsoft",
+      "name": "Performance Toolkit",
+      "version": "20.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "19.0.0.0",
+  "idRanges": [
+    {
+      "from": 62201,
+      "to": 62300
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "11.0",
+  "target": "Cloud",
+  "features": [
+    "TranslationFile"
+  ]
 }

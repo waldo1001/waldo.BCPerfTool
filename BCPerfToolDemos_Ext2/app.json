@@ -1,36 +1,39 @@
 ﻿{
-    "id": "4c0f1a7f-0f96-41dd-a850-2de6cd3852a7",
-    "name": "BCPerfToolDemos_Ext2",
-    "publisher": "waldo",
-    "version": "1.0.0.0",
-    "brief": "",
-    "description": "",
-    "privacyStatement": "",
-    "EULA": "",
-    "help": "",
-    "url": "",
-    "logo": "",
-    "dependencies": [
-        {
-            "id": "2c48589d-7b44-4cdf-b5f3-d918316affce",
-            "name": "BCPerfToolDemos",
-            "publisher": "waldo",
-            "version": "1.0.0.0"
-        }
-    ],
-    "screenshots": [],
-    "platform": "1.0.0.0",
-    "application": "19.0.0.0",
-    "idRanges": [
-        {
-            "from": 62306,
-            "to": 62310
-        }
-    ],
-    "resourceExposurePolicy": {
-        "allowDebugging": true,
-        "allowDownloadingSource": false,
-        "includeSourceInSymbolFile": false
-    },
-    "runtime": "11.0"
+  "id": "4c0f1a7f-0f96-41dd-a850-2de6cd3852a7",
+  "name": "BCPerfToolDemos_Ext2",
+  "publisher": "waldo",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "2c48589d-7b44-4cdf-b5f3-d918316affce",
+      "name": "BCPerfToolDemos",
+      "publisher": "waldo",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "19.0.0.0",
+  "idRanges": [
+    {
+      "from": 62306,
+      "to": 62310
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "11.0",
+  "features": [
+    "TranslationFile"
+  ]
 }
