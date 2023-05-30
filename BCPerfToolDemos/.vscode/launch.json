@@ -47,7 +47,7 @@
             "enableSqlInformationDebugger": true,
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
-            "numberOfSqlStatements": 1,
+            "numberOfSqlStatements": 10,
             "tenant": "default",
             "startupObjectId": 62102,
             "startupObjectType": "Page",
