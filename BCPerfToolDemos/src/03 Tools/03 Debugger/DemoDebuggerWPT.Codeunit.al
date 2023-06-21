@@ -122,6 +122,23 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+
+    #region PessimisticLocking
+    procedure PessimisticLocking()
+    var
+        Cust1, Cust2 : record Customer;
+    begin
+        Cust1.FindFirst();
+
+        Cust1.Name := 'waldo';
+        Cust1.Modify();
+
+        Cust2.ReadIsolation := IsolationLevel::ReadUncommitted;
+        if Cust2.IsEmpty then exit;
+
+    end;
+    #endregion
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -140,6 +157,8 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
                 Table4_JITLoading();
             GetProcedures().Get(7):
                 FindSetTrueIsLocking();
+            GetProcedures().Get(8):
+                PessimisticLocking();
         end;
 
         Result := true;
@@ -154,6 +173,7 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Table4_FindSetWithPartialrecords');
         Result.Add('Table4_JITLoading');
         Result.Add('FindSetTrueIsLocking');
+        Result.Add('PessimisticLocking');
 
     end;
 
