@@ -5,8 +5,8 @@ enumextension 62203 "BCPTTestParamEnum Ext WPT" extends "BCPT Test Param. Enum"
     {
         Implementation = "BCPT Test Param. Provider" = "BCPTScen - ModifyAll WPT";
     }
-    value(62282; "62282")
+    value(62261; "62261")
     {
-        Implementation = "BCPT Test Param. Provider" = "Sleeper WPT";
+        Implementation = "BCPT Test Param. Provider" = "BCPT Sleeper WPT";
     }
 }
