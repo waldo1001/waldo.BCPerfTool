@@ -32,4 +32,5 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62290; "UpgradeCode") { Implementation = "PerfToolCodeunit WPT" = "Demo - Upgrade Code WPT"; }
     value(62218; "FindSetLockingWPT") { Implementation = "PerfToolCodeunit WPT" = "Demo - Locking Find(Set) WPT"; }
     value(62217; "PartialRecordsToDebug") { Implementation = "PerfToolCodeunit WPT" = "Demo - Partial Records (Debug)"; }
+    value(62283; QueryAndSIFT) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query And SIFT WPT"; }
 }

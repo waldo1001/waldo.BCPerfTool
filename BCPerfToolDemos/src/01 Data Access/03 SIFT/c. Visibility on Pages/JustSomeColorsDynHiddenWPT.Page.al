@@ -28,7 +28,10 @@ page 62217 "Just Some Colors DynHidden WPT" // Original: page 62210 "Just Some C
     }
     trigger OnOpenPage()
     begin
-        VisibleVar:=false end;
-    var[InDataSet]
-    VisibleVar: Boolean;
+        VisibleVar := false
+    end;
+
+    var
+        [InDataSet]
+        VisibleVar: Boolean;
 }
