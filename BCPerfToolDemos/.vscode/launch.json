@@ -2,6 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "snapshotInitialize: bccurrent",
+            "type": "al",
+            "request": "snapshotInitialize",
+            "environmentType": "OnPrem",
+            "server": "http://bccurrent",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "sessionId": 140,
+            "userId": "waldo",
+            "breakOnNext": "WebClient",
+            "executionContext": "Profile"
+        },
+        {
             "name": "LocalDocker",
             "type": "al",
             "request": "launch",

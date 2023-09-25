@@ -75,7 +75,7 @@ codeunit 62128 "UploadToPyroscope Meth WPT"
         Url: Text;
     begin
         PerfToolSetupWPT.GetRecordOnce();
-        if PerfToolSetupWPT.DisableFlamegraph then exit;
+        if not PerfToolSetupWPT.EnableFlamegraph then exit;
 
         PerfToolSetupWPT.TestField(FlameGraphServer);
 

@@ -176,7 +176,7 @@ page 62104 "PerfTool Suite WPT"
                     UrlLbl: label 'http://%1:4040', Comment = '%1 is Pyroscope server.';
                 begin
                     PerfToolSetupWPT.Get();
-                    if PerfToolSetupWPT.DisableFlamegraph then exit;
+                    if PerfToolSetupWPT.EnableFlamegraph then exit;
                     if PerfToolSetupWPT.FlameGraphServer = '' then exit;
 
                     hyperlink(StrSubstNo(Urllbl, PerfToolSetupWPT.FlameGraphServer));
