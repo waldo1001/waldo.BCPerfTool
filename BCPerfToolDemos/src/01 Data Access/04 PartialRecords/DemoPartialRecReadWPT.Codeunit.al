@@ -1,4 +1,4 @@
-codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
+codeunit 62235 "Demo - PartialRecRead WPT" implements "PerfToolCodeunit WPT"
 {
     #region FindSetNoPartialrecords
     local procedure FindSetNoPartialrecords()
@@ -214,7 +214,7 @@ codeunit 62235 "Demo - PartialRecords WPT" implements "PerfToolCodeunit WPT"
     begin
         CreatePerfToolDataLibraryWPT.CreateGroup('01.DATA', 'Data Access', PerfToolGroupWPT);
 
-        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '04. PartialRecords', 'Partial Records', PerfToolSuiteHeaderWPT);
+        CreatePerfToolDataLibraryWPT.CreateSuite(PerfToolGroupWPT, '04.a PartialRecRead', 'Partial Records - Read', PerfToolSuiteHeaderWPT);
         CreatePerfToolDataLibraryWPT.CreateSuiteLines(PerfToolSuiteHeaderWPT, WPTSuiteLine."Object Type"::Codeunit, enum::"PerfToolCodeunit WPT"::PartialRecords, true, false, WPTSuiteLine);
     end;
     #endregion

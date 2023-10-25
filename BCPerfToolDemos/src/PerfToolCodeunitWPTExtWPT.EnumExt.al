@@ -14,7 +14,7 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62202; BulkInserts) { Implementation = "PerfToolCodeunit WPT" = "Demo - Bulk Inserts WPT"; }
     // value(62268; NSTCaching) { Implementation = "PerfToolCodeunit WPT" = "Demo - NST Caching WPT"; }
     value(62226; FindSet) { Implementation = "PerfToolCodeunit WPT" = "Demo - Looping Find(Set) WPT"; }
-    value(62235; PartialRecords) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecords WPT"; }
+    value(62235; PartialRecords) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecRead WPT"; }
     value(62209; PartialRecordsWithSubscriber) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecordsSS WPT"; }
     value(62203; TempTables) { Implementation = "PerfToolCodeunit WPT" = "Demo - Temp Tables WPT"; }
     value(62210; DTTextBuilder) { Implementation = "PerfToolCodeunit WPT" = "Demo - TextBuilder WPT"; }
@@ -33,4 +33,5 @@ enumextension 62202 "PerfToolCodeunitWPT Ext WPT" extends "PerfToolCodeunit WPT"
     value(62218; "FindSetLockingWPT") { Implementation = "PerfToolCodeunit WPT" = "Demo - Locking Find(Set) WPT"; }
     value(62217; "PartialRecordsToDebug") { Implementation = "PerfToolCodeunit WPT" = "Demo - Partial Records (Debug)"; }
     value(62283; QueryAndSIFT) { Implementation = "PerfToolCodeunit WPT" = "Demo - Query And SIFT WPT"; }
+    value(62284; PartialRecordInsert) { Implementation = "PerfToolCodeunit WPT" = "Demo - PartialRecWrite WPT"; }
 }

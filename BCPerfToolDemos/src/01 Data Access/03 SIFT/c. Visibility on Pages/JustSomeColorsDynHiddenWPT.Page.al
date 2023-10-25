@@ -1,4 +1,4 @@
-page 62217 "Just Some Colors DynHidden WPT" // Original: page 62210 "Just Some Colors (Good) Hidden WPT"
+page 62221 "Just Some Colors DynHidden WPT" // Original: page 62210 "Just Some Colors (Good) Hidden WPT"
 {
     ApplicationArea = All;
     Caption = 'Just Some Colors (Dynamics Hidden)';
