@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Run;
+
 enum 62100 "Perftool Object Types WPT"
 {
     Extensible = false;

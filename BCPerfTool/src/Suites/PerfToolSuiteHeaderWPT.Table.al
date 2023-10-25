@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Suites;
+
 table 62101 "PerfTool Suite Header WPT"
 {
     DataClassification = SystemMetadata;

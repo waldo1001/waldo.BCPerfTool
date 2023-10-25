@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+
 page 62112 "FlameGraph WPT"
 {
     SourceTable = "PerfTool Log Entry WPT";

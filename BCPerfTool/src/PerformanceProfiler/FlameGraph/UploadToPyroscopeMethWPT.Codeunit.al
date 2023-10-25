@@ -1,4 +1,10 @@
 #pragma warning disable AA0231
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+using waldo.BCPerftool.Config;
+using waldo.BCPerftool.Suites;
+
 codeunit 62128 "UploadToPyroscope Meth WPT"
 {
     internal procedure UploadToPyroscope(var Log: Record "PerfTool Log Entry WPT")

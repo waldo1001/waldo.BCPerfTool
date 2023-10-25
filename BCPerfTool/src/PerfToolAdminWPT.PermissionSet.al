@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool.Config;
+
+using waldo.BCPerftool.Suites;
+using waldo.BCPerftool.Analytics;
+
 permissionset 62100 "PerfTool Admin WPT"
 {
     Assignable = true;

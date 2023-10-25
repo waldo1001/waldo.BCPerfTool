@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Suites;
+
 page 62111 "DetailsPerLine Chart WPT"
 {
     Caption = 'Chart';

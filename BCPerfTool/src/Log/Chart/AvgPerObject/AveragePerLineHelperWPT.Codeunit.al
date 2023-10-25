@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Suites;
+
 codeunit 62119 "AveragePerLine Helper WPT"
 {
     Access = Internal;

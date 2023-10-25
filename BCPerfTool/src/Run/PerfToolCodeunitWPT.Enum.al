@@ -4,6 +4,8 @@
 /// Very important is to make sure the integer-value is the same as the implementation-codeunit, 
 /// because that way, we can distinguish normal codeunits from implemantions-codeunits.
 /// </summary>
+namespace waldo.BCPerftool.Run;
+
 enum 62101 "PerfToolCodeunit WPT" implements "PerfToolCodeunit WPT"
 {
     Extensible = true;

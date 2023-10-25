@@ -1,3 +1,5 @@
+namespace waldo.System;
+
 page 62108 "Scheduled Tasks WPT"
 {
 

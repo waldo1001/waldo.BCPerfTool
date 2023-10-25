@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Run;
+
 page 62109 "Procedure Lookup WPT"
 {
     Caption = 'Procedure Lookup';

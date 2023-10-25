@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool;
+using waldo.BCPerftool.Analytics;
+
 codeunit 62136 "Get Suites WPT"
 {
     var

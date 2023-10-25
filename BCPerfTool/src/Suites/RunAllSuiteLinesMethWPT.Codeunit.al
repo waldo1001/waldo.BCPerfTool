@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Suites;
+
 codeunit 62110 "RunAllSuiteLines Meth WPT"
 {
     internal procedure RunAll(var Header: Record "PerfTool Suite Header WPT")

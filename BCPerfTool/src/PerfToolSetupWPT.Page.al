@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Config;
+
 page 62113 "PerfTool Setup WPT"
 {
 

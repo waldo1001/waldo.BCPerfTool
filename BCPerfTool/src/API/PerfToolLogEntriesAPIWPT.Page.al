@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.API;
+
+using waldo.BCPerftool.Analytics;
+
 page 62100 "PerfTool Log Entries API WPT"
 {
     PageType = API;

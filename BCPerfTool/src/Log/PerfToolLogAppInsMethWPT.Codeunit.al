@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Suites;
+
 codeunit 62103 "PerfTool LogAppIns Meth WPT"
 {
     internal procedure LogAppInsights(var Log: Record "PerfTool Log Entry WPT")

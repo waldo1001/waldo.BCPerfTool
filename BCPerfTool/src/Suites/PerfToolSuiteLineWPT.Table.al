@@ -1,4 +1,9 @@
 #pragma warning disable AA0232
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool.Run;
+using waldo.BCPerftool.Analytics;
+
 table 62100 "PerfTool Suite Line WPT"
 {
     DataClassification = SystemMetadata;

@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool;
+
+using waldo.BCPerftool.Suites;
+using waldo.BCPerftool.Run;
+
 codeunit 62104 "Create PerfToolDataLibrary WPT"
 {
     Access = public;
@@ -79,7 +84,7 @@ codeunit 62104 "Create PerfToolDataLibrary WPT"
         Line.validate("Line No.", LineNo);
         line.validate("Object Type", ObjType);
         Line.validate("Object ID", ObjId);
-        line.validate(PerfToolCodeunit, PerfToolCodeunit);
+        line.validate(Line.PerfToolCodeunit, PerfToolCodeunit);
         line.validate("Procedure Name", ProcedureName);
         line.validate(SelectLatestVersion, SelectLatestVersion);
         Line.Validate("Run Performance Analyzer", RunPerformanceAnalyzer);

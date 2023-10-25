@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Suites;
+
 query 62101 "DetailsPerLine WPT"
 {
     QueryType = Normal;

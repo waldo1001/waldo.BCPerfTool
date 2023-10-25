@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool.Analytics;
+
 page 62103 "PerfTool Suite SubPage WPT"
 {
     Caption = 'PerfTool Suite Lines';

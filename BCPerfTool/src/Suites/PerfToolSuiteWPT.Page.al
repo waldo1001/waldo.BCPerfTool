@@ -1,3 +1,9 @@
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool.Analytics;
+using waldo.System;
+using waldo.BCPerftool.Config;
+
 page 62104 "PerfTool Suite WPT"
 {
     Caption = 'PerfTool Suite';

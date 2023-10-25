@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+
 codeunit 62126 "GetFlameGraph Meth WPT"
 {
     internal procedure GetFlameGraph(var Log: Record "PerfTool Log Entry WPT"; Svg: Boolean) Base64Encoded: Text
