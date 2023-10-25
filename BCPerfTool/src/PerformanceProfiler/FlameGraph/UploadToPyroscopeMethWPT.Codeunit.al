@@ -4,6 +4,7 @@ namespace waldo.BCPerftool.Profiler;
 using waldo.BCPerftool.Analytics;
 using waldo.BCPerftool.Config;
 using waldo.BCPerftool.Suites;
+using System.Reflection;
 
 codeunit 62128 "UploadToPyroscope Meth WPT"
 {

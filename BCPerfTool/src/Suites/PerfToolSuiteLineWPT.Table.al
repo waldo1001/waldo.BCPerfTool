@@ -3,6 +3,7 @@ namespace waldo.BCPerftool.Suites;
 
 using waldo.BCPerftool.Run;
 using waldo.BCPerftool.Analytics;
+using System.Reflection;
 
 table 62100 "PerfTool Suite Line WPT"
 {

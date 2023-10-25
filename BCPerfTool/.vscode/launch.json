@@ -2,6 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Publish: cronus.company",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "Sandbox",
+            "environmentName": "dev",
+            "tenant": "cronus.company",
+            "breakOnError": "All",
+            "breakOnRecordWrite": "None",
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "schemaUpdateMode": "Synchronize"
+        },
+        {
             "name": "LocalDocker",
             "type": "al",
             "request": "launch",

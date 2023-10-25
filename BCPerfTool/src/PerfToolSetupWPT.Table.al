@@ -1,5 +1,7 @@
 namespace waldo.BCPerftool.Config;
 
+using System.Utilities;
+
 table 62105 "PerfTool Setup WPT"
 {
 
