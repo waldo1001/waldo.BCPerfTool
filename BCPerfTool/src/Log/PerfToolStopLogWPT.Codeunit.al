@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Analytics;
+
 codeunit 62106 "PerfTool Stop Log WPT"
 {
     internal procedure Stop(var Log: Record "PerfTool Log Entry WPT")

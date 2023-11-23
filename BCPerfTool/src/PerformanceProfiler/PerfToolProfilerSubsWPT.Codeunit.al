@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+using System.Tooling;
+
 codeunit 62124 "PerfTool Profiler Subs WPT"
 {
     SingleInstance = true;

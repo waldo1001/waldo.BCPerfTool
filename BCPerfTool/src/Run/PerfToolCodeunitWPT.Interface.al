@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Run;
+
 interface "PerfToolCodeunit WPT"
 {
     procedure Run(ProcedureName: Text) Result: Boolean;

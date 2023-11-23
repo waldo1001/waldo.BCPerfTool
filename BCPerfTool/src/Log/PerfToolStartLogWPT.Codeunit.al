@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Analytics;
+
 codeunit 62105 "PerfTool Start Log WPT"
 {
     internal procedure Start(Identifier: Guid; var Log: Record "PerfTool Log Entry WPT"; AppInsightsEventId: Text[50]; Tag: Text[249]; AlternativeKey: Text[250])

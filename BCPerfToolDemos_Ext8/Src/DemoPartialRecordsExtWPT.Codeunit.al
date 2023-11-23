@@ -19,13 +19,13 @@ codeunit 62351 "Demo - PartialRecords Ext WPT"
     end;
     #endregion
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecords WPT", 'OnAfterGetProcedures', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecRead WPT", 'OnAfterGetProcedures', '', false, false)]
     local procedure OnAfterGetProcedures(var Result: List of [Text[50]]);
     begin
         Result.Add('Table4_JITLoading');
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecords WPT", 'OnAfterRun', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Demo - PartialRecRead WPT", 'OnAfterRun', '', false, false)]
     local procedure OnAfterRun(ProcedureName: Text);
     begin
         if ProcedureName = 'Table4_JITLoading' then

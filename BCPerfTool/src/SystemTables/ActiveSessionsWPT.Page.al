@@ -1,3 +1,7 @@
+namespace waldo.System;
+
+using System.Environment;
+
 page 62107 "Active Sessions WPT"
 {
     ApplicationArea = All;

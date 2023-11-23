@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Run;
+
+using waldo.BCPerftool;
+
 codeunit 62100 "PerfTool WPT"
 {
     Access = Public;

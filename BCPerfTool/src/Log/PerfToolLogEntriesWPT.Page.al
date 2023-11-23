@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Profiler;
+
 page 62105 "PerfTool Log Entries WPT"
 {
     ApplicationArea = All;
@@ -121,7 +125,6 @@ page 62105 "PerfTool Log Entries WPT"
         }
     }
     var
-        [InDataSet]
         IsDownloadEnabled: Boolean;
 
     trigger OnAfterGetCurrRecord()

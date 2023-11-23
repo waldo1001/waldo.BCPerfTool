@@ -1,4 +1,11 @@
 #pragma warning disable AA0231
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+using waldo.BCPerftool.Config;
+using waldo.BCPerftool.Suites;
+using System.Reflection;
+
 codeunit 62128 "UploadToPyroscope Meth WPT"
 {
     internal procedure UploadToPyroscope(var Log: Record "PerfTool Log Entry WPT")
@@ -75,7 +82,7 @@ codeunit 62128 "UploadToPyroscope Meth WPT"
         Url: Text;
     begin
         PerfToolSetupWPT.GetRecordOnce();
-        if PerfToolSetupWPT.DisableFlamegraph then exit;
+        if not PerfToolSetupWPT.EnableFlamegraph then exit;
 
         PerfToolSetupWPT.TestField(FlameGraphServer);
 

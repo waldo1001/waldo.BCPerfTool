@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool.Profiler;
+
+using waldo.BCPerftool.Analytics;
+using System.Utilities;
+
 codeunit 62129 "DownloadFlameGraphSvg Meth WPT"
 {
     internal procedure Download(var Log: Record "PerfTool Log Entry WPT")

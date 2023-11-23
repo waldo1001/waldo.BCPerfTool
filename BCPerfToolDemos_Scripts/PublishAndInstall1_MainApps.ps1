@@ -15,7 +15,5 @@ function PublishExtensionApp($AppName){
 
 PublishExtensionApp -AppName 'BCPerfTool'
 PublishExtensionApp -AppName 'BCPerfToolDemos'
-PublishExtensionApp -AppName 'BCPerfToolDemos - V21'
-
 
 start "http://$containername/BC/?page=62102"

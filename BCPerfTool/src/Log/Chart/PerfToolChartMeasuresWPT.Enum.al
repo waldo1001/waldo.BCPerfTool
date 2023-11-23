@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Analytics;
+
 enum 62102 "PerfTool Chart Measures WPT"
 {
     Extensible = false;

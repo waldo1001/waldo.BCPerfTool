@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Suites;
+
 codeunit 62123 "RunAllBatchesOnSuites Meth WPT"
 {
     internal procedure RunAllBatchesOnSuites()

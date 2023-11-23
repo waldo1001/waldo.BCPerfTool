@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Profiler;
+
 controladdin "FlamegraphControlAddIn WPT"
 {
     StartupScript = './src/PerformanceProfiler/FlameGraph/ControlAddin/startup.js';

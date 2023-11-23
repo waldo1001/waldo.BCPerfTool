@@ -1,5 +1,5 @@
 #Run in ISE because of $PSScriptRoot
-$containername = 'bccurrent'
+$containername = 'bcdaily'
 
 $UserName = 'waldo'
 $Password = ConvertTo-SecureString 'Waldo1234' -AsPlainText -Force

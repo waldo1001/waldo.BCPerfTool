@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Profiler;
+
 table 62102 "PerfTool Log Entry WPT"
 {
     DataClassification = CustomerContent;

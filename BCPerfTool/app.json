@@ -29,6 +29,6 @@
   "features": [
     "TranslationFile"
   ],
-  "runtime": "11.0",
+  "runtime": "12.0",
   "target": "Cloud"
 }

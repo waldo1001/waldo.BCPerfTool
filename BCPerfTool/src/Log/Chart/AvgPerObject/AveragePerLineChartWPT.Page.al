@@ -1,3 +1,8 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Suites;
+using System.Visualization;
+
 page 62110 "AveragePerLine Chart WPT"
 {
     Caption = 'Chart';

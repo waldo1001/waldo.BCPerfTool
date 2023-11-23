@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Suites;
+
 table 62103 "PerfTool Group WPT"
 {
     fields

@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Install;
+
+using waldo.BCPerftool.Config;
+
 codeunit 62130 "BCPerfTool Install WPT"
 {
     Subtype = Install;

@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Run;
+
 table 62104 "Procedure Buffer WPT"
 {
     TableType = Temporary;

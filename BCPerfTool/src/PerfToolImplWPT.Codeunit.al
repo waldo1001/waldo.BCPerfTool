@@ -1,3 +1,9 @@
+namespace waldo.BCPerftool;
+
+using waldo.BCPerftool.Run;
+using waldo.BCPerftool.Analytics;
+using waldo.BCPerftool.Profiler;
+
 codeunit 62101 "PerfTool Impl. WPT"
 {
     Access = Internal;

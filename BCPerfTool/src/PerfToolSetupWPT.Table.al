@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Config;
+
+using System.Utilities;
+
 table 62105 "PerfTool Setup WPT"
 {
 
@@ -21,9 +25,9 @@ table 62105 "PerfTool Setup WPT"
                     error('Invalid IP Address');
             end;
         }
-        field(3; DisableFlamegraph; Boolean)
+        field(3; EnableFlamegraph; Boolean)
         {
-            Caption = 'Disable Flamegraph';
+            Caption = 'Enable Flamegraph';
             DataClassification = CustomerContent;
         }
 

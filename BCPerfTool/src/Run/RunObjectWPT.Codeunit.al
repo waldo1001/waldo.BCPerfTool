@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Run;
+
+using System.Utilities;
+
 codeunit 62109 "RunObject WPT"
 {
     internal procedure RunObject(ObjType: enum "Perftool Object Types WPT"; ObjId: Integer; ProcedureName: Text) Result: Boolean

@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Config;
+
 page 62113 "PerfTool Setup WPT"
 {
 
@@ -20,10 +22,10 @@ page 62113 "PerfTool Setup WPT"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the FlameGraphServer field.';
                 }
-                field(DisableFlamegraph; Rec.DisableFlamegraph)
+                field(EnableFlameGraph; Rec.EnableFlameGraph)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Disable Flamegraph field.';
+                    ToolTip = 'Specifies the value of the Enable Flamegraph field.';
                 }
 
             }

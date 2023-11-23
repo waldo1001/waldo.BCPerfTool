@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Suites;
+
 page 62101 "PerfTool Groups WPT"
 {
     ApplicationArea = All;

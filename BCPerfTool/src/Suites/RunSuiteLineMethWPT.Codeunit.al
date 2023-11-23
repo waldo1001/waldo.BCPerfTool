@@ -1,3 +1,9 @@
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool;
+using waldo.BCPerftool.Analytics;
+using waldo.BCPerftool.Run;
+
 codeunit 62108 "Run SuiteLine Meth WPT"
 {
     internal procedure Run(var SuiteLine: Record "PerfTool Suite Line WPT"; ShowResults: Boolean)

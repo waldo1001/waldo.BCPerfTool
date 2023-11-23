@@ -1,3 +1,10 @@
+namespace waldo.BCPerftool.Suites;
+
+using waldo.BCPerftool.Config;
+using waldo.BCPerftool.Analytics;
+using waldo.System;
+using System.Threading;
+
 page 62102 "PerfTool Suites WPT"
 {
     ApplicationArea = All;

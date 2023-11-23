@@ -1,3 +1,7 @@
+namespace waldo.BCPerftool.Analytics;
+
+using waldo.BCPerftool.Profiler;
+
 page 62106 "PerfTool Log SubPage WPT"
 {
     Caption = 'PerfTool Log';
@@ -175,7 +179,6 @@ page 62106 "PerfTool Log SubPage WPT"
         }
     }
     var
-        [InDataSet]
         IsProfileAvailable: Boolean;
 
     trigger OnAfterGetCurrRecord()

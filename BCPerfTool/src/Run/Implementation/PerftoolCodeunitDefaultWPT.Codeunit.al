@@ -1,3 +1,5 @@
+namespace waldo.BCPerftool.Run;
+
 codeunit 62118 "PerftoolCodeunit - Default WPT" implements "PerfToolCodeunit WPT"
 {
     #region InterfaceImplementation
