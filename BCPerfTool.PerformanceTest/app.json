@@ -1,0 +1,36 @@
+{
+  "id": "adb5d75c-4c7b-4d0a-9780-c5d49c8be9d7",
+  "name": "BCPerfTool.PerformanceTest",
+  "publisher": "waldo",
+  "version": "1.0.0.0",
+  "brief": "Performance Toolkit Samples (US)",
+  "description": "This extension provides tests that simulate business processes, such as creating sales orders, for the Business Central Performance Toolkit. Developers can use these to test for performance regressions during development.",
+  "platform": "22.0.0.0",
+  "application": "22.3.0.0",
+  "runtime": "11.1",
+  "logo": "",
+  "url": "",
+  "EULA": "",
+  "privacyStatement": "",
+  "help": "",
+  "target": "Cloud",
+  "screenshots": [],
+  "dependencies": [
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "publisher": "Microsoft",
+      "name": "Performance Toolkit",
+      "version": "22.3.0.0"
+    }
+  ],
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "features": [],
+  "resourceExposurePolicy": {},
+  "internalsVisibleTo": [],
+  "keyVaultUrls": []
+}
