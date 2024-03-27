@@ -2,20 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Publish: cronus.company",
+            "name": "Publish: WaldoDemo (SaaS)",
             "type": "al",
             "request": "launch",
             "environmentType": "Sandbox",
-            "environmentName": "dev",
-            "tenant": "cronus.company",
+            "environmentName": "WaldoDemo",
+            "tenant": "38f68348-3ff1-4038-b793-111538c6786e",
             "breakOnError": "All",
             "breakOnRecordWrite": "None",
             "launchBrowser": true,
             "enableSqlInformationDebugger": true,
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
-            "numberOfSqlStatements": 10,
-            "schemaUpdateMode": "Synchronize"
+            "numberOfSqlStatements": 10
         },
         {
             "name": "LocalDocker",
