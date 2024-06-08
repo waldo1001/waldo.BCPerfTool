@@ -1,5 +1,5 @@
 #Run in ISE because of $PSScriptRoot
-$containername = 'bcdaily'
+$containername = 'bccurrent'
 
 $UserName = 'waldo'
 $Password = ConvertTo-SecureString 'Waldo1234' -AsPlainText -Force
@@ -13,7 +13,6 @@ function PublishExtensionApp($AppName){
         Publish-BcContainerApp -containerName $containername -credential $ContainerCredential -ignoreIfAppExists -appFile "$PSScriptRoot\..\$($AppName)\waldo_$($AppName)_1.0.0.0.app" -skipVerification -sync ForceSync -useDevEndpoint -install
     }
 }
-
 
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext1'
 PublishExtensionApp -AppName 'BCPerfToolDemos_Ext2'
