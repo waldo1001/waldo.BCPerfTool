@@ -69,7 +69,7 @@ page 62208 "Page With BackgroundTask WPT"
         if TaskId = LastExecutedJobQueueEntryTaskId then begin
             LastExecutedJobQueueEntry := Results.Get('LastExecutedJobQueueEntry');
 
-            CurrPage.EnqueueBackgroundTask(SleeperTaskId, codeunit::"Sleep 10s WPT");
+            CurrPage.EnqueueBackgroundTask(SleeperTaskId, codeunit::"BCPT Sleeper WPT");
         end;
         if TaskId = SleeperTaskId then begin
             CurrPage.EnqueueBackgroundTask(LastExecutedJobQueueEntryTaskId, codeunit::"Get Last Exec. Job Queue Entry");
