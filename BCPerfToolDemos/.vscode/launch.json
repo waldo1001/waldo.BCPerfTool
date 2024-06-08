@@ -2,6 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "PerfTool: Microsoft cloud sandbox",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "Sandbox",
+            "environmentName": "PerfTool",
+            "tenant": "38f68348-3ff1-4038-b793-111538c6786e",
+            "breakOnError": "All",
+            "breakOnRecordWrite": "None",
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10
+        },
+        {
             "name": "snapshotInitialize: bccurrent",
             "type": "al",
             "request": "snapshotInitialize",
@@ -9,9 +24,10 @@
             "server": "http://bccurrent",
             "serverInstance": "BC",
             "authentication": "UserPassword",
+            "sessionId": 548,
+            "userId": "waldo",
             "breakOnNext": "WebClient",
-            "sessionId": 829,
-            "executionContext": "DebugAndProfile"
+            "executionContext": "Profile"
         },
         {
             "name": "Attach: bccurrent",
