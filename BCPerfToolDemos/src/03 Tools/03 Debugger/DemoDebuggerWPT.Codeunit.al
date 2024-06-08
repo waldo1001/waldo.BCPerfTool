@@ -122,20 +122,40 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
-
-    #region PessimisticLocking
-    procedure PessimisticLocking()
+    #region TestTriStateLocking
+    procedure TestTriStateLocking_WithoutLockTable()
     var
-        Cust1, Cust2 : record Customer;
+        JustSomeTableWPT, JustSomeTableWPT2 : Record "Just Some Table WPT";
+        i: integer;
     begin
-        Cust1.FindFirst();
+        //Get a record for the table
+        JustSomeTableWPT.FindFirst();
 
-        Cust1.Name := 'waldo';
-        Cust1.Modify();
+        //Lock the record by writing to it
+        JustSomeTableWPT.Message := 'Locking the record';
+        JustSomeTableWPT.Modify();
 
-        Cust2.ReadIsolation := IsolationLevel::ReadUncommitted;
-        if Cust2.IsEmpty then exit;
+        //Test what it does when I no get a record:
+        JustSomeTableWPT2.FindFirst();
+        Sleep(10);
+    end;
 
+    procedure TestTriStateLocking_WithLockTable()
+    var
+        JustSomeTableWPT, JustSomeTableWPT2 : Record "Just Some Table WPT";
+        i: integer;
+    begin
+        //Get a record for the table
+        JustSomeTableWPT.LockTable();
+        JustSomeTableWPT.FindFirst();
+
+        //Lock the record by writing to it
+        JustSomeTableWPT.Message := 'Locking the record';
+        JustSomeTableWPT.Modify();
+
+        //Test what it does when I no get a record:
+        JustSomeTableWPT2.FindFirst();
+        Sleep(10);
     end;
     #endregion
 
@@ -158,7 +178,9 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
             GetProcedures().Get(7):
                 FindSetTrueIsLocking();
             GetProcedures().Get(8):
-                PessimisticLocking();
+                TestTriStateLocking_WithoutLockTable();
+            GetProcedures().Get(9):
+                TestTriStateLocking_WithLockTable();
         end;
 
         Result := true;
@@ -173,7 +195,8 @@ codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Table4_FindSetWithPartialrecords');
         Result.Add('Table4_JITLoading');
         Result.Add('FindSetTrueIsLocking');
-        Result.Add('PessimisticLocking');
+        Result.Add('TestTriStateLocking_WithoutLockTable');
+        Result.Add('TestTriStateLocking_WithLockTable');
 
     end;
 
