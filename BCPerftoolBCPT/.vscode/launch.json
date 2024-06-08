@@ -16,7 +16,7 @@
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10,
             "startupObjectId": 149000,
-            "startupCompany": "page"
+            "startupObjectType": "Page"
         },
         {
             "name": "Publish: WaldoDemo (SaaS)",
