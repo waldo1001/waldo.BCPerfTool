@@ -13,4 +13,8 @@ enumextension 62203 "BCPTTestParamEnum Ext WPT" extends "BCPT Test Param. Enum"
     {
         Implementation = "BCPT Test Param. Provider" = "BCPT Post SO - 10 lines WPT";
     }
+    value(62266; "62266")
+    {
+        Implementation = "BCPT Test Param. Provider" = "BCPT Cr. SO with N Lines WLD";
+    }
 }
