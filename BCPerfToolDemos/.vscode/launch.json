@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Publish: WaldoDemo (SaaS)",
+            "name": "PerfTool: Microsoft cloud sandbox",
             "type": "al",
             "request": "launch",
             "environmentType": "Sandbox",
-            "environmentName": "WaldoDemo",
+            "environmentName": "PerfTool",
             "tenant": "38f68348-3ff1-4038-b793-111538c6786e",
             "breakOnError": "All",
             "breakOnRecordWrite": "None",
@@ -15,6 +15,37 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
+        },
+        {
+            "name": "snapshotInitialize: bccurrent",
+            "type": "al",
+            "request": "snapshotInitialize",
+            "environmentType": "OnPrem",
+            "server": "http://bccurrent",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "sessionId": 548,
+            "userId": "waldo",
+            "breakOnNext": "WebClient",
+            "executionContext": "Profile"
+        },
+        {
+            "name": "Attach: bccurrent",
+            "type": "al",
+            "request": "attach",
+            "environmentType": "OnPrem",
+            "server": "http://bccurrent",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
+            "breakOnError": "All",
+            "breakOnRecordWrite": "None",
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "breakOnNext": "WebServiceClient",
+            "tenant": "default",
+            "sessionId": 829
         },
         {
             "name": "snapshotInitialize: bccurrent",

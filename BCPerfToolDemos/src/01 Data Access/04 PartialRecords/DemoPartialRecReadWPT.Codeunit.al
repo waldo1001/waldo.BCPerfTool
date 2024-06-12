@@ -145,6 +145,24 @@ codeunit 62235 "Demo - PartialRecRead WPT" implements "PerfToolCodeunit WPT"
     end;
     #endregion
 
+    #region FindSetWithPartialrecords_JIT
+    local procedure FindSetWithPartialrecords_JIT()
+    var
+        JustSomeTableWPT: Record "Just Some Table WPT";
+        i: Integer;
+        t: Text;
+    begin
+        JustSomeTableWPT.SetLoadFields(Message);
+        if JustSomeTableWPT.FindSet() then;
+        repeat
+            t := JustSomeTableWPT."Message 2";
+            i += 1;
+            if i > 7500 then exit;
+        until JustSomeTableWPT.Next() < 1;
+    end;
+    #endregion
+
+
     #region InterfaceImplementation
     procedure Run(ProcedureName: Text) Result: Boolean;
     begin
@@ -169,6 +187,8 @@ codeunit 62235 "Demo - PartialRecRead WPT" implements "PerfToolCodeunit WPT"
                 Table4_FindSetNoPartialrecords();
             GetProcedures().Get(10):
                 Table4_FindSetWithPartialrecords();
+            GetProcedures().Get(11):
+                FindSetWithPartialrecords_JIT();
         end;
 
         OnAfterRun(ProcedureName);
@@ -188,6 +208,7 @@ codeunit 62235 "Demo - PartialRecRead WPT" implements "PerfToolCodeunit WPT"
         Result.Add('Table3_FindSetWithPartialrecords');
         Result.Add('Table4_FindSetNoPartialrecords');
         Result.Add('Table4_FindSetWithPartialrecords');
+        Result.Add('FindSetWithPartialrecords_JIT');
 
         OnAfterGetProcedures(Result);
     end;

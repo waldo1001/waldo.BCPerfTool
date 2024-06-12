@@ -1,0 +1,12 @@
+{
+    "al.enableCodeAnalysis": false,
+    "al.ruleSetPath": "./.codeAnalysis/app.ruleset.json",
+    "CRS.OnSaveAlFileAction": "Rename",
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.RenameWithGit": false,
+    "editor.formatOnSave": true,
+    "CRS.ExtensionObjectNamePattern": "<BaseNameShort> Ext WPT",
+    "CRS.ObjectNameSuffix": " WPT"
+}

@@ -14,7 +14,9 @@
             "enableSqlInformationDebugger": true,
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
-            "numberOfSqlStatements": 10
+            "numberOfSqlStatements": 10,
+            "startupObjectId": 149000,
+            "startupObjectType": "Page"
         },
         {
             "name": "Publish: WaldoDemo (SaaS)",

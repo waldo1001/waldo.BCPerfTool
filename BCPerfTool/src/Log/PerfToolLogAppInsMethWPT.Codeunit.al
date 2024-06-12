@@ -69,7 +69,7 @@ codeunit 62103 "PerfTool LogAppIns Meth WPT"
     begin
         If Log.AppInsightsEventId <> '' then exit;
 
-        EventId := 'WPT';
+        EventId := 'WPT0001';
 
         if Dimensions.get('ObjectType', Value) then
             EventId += '_' + Value;

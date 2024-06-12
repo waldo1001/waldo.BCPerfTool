@@ -1,0 +1,42 @@
+{
+  "id": "e5499a17-867b-4ca5-9d12-03abbf9c162a",
+  "name": "BCPerftoolBCPT",
+  "publisher": "waldo",
+  "version": "1.0.0.0",
+  "brief": "BCPT App",
+  "description": "BCPT App",
+  "privacyStatement": "https://www.waldo.be",
+  "EULA": "https://www.waldo.be",
+  "help": "https://www.waldo.be",
+  "url": "https://www.waldo.be",
+  "contextSensitiveHelpUrl": "https://www.waldo.be",
+  "logo": "img/icon.png",
+  "dependencies": [
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "publisher": "Microsoft",
+      "name": "Performance Toolkit",
+      "version": "22.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "21.0.0.0",
+  "idRanges": [
+    {
+      "from": 75000,
+      "to": 75050
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "features": [
+    "NoImplicitWith",
+    "TranslationFile"
+  ],
+  "runtime": "12.0",
+  "target": "Cloud"
+}

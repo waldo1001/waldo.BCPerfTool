@@ -29,6 +29,16 @@ page 62208 "Page With BackgroundTask WPT"
                     ToolTip = 'Specifies the value of the ComplexCalc field.';
                 }
             }
+            group(info)
+            {
+                field(LastExecutedJobQueueEntry; LastExecutedJobQueueEntry)
+                {
+                    Caption = 'Last Executed Job Queue Entry';
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the LastExecutedJobQueueEntry field.';
+                }
+
+            }
         }
     }
 
@@ -49,12 +59,21 @@ page 62208 "Page With BackgroundTask WPT"
         Parameters.Add('Color', 'Red');
 
         CurrPage.EnqueueBackgroundTask(ComplicatedCalculationTaskId, codeunit::"Complicated Calc Meth WPT", parameters, TimeOutInMs, PageBackgroundTaskErrorLevel::Error);
+        CurrPage.EnqueueBackgroundTask(LastExecutedJobQueueEntryTaskId, codeunit::"Get Last Exec. Job Queue Entry");
     end;
 
     trigger OnPageBackgroundTaskCompleted(TaskId: Integer; Results: Dictionary of [Text, Text])
     begin
         if TaskId = ComplicatedCalculationTaskId then
             Evaluate(SomethingComplex, Results.Get('ComplicatedCalculationResult'));
+        if TaskId = LastExecutedJobQueueEntryTaskId then begin
+            LastExecutedJobQueueEntry := Results.Get('LastExecutedJobQueueEntry');
+
+            CurrPage.EnqueueBackgroundTask(SleeperTaskId, codeunit::"BCPT Sleeper WPT");
+        end;
+        if TaskId = SleeperTaskId then begin
+            CurrPage.EnqueueBackgroundTask(LastExecutedJobQueueEntryTaskId, codeunit::"Get Last Exec. Job Queue Entry");
+        end;
     end;
 
     trigger OnPageBackgroundTaskError(TaskId: Integer; ErrorCode: Text; ErrorText: Text; ErrorCallStack: Text; var IsHandled: Boolean)
@@ -71,4 +90,7 @@ page 62208 "Page With BackgroundTask WPT"
     var
         ComplicatedCalculationTaskId: integer;
         SomethingComplex: Decimal;
+        LastExecutedJobQueueEntry: Text;
+        LastExecutedJobQueueEntryTaskId: integer;
+        SleeperTaskId: Integer;
 }
