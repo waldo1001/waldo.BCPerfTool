@@ -1,4 +1,4 @@
-#pragma warning disable
+#pragma warning disable AA0136
 codeunit 62296 "DataTransfer Upgrade WPT"
 {
     Subtype = Upgrade;

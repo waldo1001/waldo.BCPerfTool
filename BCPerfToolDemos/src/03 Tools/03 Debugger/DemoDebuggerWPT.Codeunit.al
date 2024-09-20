@@ -1,4 +1,4 @@
-#pragma warning disable 
+#pragma warning disable AA0206, AA0137, AA0242, AA0175, AA0210
 
 codeunit 62249 "Demo - Debugger WPT" implements "PerfToolCodeunit WPT"
 {
