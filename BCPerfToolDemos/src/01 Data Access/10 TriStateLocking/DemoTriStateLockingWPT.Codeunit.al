@@ -1,3 +1,4 @@
+#pragma warning disable AA0175
 codeunit 62300 "Demo - TriState Locking WPT" implements "PerfToolCodeunit WPT"
 {
     #region WithLockTable

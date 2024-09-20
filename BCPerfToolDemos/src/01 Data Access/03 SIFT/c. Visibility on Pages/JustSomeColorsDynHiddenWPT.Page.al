@@ -32,6 +32,5 @@ page 62221 "Just Some Colors DynHidden WPT" // Original: page 62210 "Just Some C
     end;
 
     var
-        [InDataSet]
         VisibleVar: Boolean;
 }

@@ -1,4 +1,4 @@
-#pragma warning disable
+#pragma warning disable AA0228
 codeunit 62276 "Publisher Subs (Big) WPT"
 {
     [EventSubscriber(ObjectType::Codeunit, codeunit::"Demo - PublishersWithSubs WPT", 'OnAfterDoingSomethingBig', '', false, false)]

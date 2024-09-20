@@ -1,4 +1,3 @@
-#pragma warning disable
 codeunit 62226 "Demo - Looping Find(Set) WPT" implements "PerfToolCodeunit WPT"
 {
     #region FindSetAndLoop40
