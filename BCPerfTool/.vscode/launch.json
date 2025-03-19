@@ -7,7 +7,7 @@
             "request": "launch",
             "environmentType": "Sandbox",
             "environmentName": "WaldoDemo",
-            "tenant": "38f68348-3ff1-4038-b793-111538c6786e",
+            "tenant": "d61c0367-b31d-4f6b-ab32-7fbb2e1c2772",
             "breakOnError": "All",
             "breakOnRecordWrite": "None",
             "launchBrowser": true,
